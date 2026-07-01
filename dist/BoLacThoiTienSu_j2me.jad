@@ -1,0 +1,11 @@
+MIDlet-Name: Bo Lac Thoi Tien Su
+MIDlet-Version: 0.1.30
+MIDlet-Vendor: GiaiTri321.Pro
+MIDlet-1: Bo Lac Thoi Tien Su, icon.png, Project.src.MainMIDlet
+MIDlet-Icon: /icon.png
+MIDlet-Jar-URL: BoLacThoiTienSu_j2me.jar
+MIDlet-Jar-Size: 2325711
+MicroEdition-Profile: MIDP-2.0
+MicroEdition-Configuration: CLDC-1.0
+MIDlet-Delete-Confirm: Wapsite so 1 tren di dong www.hayso1.vn
+MIDlet-Info-URL: http://hayso1.vn

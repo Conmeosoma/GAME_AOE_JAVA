@@ -4,31 +4,28 @@ import javax.microedition.lcdui.Display;
 import javax.microedition.midlet.MIDlet;
 
 public class MainMIDlet extends MIDlet implements Runnable {
-   // $VF: renamed from: a f
-   GameResources a_obj_f;
-   // $VF: renamed from: a d
-   GameCanvas a_obj_d;
-   // $VF: renamed from: a javax.microedition.lcdui.Display
-   Display a_obj_Display;
+   GameResources gameResources;
+   GameCanvas splashCanvas;
+   Display display;
 
    public void startApp() {
-      if (this.a_obj_f != null) {
-         this.a_obj_f.e_void5();
+      if (this.gameResources != null) {
+         this.gameResources.e_void5();
       } else {
-         this.a_obj_Display = Display.getDisplay(this);
+         this.display = Display.getDisplay(this);
          new Thread(this).start();
       }
    }
 
    public void pauseApp() {
-      if (this.a_obj_f != null) {
-         this.a_obj_f.d_void7();
+      if (this.gameResources != null) {
+         this.gameResources.d_void7();
       }
    }
 
-   public void destroyApp(boolean var1) {
-      if (this.a_obj_f != null) {
-         this.a_obj_f.b_void();
+   public void destroyApp(boolean flag1) {
+      if (this.gameResources != null) {
+         this.gameResources.b_void();
       }
    }
 
@@ -36,31 +33,31 @@ public class MainMIDlet extends MIDlet implements Runnable {
    public void run() {
       System.gc();
       Thread.yield();
-      this.a_obj_d = new GameCanvas(this);
-      this.a_obj_d.a();
-      this.a_obj_d.a_byte = 0;
-      this.a_obj_Display.setCurrent(this.a_obj_d);
+      this.splashCanvas = new GameCanvas(this);
+      this.splashCanvas.a();
+      this.splashCanvas.splashFrameIndex = 0;
+      this.display.setCurrent(this.splashCanvas);
       a(1000);
-      this.a_obj_d.a();
+      this.splashCanvas.a();
       a(2000);
-      this.a_obj_d.a_byte = 1;
-      this.a_obj_d.a();
+      this.splashCanvas.splashFrameIndex = 1;
+      this.splashCanvas.a();
       System.gc();
       Thread.yield();
       a(2000);
-      this.a_obj_d.a_byte = 2;
-      this.a_obj_d.a();
+      this.splashCanvas.splashFrameIndex = 2;
+      this.splashCanvas.a();
       Thread.yield();
-      this.a_obj_d.a_byte = 5;
-      this.a_obj_f = new GameResources(this);
-      this.a_obj_f.a_void();
+      this.splashCanvas.splashFrameIndex = 5;
+      this.gameResources = new GameResources(this);
+      this.gameResources.a_void();
    }
 
    // $VF: renamed from: a (int) void
-   static void a(int var0) {
+   static void a(int delayMillis) {
       try {
-         Thread.sleep(var0);
-      } catch (InterruptedException var2) {
+         Thread.sleep(delayMillis);
+      } catch (InterruptedException ignoredException1) {
       }
    }
 }

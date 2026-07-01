@@ -13,9 +13,6 @@ public final class ResourceObject {
         return slotId;
     }
 
-    /**
-     * 6: Rừng cây (Wood), 7: Mỏ đá (Stone)
-     */
     public int getType() {
         return gameData[9833 + slotId] & 0xFF;
     }

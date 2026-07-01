@@ -8,9 +8,9 @@ import javax.microedition.lcdui.Image;
 // $VF: renamed from: e
 public final class GameData {
    // $VF: renamed from: a f
-   GameResources a_obj_f;
+   GameResources resources;
    // $VF: renamed from: a short[]
-   short[] a_shortArr = new short[]{
+   short[] pd0SectionLengths = new short[]{
       119,
       1308,
       162,
@@ -49,20 +49,20 @@ public final class GameData {
       1829
    };
    // $VF: renamed from: a byte
-   byte a_byte;
+   byte imageGroupIndex;
    // $VF: renamed from: a byte[]
-   byte[] a_byteArr = new byte[]{31, 6, 12};
+   byte[] imageGroupCounts = new byte[]{31, 6, 12};
    // $VF: renamed from: a java.lang.String[]
-   String[] a_obj_StringArr = new String[]{"/pi0", "/pi9", "/pi8"};
+   String[] imageGroupPaths = new String[]{"/pi0", "/pi9", "/pi8"};
 
-   public GameData(GameResources var1) {
-      this.a_obj_f = var1;
+   public GameData(GameResources resourcesRef1) {
+      this.resources = resourcesRef1;
       this.a();
       this.c();
       this.i();
-      this.a_byte = 0;
+      this.imageGroupIndex = 0;
       this.d();
-      this.a_byte = 1;
+      this.imageGroupIndex = 1;
       this.d();
       this.b();
       this.f();
@@ -75,23 +75,23 @@ public final class GameData {
    private void a() {
       System.gc();
       Thread.yield();
-      int var1 = 0;
-      this.a_obj_f.b_shortArr2 = new short[11][];
-      this.a_obj_f.j_byteArr2 = new byte[25][];
+      int intValue1 = 0;
+      this.resources.b_shortArr2 = new short[11][];
+      this.resources.j_byteArr2 = new byte[25][];
 
-      for (int var2 = 0; var2 <= 24; var2++) {
-         this.a_obj_f.j_byteArr2[var2] = new byte[this.a_shortArr[var1 + 10 + 1]];
-         if (var2 <= 10) {
-            this.a_obj_f.b_shortArr2[var2] = new short[this.a_shortArr[var1]];
+      for (int loopIndex1 = 0; loopIndex1 <= 24; loopIndex1++) {
+         this.resources.j_byteArr2[loopIndex1] = new byte[this.pd0SectionLengths[intValue1 + 10 + 1]];
+         if (loopIndex1 <= 10) {
+            this.resources.b_shortArr2[loopIndex1] = new short[this.pd0SectionLengths[intValue1]];
          }
 
-         var1++;
+         intValue1++;
       }
 
       System.gc();
       Thread.yield();
-      this.a_obj_f.a_obj_ImageArr2 = new Image[3][];
-      this.a_obj_f.a_obj_ImageArr2[2] = new Image[1];
+      this.resources.spriteImages = new Image[3][];
+      this.resources.spriteImages[2] = new Image[1];
    }
 
    // $VF: renamed from: b () void
@@ -100,32 +100,32 @@ public final class GameData {
       Thread.yield();
 
       try {
-         DataInputStream var1;
-         (var1 = new DataInputStream(this.getClass().getResourceAsStream("/pd0"))).readByte();
-         int var2 = 0;
+         DataInputStream dataInput1;
+         (dataInput1 = new DataInputStream(this.getClass().getResourceAsStream("/pd0"))).readByte();
+         int intValue1 = 0;
 
-         for (int var3 = 0; var3 <= 10; var3++) {
-            for (int var4 = 0; var4 < this.a_shortArr[var2]; var4++) {
-               this.a_obj_f.b_shortArr2[var3][var4] = var1.readShort();
+         for (int loopIndex1 = 0; loopIndex1 <= 10; loopIndex1++) {
+            for (int loopIndex2 = 0; loopIndex2 < this.pd0SectionLengths[intValue1]; loopIndex2++) {
+               this.resources.b_shortArr2[loopIndex1][loopIndex2] = dataInput1.readShort();
             }
 
-            var2++;
-            this.a_obj_f.a_void10(1);
+            intValue1++;
+            this.resources.a_void10(1);
          }
 
-         for (int var7 = 0; var7 <= 24; var7++) {
-            for (int var5 = 0; var5 < this.a_shortArr[var2]; var5++) {
-               this.a_obj_f.j_byteArr2[var7][var5] = var1.readByte();
+         for (int loopIndex3 = 0; loopIndex3 <= 24; loopIndex3++) {
+            for (int loopIndex4 = 0; loopIndex4 < this.pd0SectionLengths[intValue1]; loopIndex4++) {
+               this.resources.j_byteArr2[loopIndex3][loopIndex4] = dataInput1.readByte();
             }
 
-            var2++;
-            this.a_obj_f.a_void10(1);
+            intValue1++;
+            this.resources.a_void10(1);
          }
 
-         var1.close();
-         GameResources.aU = this.a_obj_f.j_byteArr2[23][this.a_obj_f.b_shortArr2[10][this.a_obj_f.b_shortArr2[9][552] & 8191] & 8191] + 9;
-         GameResources.aT = (320 - this.a_obj_f.j_byteArr2[1][1012] * 2) / GameResources.aU;
-      } catch (Exception var6) {
+         dataInput1.close();
+         GameResources.aU = this.resources.j_byteArr2[23][this.resources.b_shortArr2[10][this.resources.b_shortArr2[9][552] & 8191] & 8191] + 9;
+         GameResources.aT = (320 - this.resources.j_byteArr2[1][1012] * 2) / GameResources.aU;
+      } catch (Exception ignoredException1) {
       }
    }
 
@@ -134,42 +134,42 @@ public final class GameData {
       try {
          System.gc();
          Thread.yield();
-         this.a_obj_f.A_int = 208;
-         this.a_obj_f.O_byte = 15;
-         this.a_obj_f.P_byte = (byte)((this.a_obj_f.A_int - 1) / 16 + 1);
-         boolean var1 = false;
-         this.a_obj_f.y_byte = (byte)((this.a_obj_f.O_byte >> 1) - 0);
-         this.a_obj_f.A_byte = (byte)((this.a_obj_f.P_byte >> 1) - 0);
-         this.a_obj_f.C_byte = this.a_obj_f.y_byte;
-         this.a_obj_f.D_byte = this.a_obj_f.A_byte;
-         this.a_obj_f.a_intArr = new int[]{350, 350, 320, 320, 320, 320, 68, 320, 68, 63, 320, 320, 320};
-         this.a_obj_f.b_intArr = new int[]{272, 208, 22, 48, 22, 48, 55, 86, 49, 55, 38, 0, 0};
-         this.a_obj_f.c_intArr = new int[]{0, 0, 208, 208, 230, 230, 0, 230, 0, 0, 230, 0, 0};
-         this.a_obj_f.d_intArr = new int[]{0, 16, 0, 0, 218, 192, 0, 154, 0, 0, 202, 240, 0};
-         this.a_obj_f.c_byteArr = new byte[]{0, 1, 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0};
-         this.a_obj_f.d_byteArr = new byte[]{0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-         GameResources.a_obj_ImageArr[this.a_obj_f.c_byteArr[1]] = Image.createImage(350, 208);
-         GameResources.a_obj_GraphicsArr[this.a_obj_f.c_byteArr[1]] = GameResources.a_obj_ImageArr[this.a_obj_f.c_byteArr[1]].getGraphics();
-         GameResources.a_obj_ImageArr[this.a_obj_f.c_byteArr[6]] = Image.createImage(68, 55);
-         GameResources.a_obj_GraphicsArr[this.a_obj_f.c_byteArr[6]] = GameResources.a_obj_ImageArr[this.a_obj_f.c_byteArr[6]].getGraphics();
-         this.a_obj_f.ba = this.a_obj_f.b_intArr[2];
-      } catch (Exception var10) {
+         this.resources.A_int = 208;
+         this.resources.O_byte = 15;
+         this.resources.P_byte = (byte)((this.resources.A_int - 1) / 16 + 1);
+         boolean flag1 = false;
+         this.resources.y_byte = (byte)((this.resources.O_byte >> 1) - 0);
+         this.resources.A_byte = (byte)((this.resources.P_byte >> 1) - 0);
+         this.resources.C_byte = this.resources.y_byte;
+         this.resources.D_byte = this.resources.A_byte;
+         this.resources.a_intArr = new int[]{350, 350, 320, 320, 320, 320, 68, 320, 68, 63, 320, 320, 320};
+         this.resources.b_intArr = new int[]{272, 208, 22, 48, 22, 48, 55, 86, 49, 55, 38, 0, 0};
+         this.resources.c_intArr = new int[]{0, 0, 208, 208, 230, 230, 0, 230, 0, 0, 230, 0, 0};
+         this.resources.d_intArr = new int[]{0, 16, 0, 0, 218, 192, 0, 154, 0, 0, 202, 240, 0};
+         this.resources.c_byteArr = new byte[]{0, 1, 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0};
+         this.resources.d_byteArr = new byte[]{0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+         GameResources.frameBuffers[this.resources.c_byteArr[1]] = Image.createImage(350, 208);
+         GameResources.frameGraphics[this.resources.c_byteArr[1]] = GameResources.frameBuffers[this.resources.c_byteArr[1]].getGraphics();
+         GameResources.frameBuffers[this.resources.c_byteArr[6]] = Image.createImage(68, 55);
+         GameResources.frameGraphics[this.resources.c_byteArr[6]] = GameResources.frameBuffers[this.resources.c_byteArr[6]].getGraphics();
+         this.resources.ba = this.resources.b_intArr[2];
+      } catch (Exception ignoredException1) {
       }
    }
 
    // $VF: renamed from: d () void
    private void d() {
-      byte var1 = this.a_byteArr[this.a_byte];
-      String dirName = this.a_obj_StringArr[this.a_byte]; // e.g. "/pi0", "/pi9"
-      this.a_obj_f.a_obj_ImageArr2[this.a_byte] = new Image[var1];
-      
-      for (byte var3 = 0; var3 < var1; var3++) {
+      byte byteValue1 = this.imageGroupCounts[this.imageGroupIndex];
+      String dirName = this.imageGroupPaths[this.imageGroupIndex];
+      this.resources.spriteImages[this.imageGroupIndex] = new Image[byteValue1];
+
+      for (byte byteIndex1 = 0; byteIndex1 < byteValue1; byteIndex1++) {
          try {
-            this.a_obj_f.a_obj_ImageArr2[this.a_byte][var3] = Image.createImage(dirName + "/image_" + var3 + ".png");
-         } catch (Exception var10) {
-            System.err.println("Failed to load: " + dirName + "/image_" + var3 + ".png");
+            this.resources.spriteImages[this.imageGroupIndex][byteIndex1] = Image.createImage(dirName + "/image_" + byteIndex1 + ".png");
+         } catch (Exception ignoredException1) {
+            System.err.println("Failed to load: " + dirName + "/image_" + byteIndex1 + ".png");
          }
-         this.a_obj_f.a_void10(2);
+         this.resources.a_void10(2);
       }
    }
 
@@ -177,74 +177,80 @@ public final class GameData {
    private void e() {
       System.gc();
       Thread.yield();
-      this.a_obj_f.a_obj_c = new GameRenderer(this.a_obj_f);
-      this.a_obj_f.a_obj_c.f_byteArr = new byte[122];
-      this.a_obj_f.a_obj_c.e_byteArr = new byte[33];
-      this.a_obj_f.a_obj_c.b_byteArr2 = new byte[33][25];
-      this.a_obj_f.a_obj_c.c_byteArr2 = new byte[33][25];
-      this.a_obj_f.a_obj_c.d_byteArr = new byte[33];
-      this.a_obj_f.a_obj_c.d_shortArr = new short[33];
-      this.a_obj_f.a_obj_c.e_shortArr = new short[33];
-      this.a_obj_f.a_obj_c.f_shortArr = new short[33];
-      this.a_obj_f.a_obj_c.g_shortArr = new short[250];
-      this.a_obj_f.a_obj_c.h_shortArr = new short[250];
-      this.a_obj_f.a_obj_c.b_void(0);
+      this.resources.renderer = new GameRenderer(this.resources);
+      this.resources.renderer.f_byteArr = new byte[122];
+      this.resources.renderer.e_byteArr = new byte[33];
+      this.resources.renderer.b_byteArr2 = new byte[33][25];
+      this.resources.renderer.c_byteArr2 = new byte[33][25];
+      this.resources.renderer.d_byteArr = new byte[33];
+      this.resources.renderer.d_shortArr = new short[33];
+      this.resources.renderer.e_shortArr = new short[33];
+      this.resources.renderer.f_shortArr = new short[33];
+      this.resources.renderer.g_shortArr = new short[250];
+      this.resources.renderer.h_shortArr = new short[250];
+      this.resources.renderer.b_void(0);
    }
 
    // $VF: renamed from: f () void
    private void f() {
       System.gc();
       Thread.yield();
-      this.a_obj_f.a_byteArr = new byte[17638];
-      this.a_obj_f.a_shortArr = new short[312];
-      this.a_obj_f.b_shortArr = new short[570];
-      this.a_obj_f.c_shortArr = new short[5];
-      InputStream var1 = null;
+      this.resources.a_byteArr = new byte[17638];
+      this.resources.a_shortArr = new short[312];
+      this.resources.b_shortArr = new short[570];
+      this.resources.c_shortArr = new short[5];
+      InputStream inputStream1 = null;
 
       try {
-         if ((var1 = this.getClass().getResourceAsStream("/a")) != null) {
-            this.a_obj_f.a_shortArr[0] = this.a_obj_f.c_shortArr[0] = 0;
+         if ((inputStream1 = this.getClass().getResourceAsStream("/a")) != null) {
+            this.resources.a_shortArr[0] = this.resources.c_shortArr[0] = 0;
 
-            for (int var2 = 0; var2 < 312; var2++) {
-               int var3 = var1.read() & 0xFF;
-               int var5 = ((var1.read() & 0xFF) << 8) + var3;
-               if (var2 < 311) {
-                  this.a_obj_f.a_shortArr[var2 + 1] = (short)(this.a_obj_f.a_shortArr[var2] + var5);
+            for (int loopIndex1 = 0; loopIndex1 < 312; loopIndex1++) {
+               int intValue1 = inputStream1.read() & 0xFF;
+               int intValue2 = ((inputStream1.read() & 0xFF) << 8) + intValue1;
+               if (loopIndex1 < 311) {
+                  this.resources.a_shortArr[loopIndex1 + 1] = (short)(this.resources.a_shortArr[loopIndex1] + intValue2);
                }
 
-               if (var5 > 0) {
-                  var1.read(this.a_obj_f.a_byteArr, this.a_obj_f.a_shortArr[var2], var5);
+               if (intValue2 > 0) {
+                  inputStream1.read(this.resources.a_byteArr, this.resources.a_shortArr[loopIndex1], intValue2);
                }
             }
 
-            for (int var9 = 0; var9 < 5; var9++) {
-               int var10 = var1.read() & 0xFF;
-               int var12 = ((var1.read() & 0xFF) << 8) + var10;
-               if (var9 < 4) {
-                  this.a_obj_f.c_shortArr[var9 + 1] = (short)(this.a_obj_f.c_shortArr[var9] + var12);
+            for (int loopIndex2 = 0; loopIndex2 < 5; loopIndex2++) {
+               int intValue3 = inputStream1.read() & 0xFF;
+               int intValue4 = ((inputStream1.read() & 0xFF) << 8) + intValue3;
+               if (loopIndex2 < 4) {
+                  this.resources.c_shortArr[loopIndex2 + 1] = (short)(this.resources.c_shortArr[loopIndex2] + intValue4);
                }
 
-               for (int var11 = 0; var11 < var12; var11++) {
-                  int var4 = var1.read() & 0xFF;
-                  this.a_obj_f.b_shortArr[this.a_obj_f.c_shortArr[var9] + var11] = (short)(((var1.read() & 0xFF) << 8) + var4);
+               for (int loopIndex3 = 0; loopIndex3 < intValue4; loopIndex3++) {
+                  int intValue5 = inputStream1.read() & 0xFF;
+                  this.resources.b_shortArr[this.resources.c_shortArr[loopIndex2] + loopIndex3] = (short)(((inputStream1.read() & 0xFF) << 8) + intValue5);
                }
             }
          }
 
-         if (var1 != null) {
-            var1.close();
+         if (inputStream1 != null) {
+            inputStream1.close();
          }
-      } catch (IOException var7) {
+      } catch (IOException ignoredException1) {
       }
    }
 
    // $VF: renamed from: g () void
    private void g() {
       try {
+         System.gc();
+         Thread.yield();
          GameResources.e_shortArr = new short[]{8014, 6315, 5648, 3405, 3234};
          GameResources.f_shortArr = new short[]{0, 8014, 14329, 19977, 23382};
-         this.a_obj_f.b_byteArr = new byte[]{0, 1, 2, 3, 4, 4};
-      } catch (Exception var2) {
+         GameResources.w_byteArr = new byte[26616];
+         this.resources.b_byteArr = new byte[]{0, 1, 2, 3, 4, 4};
+         InputStream inputStream1;
+         (inputStream1 = this.getClass().getResourceAsStream("/sa")).read(GameResources.w_byteArr, 0, 26616);
+         inputStream1.close();
+      } catch (Exception ignoredException1) {
       }
    }
 
@@ -253,12 +259,12 @@ public final class GameData {
       try {
          System.gc();
          Thread.yield();
-         this.a_obj_f.h_intArr = new int[]{0, 2545, 6965, 10649, 15487, 22633, 27261, 31708, 35466, 39214};
-         this.a_obj_f.v_byteArr = new byte[42381];
-         InputStream var1;
-         (var1 = this.getClass().getResourceAsStream("/ma")).read(this.a_obj_f.v_byteArr, 0, 42381);
-         var1.close();
-      } catch (Exception var2) {
+         this.resources.h_intArr = new int[]{0, 2545, 6965, 10649, 15487, 22633, 27261, 31708, 35466, 39214};
+         this.resources.v_byteArr = new byte[42381];
+         InputStream inputStream1;
+         (inputStream1 = this.getClass().getResourceAsStream("/ma")).read(this.resources.v_byteArr, 0, 42381);
+         inputStream1.close();
+      } catch (Exception ignoredException1) {
       }
    }
 
@@ -266,20 +272,20 @@ public final class GameData {
    private void i() {
       System.gc();
       Thread.yield();
-      this.a_obj_f.e_byteArr = new byte[9983];
-      this.a_obj_f.b_byteArr2 = new byte[96][96];
-      this.a_obj_f.c_byteArr2 = new byte[96][96];
-      this.a_obj_f.a_intArr2 = new int[3][4];
+      this.resources.e_byteArr = new byte[9983];
+      this.resources.b_byteArr2 = new byte[96][96];
+      this.resources.c_byteArr2 = new byte[96][96];
+      this.resources.a_intArr2 = new int[3][4];
 
       try {
-         this.a_obj_f.a_obj_String = this.a_obj_f.a_obj_tribes.getAppProperty("MIDlet-Version");
-         this.a_obj_f.d_bool = this.a_obj_f.a_obj_tribes.getAppProperty("GameLinkEnabled").equals("true");
-         this.a_obj_f.a_bool = this.a_obj_f.a_obj_tribes.getAppProperty("Cheat-Support").equals("on");
-      } catch (Exception var2) {
+         this.resources.midletVersion = this.resources.midlet.getAppProperty("MIDlet-Version");
+         this.resources.d_bool = this.resources.midlet.getAppProperty("GameLinkEnabled").equals("true");
+         this.resources.a_bool = this.resources.midlet.getAppProperty("Cheat-Support").equals("on");
+      } catch (Exception ignoredException1) {
       }
 
-      if (this.a_obj_f.d_bool) {
-         this.a_obj_f.U_byte = 1;
+      if (this.resources.d_bool) {
+         this.resources.U_byte = 1;
       }
    }
 }

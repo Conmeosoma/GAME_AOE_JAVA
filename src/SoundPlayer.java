@@ -1,6 +1,5 @@
 package Project.src;
 
-import java.io.ByteArrayInputStream;
 import javax.microedition.media.Manager;
 import javax.microedition.media.Player;
 import javax.microedition.media.PlayerListener;
@@ -8,18 +7,16 @@ import javax.microedition.media.control.VolumeControl;
 
 // $VF: renamed from: a
 public final class SoundPlayer implements PlayerListener {
-   // $VF: renamed from: a javax.microedition.media.control.VolumeControl
-   VolumeControl a_obj_VolumeControl;
-   // $VF: renamed from: a javax.microedition.media.Player
-   Player a_obj_Player;
+   VolumeControl volumeControl;
+   Player player;
 
-   public SoundPlayer(String var1) {
+   public SoundPlayer(String contentType) {
       try {
-         java.io.InputStream var2 = this.getClass().getResourceAsStream("/sounds/sound_" + GameResources.f_byte + ".mid");
-         this.a_obj_Player = Manager.createPlayer(var2, var1);
-         this.a_obj_Player.realize();
-         this.a_obj_Player.addPlayerListener(this);
-      } catch (Exception var3) {
+         java.io.InputStream soundStream = this.getClass().getResourceAsStream("/sounds/sound_" + GameResources.f_byte + ".mid");
+         this.player = Manager.createPlayer(soundStream, contentType);
+         this.player.realize();
+         this.player.addPlayerListener(this);
+      } catch (Exception ignoredException1) {
          System.err.println("Failed to load sound: " + GameResources.f_byte);
       }
    }
@@ -27,59 +24,59 @@ public final class SoundPlayer implements PlayerListener {
    // $VF: renamed from: c () void
    private void c() {
       try {
-         if (this.a_obj_Player != null) {
-            if (this.a_obj_Player.getState() == 300) {
+         if (this.player != null) {
+            if (this.player.getState() == 300) {
                this.a_void();
             }
 
-            if (this.a_obj_Player.getState() != 400) {
-               this.a_obj_Player.getState();
-               this.a_obj_Player.prefetch();
-               this.a_obj_Player.start();
+            if (this.player.getState() != 400) {
+               this.player.getState();
+               this.player.prefetch();
+               this.player.start();
             }
          }
-      } catch (Exception var2) {
+      } catch (Exception ignoredException1) {
       }
    }
 
    // $VF: renamed from: a () void
    final void a_void() {
       try {
-         if (this.a_obj_Player != null) {
-            if (this.a_obj_Player.getState() == 400) {
-               this.a_obj_Player.setMediaTime(0L);
-               this.a_obj_Player.stop();
+         if (this.player != null) {
+            if (this.player.getState() == 400) {
+               this.player.setMediaTime(0L);
+               this.player.stop();
             }
          }
-      } catch (Exception var2) {
+      } catch (Exception ignoredException1) {
       }
    }
 
    // $VF: renamed from: a () int
    final int a_int() {
-      return this.a_obj_Player == null ? -1 : this.a_obj_Player.getState();
+      return this.player == null ? -1 : this.player.getState();
    }
 
    // $VF: renamed from: b () void
    final void b() {
-      if (this.a_obj_Player != null) {
-         if (this.a_obj_Player.getState() != 0) {
-            this.a_obj_Player.close();
+      if (this.player != null) {
+         if (this.player.getState() != 0) {
+            this.player.close();
          }
       }
    }
 
    // $VF: renamed from: a (int) void
-   final void a_void2(int var1) {
+   final void a_void2(int volumeLevel) {
       try {
-         if (this.a_obj_Player == null) {
+         if (this.player == null) {
             return;
          }
 
-         this.a_obj_VolumeControl = (VolumeControl)this.a_obj_Player.getControl("VolumeControl");
-         if (var1 != 0) {
-            this.a_obj_VolumeControl.setLevel(var1 * 20);
-            if (this.a_obj_Player.getState() != 400) {
+         this.volumeControl = (VolumeControl)this.player.getControl("VolumeControl");
+         if (volumeLevel != 0) {
+            this.volumeControl.setLevel(volumeLevel * 20);
+            if (this.player.getState() != 400) {
                this.c();
             }
 
@@ -87,17 +84,17 @@ public final class SoundPlayer implements PlayerListener {
          }
 
          this.a_void();
-      } catch (Exception var3) {
+      } catch (Exception ignoredException1) {
       }
    }
 
-   public final void playerUpdate(Player var1, String var2, Object var3) {
-      if (var2.equals("deviceUnavailable")) {
+   public final void playerUpdate(Player player, String event, Object eventData) {
+      if (event.equals("deviceUnavailable")) {
          this.a_void();
          System.currentTimeMillis();
       }
 
-      if (var2.equals("deviceAvailable")) {
+      if (event.equals("deviceAvailable")) {
          this.c();
       }
    }

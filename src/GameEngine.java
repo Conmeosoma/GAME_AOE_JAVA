@@ -3,9 +3,7 @@ package Project.src;
 // $VF: renamed from: b
 public final class GameEngine {
    // $VF: renamed from: a f
-   GameResources a_obj_f;
-   
-   // OOP Helper for clean modding/editing
+   GameResources resources;
    public GameHelper helper;
    // $VF: renamed from: a byte[]
    byte[] a_byteArr;
@@ -410,16 +408,16 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (f) void
-   final void a_void(GameResources var1) {
-      this.a_obj_f = var1;
-      this.helper = this.a_obj_f.helper;
-      this.b_byteArr2 = this.a_obj_f.c_byteArr2;
-      this.a_byteArr = this.a_obj_f.e_byteArr;
-      this.a_shortArr2 = this.a_obj_f.a_shortArr2;
-      this.b_byteArr = this.a_obj_f.a_byteArr;
-      this.a_shortArr = this.a_obj_f.a_shortArr;
-      this.b_shortArr = this.a_obj_f.b_shortArr;
-      this.c_shortArr = this.a_obj_f.c_shortArr;
+   final void a_void(GameResources resourcesRef1) {
+      this.resources = resourcesRef1;
+      this.helper = this.resources.helper;
+      this.b_byteArr2 = this.resources.c_byteArr2;
+      this.a_byteArr = this.resources.e_byteArr;
+      this.a_shortArr2 = this.resources.a_shortArr2;
+      this.b_byteArr = this.resources.a_byteArr;
+      this.a_shortArr = this.resources.a_shortArr;
+      this.b_shortArr = this.resources.b_shortArr;
+      this.c_shortArr = this.resources.c_shortArr;
    }
 
    // $VF: renamed from: a () void
@@ -430,15 +428,15 @@ public final class GameEngine {
       this.L_byte = 0;
       this.S_byte = 1;
       this.K_byte = 50;
-      this.a_obj_f.a_obj_c.a_void();
-      this.I_byte = (byte)(this.a_obj_f.q_byte == 2 ? 3 : 0);
+      this.resources.renderer.a_void();
+      this.I_byte = (byte)(this.resources.q_byte == 2 ? 3 : 0);
       this.O_byte = -1;
       this.aQ = this.aR = -1;
-      this.R_byte = (byte)(this.a_obj_f.q_byte != 2 && this.a_obj_f.q_byte != 4 ? 0 : 128);
+      this.R_byte = (byte)(this.resources.q_byte != 2 && this.resources.q_byte != 4 ? 0 : 128);
       this.P_byte = this.Q_byte = -1;
 
       for (this.a_int = 0; this.a_int < 3; this.a_int++) {
-         this.a_obj_f.t_byteArr[this.a_int] = 0;
+         this.resources.t_byteArr[this.a_int] = 0;
       }
 
       for (this.a_int = 0; this.a_int < 10; this.a_int++) {
@@ -462,19 +460,19 @@ public final class GameEngine {
       }
 
       this.j_void2();
-      this.G_int = this.a_shortArr[219] + this.a_obj_f.q_byte * 4;
+      this.G_int = this.a_shortArr[219] + this.resources.q_byte * 4;
    }
 
    // $VF: renamed from: a (int, int, int, int, int, int) byte
-   private byte a_byte2(int var1, int var2, int var3, int var4, int var5, int var6) {
+   private byte a_byte2(int intValue1, int intValue2, int intValue3, int intValue4, int intValue5, int intValue6) {
       try {
-         this.i_int = var6 == 0 ? 65 : 5;
-         this.a_void3(var2, var1, var4, var3, var6);
+         this.i_int = intValue6 == 0 ? 65 : 5;
+         this.a_void3(intValue2, intValue1, intValue4, intValue3, intValue6);
 
          for (this.a_int = 0; this.a_int < this.c_byte; this.a_int++) {
-            this.f_void(var6);
+            this.f_void(intValue6);
             if (!this.a_boolArr[0] && !this.a_boolArr[1]) {
-               this.d_void(var6);
+               this.d_void(intValue6);
                if (this.m_int < 0) {
                   this.f_byteArr[this.g_byteArr[0]] = (byte)(this.e_byteArr3[0][2][this.a_int] + 1);
                } else {
@@ -487,49 +485,49 @@ public final class GameEngine {
             }
 
             this.a_void5(true);
-            if (this.f_byteArr[this.g_byteArr[0]] + var5 >= this.i_int) {
+            if (this.f_byteArr[this.g_byteArr[0]] + intValue5 >= this.i_int) {
                break;
             }
          }
 
          for (this.j_int = 0; this.j_int < this.c_byte; this.j_int++) {
             if (this.e_byteArr3[1][0][this.j_int] >= 0) {
-               this.a_obj_f.b_byteArr2[this.e_byteArr3[1][1][this.j_int]][this.e_byteArr3[1][0][this.j_int]] = this.h_byteArr[this.j_int];
+               this.resources.b_byteArr2[this.e_byteArr3[1][1][this.j_int]][this.e_byteArr3[1][0][this.j_int]] = this.h_byteArr[this.j_int];
             }
          }
 
-         if (this.f_byteArr[this.g_byteArr[0]] + var5 >= this.i_int) {
-            this.f_byteArr[this.g_byteArr[0]] = (byte)(this.i_int - var5);
+         if (this.f_byteArr[this.g_byteArr[0]] + intValue5 >= this.i_int) {
+            this.f_byteArr[this.g_byteArr[0]] = (byte)(this.i_int - intValue5);
          }
 
          for (this.a_int = 0; this.a_int < this.f_byteArr[this.g_byteArr[0]]; this.a_int++) {
-            if (var6 == 0) {
-               this.a_byteArr3[0][this.v_int][this.a_int + var5] = this.d_byteArr3[this.g_byteArr[0]][0][this.a_int];
-               this.a_byteArr3[1][this.v_int][this.a_int + var5] = this.d_byteArr3[this.g_byteArr[0]][1][this.a_int];
+            if (intValue6 == 0) {
+               this.a_byteArr3[0][this.v_int][this.a_int + intValue5] = this.d_byteArr3[this.g_byteArr[0]][0][this.a_int];
+               this.a_byteArr3[1][this.v_int][this.a_int + intValue5] = this.d_byteArr3[this.g_byteArr[0]][1][this.a_int];
             } else {
-               this.b_byteArr3[0][this.v_int][this.a_int + var5] = this.d_byteArr3[this.g_byteArr[0]][0][this.a_int];
-               this.b_byteArr3[1][this.v_int][this.a_int + var5] = this.d_byteArr3[this.g_byteArr[0]][1][this.a_int];
+               this.b_byteArr3[0][this.v_int][this.a_int + intValue5] = this.d_byteArr3[this.g_byteArr[0]][0][this.a_int];
+               this.b_byteArr3[1][this.v_int][this.a_int + intValue5] = this.d_byteArr3[this.g_byteArr[0]][1][this.a_int];
             }
          }
 
-         if (var6 == 0) {
+         if (intValue6 == 0) {
             this.a_byteArr[707 + this.v_int] = 0;
             this.a_byteArr[3030 + this.v_int] = 0;
             this.P();
          }
-      } catch (Exception var8) {
+      } catch (Exception ignoredException1) {
       }
 
       return this.f_byteArr[this.g_byteArr[0]];
    }
 
    // $VF: renamed from: a (int, int, int, int) byte
-   private byte a_byte3(int var1, int var2, int var3, int var4) {
+   private byte a_byte3(int intValue1, int intValue2, int intValue3, int intValue4) {
       try {
-         this.d_byteArr2[0][0] = (byte)var2;
-         this.d_byteArr2[1][0] = (byte)var1;
+         this.d_byteArr2[0][0] = (byte)intValue2;
+         this.d_byteArr2[1][0] = (byte)intValue1;
          this.d_int = 1;
-         this.a_void3(var2, var1, var4, var3, 0);
+         this.a_void3(intValue2, intValue1, intValue4, intValue3, 0);
 
          for (this.a_int = 0; this.a_int < this.c_byte; this.a_int++) {
             this.f_void(0);
@@ -544,7 +542,7 @@ public final class GameEngine {
 
                for (this.j_int = 0; this.j_int < this.c_byte; this.j_int++) {
                   if (this.e_byteArr3[1][0][this.j_int] >= 0) {
-                     this.a_obj_f.b_byteArr2[this.e_byteArr3[1][1][this.j_int]][this.e_byteArr3[1][0][this.j_int]] = this.h_byteArr[this.j_int];
+                     this.resources.b_byteArr2[this.e_byteArr3[1][1][this.j_int]][this.e_byteArr3[1][0][this.j_int]] = this.h_byteArr[this.j_int];
                   }
                }
 
@@ -559,23 +557,23 @@ public final class GameEngine {
          }
 
          this.l_int = 0;
-         this.d_byteArr2[0][this.d_int] = (byte)var4;
-         this.d_byteArr2[1][this.d_int] = (byte)var3;
+         this.d_byteArr2[0][this.d_int] = (byte)intValue4;
+         this.d_byteArr2[1][this.d_int] = (byte)intValue3;
 
          for (this.j_int = 0; this.j_int < this.c_byte; this.j_int++) {
             if (this.e_byteArr3[1][0][this.j_int] >= 0) {
-               this.a_obj_f.b_byteArr2[this.e_byteArr3[1][1][this.j_int]][this.e_byteArr3[1][0][this.j_int]] = this.h_byteArr[this.j_int];
+               this.resources.b_byteArr2[this.e_byteArr3[1][1][this.j_int]][this.e_byteArr3[1][0][this.j_int]] = this.h_byteArr[this.j_int];
             }
          }
-      } catch (Exception var6) {
+      } catch (Exception ignoredException1) {
       }
 
       return (byte)this.d_int;
    }
 
    // $VF: renamed from: d (int) void
-   private void d_void(int var1) {
-      this.a_int2(this.e_byteArr3[0][0][this.a_int], this.e_byteArr3[0][1][this.a_int], var1);
+   private void d_void(int intValue1) {
+      this.a_int2(this.e_byteArr3[0][0][this.a_int], this.e_byteArr3[0][1][this.a_int], intValue1);
       this.l_int = (this.q_byte - this.e_byteArr3[0][0][this.a_int]) * (this.q_byte - this.e_byteArr3[0][0][this.a_int])
          + (this.r_byte - this.e_byteArr3[0][1][this.a_int]) * (this.r_byte - this.e_byteArr3[0][1][this.a_int]);
       this.m_int = -1;
@@ -594,7 +592,7 @@ public final class GameEngine {
                   if (this.a_int2(
                            this.d_byteArr3[this.g_byteArr[(this.j_int & 1) + 1]][0][this.j_int >> 1],
                            this.d_byteArr3[this.g_byteArr[(this.j_int & 1) + 1]][1][this.j_int >> 1],
-                           var1
+                           intValue1
                         )
                         / 10
                      <= this.B_int) {
@@ -607,9 +605,9 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: b (int, int, int, int) byte
-   private byte b_byte2(int var1, int var2, int var3, int var4) {
+   private byte b_byte2(int intValue1, int intValue2, int intValue3, int intValue4) {
       this.i_byte = 0;
-      this.h_byte = this.a_byte3(var1, var2, var3, var4);
+      this.h_byte = this.a_byte3(intValue1, intValue2, intValue3, intValue4);
 
       for (this.j_byte = 0; this.j_byte < this.h_byte; this.j_byte++) {
          this.i_byte = (byte)(
@@ -628,7 +626,7 @@ public final class GameEngine {
          }
       }
 
-      return this.a_obj_f.q_byte == 3 && this.i_byte > 2 ? 2 : this.i_byte;
+      return this.resources.q_byte == 3 && this.i_byte > 2 ? 2 : this.i_byte;
    }
 
    // $VF: renamed from: o () void
@@ -687,8 +685,8 @@ public final class GameEngine {
             this.a_bool4(
                0,
                this.a_byteArr[4949 + this.v_int] * 2 + 1,
-               b_int2(this.a_byteArr[0 + this.v_int] - 3 + this.a_obj_f.a_int2(255, 6), 0, this.a_obj_f.c_short - 1),
-               b_int2(this.a_byteArr[101 + this.v_int] - 3 + this.a_obj_f.a_int2(255, 6), 0, this.a_obj_f.d_short - 1)
+               b_int2(this.a_byteArr[0 + this.v_int] - 3 + this.resources.a_int2(255, 6), 0, this.resources.c_short - 1),
+               b_int2(this.a_byteArr[101 + this.v_int] - 3 + this.resources.a_int2(255, 6), 0, this.resources.d_short - 1)
             );
             return;
          }
@@ -697,25 +695,25 @@ public final class GameEngine {
             this.a_byteArr[2828 + this.v_int] <= 9
                || this.a_byteArr[2828 + this.v_int] == 59
                || this.a_byteArr[2828 + this.v_int] == 87
-               || this.u_int == 0 && this.a_obj_f.N_bool
+               || this.u_int == 0 && this.resources.N_bool
                || this.u_int == 1 && this.Q_byte > 0
-               || this.a_obj_f.q_byte == 3 && this.f_byte == 4
+               || this.resources.q_byte == 3 && this.f_byte == 4
          )) {
          this.a_byteArr[7777 + this.v_int] = 3;
       }
    }
 
    // $VF: renamed from: a (int, int, int, int, int) void
-   private void a_void3(int var1, int var2, int var3, int var4, int var5) {
+   private void a_void3(int intValue1, int intValue2, int intValue3, int intValue4, int intValue5) {
       try {
-         this.a_void4(var3 - var1, var4 - var2);
+         this.a_void4(intValue3 - intValue1, intValue4 - intValue2);
 
          for (this.a_int = 0; this.a_int < 3; this.a_int++) {
-            this.d_byteArr[this.a_int << 1] = (byte)var1;
-            this.d_byteArr[(this.a_int << 1) + 1] = (byte)var2;
+            this.d_byteArr[this.a_int << 1] = (byte)intValue1;
+            this.d_byteArr[(this.a_int << 1) + 1] = (byte)intValue2;
          }
 
-         this.e_void(var5);
+         this.e_void(intValue5);
          this.b_int = 1000;
 
          for (this.a_int = 0; this.a_int < 3; this.a_int++) {
@@ -732,59 +730,59 @@ public final class GameEngine {
          if (this.e_byteArr[this.g_byteArr[0]] > 0) {
             for (this.a_int = 0; this.a_int < this.f_byteArr[this.g_byteArr[0]]; this.a_int++) {
                this.e_byte = this.d_byte;
-               byte var6 = this.d_byteArr3[this.g_byteArr[0]][0][this.a_int];
-               byte var7 = this.d_byteArr3[this.g_byteArr[0]][1][this.a_int];
-               this.d_byte = this.b_byteArr2[var7][var6] == 0 ? 0 : this.a_byte4(var6, var7, var5);
+               byte byteValue1 = this.d_byteArr3[this.g_byteArr[0]][0][this.a_int];
+               byte byteValue2 = this.d_byteArr3[this.g_byteArr[0]][1][this.a_int];
+               this.d_byte = this.b_byteArr2[byteValue2][byteValue1] == 0 ? 0 : this.a_byte4(byteValue1, byteValue2, intValue5);
                if (this.e_byte == 0 && this.d_byte != 0) {
                   if (this.c_byte >= 10) {
                      return;
                   }
 
-                  this.e_byteArr3[0][0][this.c_byte] = (byte)(this.a_int == 0 ? var1 : this.d_byteArr3[this.g_byteArr[0]][0][this.a_int - 1]);
-                  this.e_byteArr3[0][1][this.c_byte] = (byte)(this.a_int == 0 ? var2 : this.d_byteArr3[this.g_byteArr[0]][1][this.a_int - 1]);
+                  this.e_byteArr3[0][0][this.c_byte] = (byte)(this.a_int == 0 ? intValue1 : this.d_byteArr3[this.g_byteArr[0]][0][this.a_int - 1]);
+                  this.e_byteArr3[0][1][this.c_byte] = (byte)(this.a_int == 0 ? intValue2 : this.d_byteArr3[this.g_byteArr[0]][1][this.a_int - 1]);
                   this.e_byteArr3[0][2][this.c_byte] = (byte)(this.a_int - 1);
                   this.e_byteArr3[1][0][this.c_byte] = -1;
                   this.c_byte++;
                } else if (this.e_byte != 0 && this.d_byte == 0) {
-                  this.e_byteArr3[1][0][this.c_byte - 1] = var6;
-                  this.e_byteArr3[1][1][this.c_byte - 1] = var7;
+                  this.e_byteArr3[1][0][this.c_byte - 1] = byteValue1;
+                  this.e_byteArr3[1][1][this.c_byte - 1] = byteValue2;
                   this.e_byteArr3[1][2][this.c_byte - 1] = (byte)this.a_int;
-                  this.h_byteArr[this.c_byte - 1] = this.a_obj_f.b_byteArr2[var7][var6];
-                  this.a_obj_f.b_byteArr2[var7][var6] = (byte)(256 - this.c_byte);
+                  this.h_byteArr[this.c_byte - 1] = this.resources.b_byteArr2[byteValue2][byteValue1];
+                  this.resources.b_byteArr2[byteValue2][byteValue1] = (byte)(256 - this.c_byte);
                }
             }
          }
-      } catch (Exception var8) {
+      } catch (Exception ignoredException1) {
       }
    }
 
    // $VF: renamed from: a (int, int) void
-   private void a_void4(int var1, int var2) {
+   private void a_void4(int intValue1, int intValue2) {
       this.a_byte = 0;
-      if (var1 > 0) {
+      if (intValue1 > 0) {
          this.a_byte = (byte)(this.a_byte + 4);
       } else {
-         var1 *= -1;
+         intValue1 *= -1;
       }
 
-      if (var2 > 0) {
+      if (intValue2 > 0) {
          this.a_byte = (byte)(this.a_byte + 2);
       } else {
-         var2 *= -1;
+         intValue2 *= -1;
       }
 
-      if (var1 > var2) {
+      if (intValue1 > intValue2) {
          this.a_byte++;
-         this.c_byteArr[0] = (byte)(var1 - var2);
-         this.c_byteArr[1] = (byte)var2;
+         this.c_byteArr[0] = (byte)(intValue1 - intValue2);
+         this.c_byteArr[1] = (byte)intValue2;
       } else {
-         this.c_byteArr[0] = (byte)(var2 - var1);
-         this.c_byteArr[1] = (byte)var1;
+         this.c_byteArr[0] = (byte)(intValue2 - intValue1);
+         this.c_byteArr[1] = (byte)intValue1;
       }
    }
 
    // $VF: renamed from: e (int) void
-   private void e_void(int var1) {
+   private void e_void(int intValue1) {
       for (this.a_int = 0; this.a_int < 3; this.a_int++) {
          this.f_byteArr[this.a_int] = (byte)(this.c_byteArr[0] + this.c_byteArr[1]);
          this.e_byteArr[this.a_int] = 0;
@@ -808,7 +806,7 @@ public final class GameEngine {
                      + (
                         this.b_byteArr2[this.d_byteArr[(this.e_int << 1) + 1]][this.d_byteArr[this.e_int << 1]] == 0
                            ? 0
-                           : this.a_byte4(this.d_byteArr[this.e_int << 1], this.d_byteArr[(this.e_int << 1) + 1], var1)
+                           : this.a_byte4(this.d_byteArr[this.e_int << 1], this.d_byteArr[(this.e_int << 1) + 1], intValue1)
                      )
                );
                this.b_int++;
@@ -836,13 +834,13 @@ public final class GameEngine {
          this.d_byteArr3[2][0][this.a_int] = this.d_byteArr[4];
          this.d_byteArr3[2][1][this.a_int] = this.d_byteArr[5];
          this.e_byteArr[2] = (byte)(
-            this.e_byteArr[2] + (this.b_byteArr2[this.d_byteArr[5]][this.d_byteArr[4]] == 0 ? 0 : this.a_byte4(this.d_byteArr[4], this.d_byteArr[5], var1))
+            this.e_byteArr[2] + (this.b_byteArr2[this.d_byteArr[5]][this.d_byteArr[4]] == 0 ? 0 : this.a_byte4(this.d_byteArr[4], this.d_byteArr[5], intValue1))
          );
       }
    }
 
    // $VF: renamed from: f (int) void
-   private void f_void(int var1) {
+   private void f_void(int intValue1) {
       try {
          this.g_int = 1;
 
@@ -860,11 +858,11 @@ public final class GameEngine {
 
             for (this.b_int = 0; this.b_int < 65; this.b_int++) {
                for (this.f_int = 0; this.f_int < 8; this.f_int++) {
-                  byte var2 = (byte)(this.d_byteArr[this.h_int * 2] + this.b_byteArr[this.a_shortArr[1] + this.b_byte]);
-                  byte var3 = (byte)(this.d_byteArr[this.h_int * 2 + 1] + this.b_byteArr[this.a_shortArr[1] + 8 + this.b_byte]);
+                  byte byteValue1 = (byte)(this.d_byteArr[this.h_int * 2] + this.b_byteArr[this.a_shortArr[1] + this.b_byte]);
+                  byte byteValue2 = (byte)(this.d_byteArr[this.h_int * 2 + 1] + this.b_byteArr[this.a_shortArr[1] + 8 + this.b_byte]);
                   if ((
-                        this.c_int = var2 < this.a_obj_f.c_short && var3 < this.a_obj_f.d_short && var2 >= 0 && var3 >= 0
-                           ? (this.b_byteArr2[var3][var2] == 0 ? 0 : this.a_byte4(var2, var3, var1))
+                        this.c_int = byteValue1 < this.resources.c_short && byteValue2 < this.resources.d_short && byteValue1 >= 0 && byteValue2 >= 0
+                           ? (this.b_byteArr2[byteValue2][byteValue1] == 0 ? 0 : this.a_byte4(byteValue1, byteValue2, intValue1))
                            : 2
                      )
                      == 2) {
@@ -875,13 +873,13 @@ public final class GameEngine {
                   if (this.c_int == 0) {
                      if ((this.b_byte & 1) > 0) {
                         if ((
-                                 var2 = this.a_obj_f.b_byteArr2[this.d_byteArr[this.h_int * 2 + 1]
+                                 byteValue1 = this.resources.b_byteArr2[this.d_byteArr[this.h_int * 2 + 1]
                                     + this.b_byteArr[this.a_shortArr[1] + 8 + (this.b_byte + this.g_int & 7)]][this.d_byteArr[this.h_int * 2]
                                     + this.b_byteArr[this.a_shortArr[1] + (this.b_byte + this.g_int & 7)]]
                               )
                               < -this.a_int
-                           && var2 >= -10) {
-                           this.e_byteArr[this.h_int] = (byte)(-(var2 + 1));
+                           && byteValue1 >= -10) {
+                           this.e_byteArr[this.h_int] = (byte)(-(byteValue1 + 1));
                            this.a_boolArr[this.e_int - 1] = true;
                            this.b_int = 130;
                            break;
@@ -917,9 +915,9 @@ public final class GameEngine {
                   break;
                }
 
-               byte var6;
-               if ((var6 = this.a_obj_f.b_byteArr2[this.d_byteArr[this.h_int * 2 + 1]][this.d_byteArr[this.h_int * 2]]) < -this.a_int && var6 >= -10) {
-                  this.e_byteArr[this.h_int] = (byte)(-(var6 + 1));
+               byte byteValue3;
+               if ((byteValue3 = this.resources.b_byteArr2[this.d_byteArr[this.h_int * 2 + 1]][this.d_byteArr[this.h_int * 2]]) < -this.a_int && byteValue3 >= -10) {
+                  this.e_byteArr[this.h_int] = (byte)(-(byteValue3 + 1));
                   this.a_boolArr[this.e_int - 1] = true;
                   break;
                }
@@ -932,12 +930,12 @@ public final class GameEngine {
 
             this.g_int *= -1;
          }
-      } catch (Exception var4) {
+      } catch (Exception ignoredException1) {
       }
    }
 
    // $VF: renamed from: a (boolean) void
-   private void a_void5(boolean var1) {
+   private void a_void5(boolean flag1) {
       if (!this.a_boolArr[0] || this.f_byteArr[this.g_byteArr[1]] > this.f_byteArr[this.g_byteArr[2]] && this.a_boolArr[1]) {
          this.e_int = this.g_byteArr[1];
          this.g_byteArr[1] = this.g_byteArr[2];
@@ -963,7 +961,7 @@ public final class GameEngine {
       this.e_int = this.g_byteArr[0];
       this.g_byteArr[0] = this.g_byteArr[2];
       this.g_byteArr[2] = (byte)this.e_int;
-      if (var1 && this.f_byteArr[this.g_byteArr[0]] < this.i_int) {
+      if (flag1 && this.f_byteArr[this.g_byteArr[0]] < this.i_int) {
          this.g_int = this.e_byteArr3[1][2][this.e_byteArr[this.g_byteArr[1]]];
          this.h_int = this.f_byteArr[this.g_byteArr[1]] - this.g_int + this.e_byteArr3[0][2][this.a_int] + 1;
 
@@ -988,29 +986,29 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (int, int, int) byte
-   private byte a_byte4(int var1, int var2, int var3) {
-      if (var3 == 0
-         && (this.b_byteArr2[var2][var1] > 0 && this.b_byteArr2[var2][var1] <= 122 || this.b_byteArr2[var2][var1] == -128)
+   private byte a_byte4(int intValue1, int intValue2, int intValue3) {
+      if (intValue3 == 0
+         && (this.b_byteArr2[intValue2][intValue1] > 0 && this.b_byteArr2[intValue2][intValue1] <= 122 || this.b_byteArr2[intValue2][intValue1] == -128)
          && this.b_byteArr[this.a_shortArr[53]
                + (
-                     var2 - this.a_byteArr[101 + this.v_int] >= -12 && var2 - this.a_byteArr[101 + this.v_int] <= 12
-                        ? var2 - this.a_byteArr[101 + this.v_int] + 12
+                     intValue2 - this.a_byteArr[101 + this.v_int] >= -12 && intValue2 - this.a_byteArr[101 + this.v_int] <= 12
+                        ? intValue2 - this.a_byteArr[101 + this.v_int] + 12
                         : 0
                   )
                   * 25
                + (
-                  var1 - this.a_byteArr[0 + this.v_int] >= -12 && var1 - this.a_byteArr[0 + this.v_int] <= 12
-                     ? var1 - this.a_byteArr[0 + this.v_int] + 12
+                  intValue1 - this.a_byteArr[0 + this.v_int] >= -12 && intValue1 - this.a_byteArr[0 + this.v_int] <= 12
+                     ? intValue1 - this.a_byteArr[0 + this.v_int] + 12
                      : 0
                )]
             > 29) {
-         if (this.b_byteArr2[var2][var1] == -128) {
+         if (this.b_byteArr2[intValue2][intValue1] == -128) {
             return 0;
          }
 
          if ((
-               this.a_byteArr[this.b_shortArr[this.b_byteArr2[var2][var1] <= 100 ? 29 : 108]
-                     + (this.b_byteArr2[var2][var1] <= 100 ? this.b_byteArr2[var2][var1] : this.b_byteArr2[var2][var1] - 101)]
+               this.a_byteArr[this.b_shortArr[this.b_byteArr2[intValue2][intValue1] <= 100 ? 29 : 108]
+                     + (this.b_byteArr2[intValue2][intValue1] <= 100 ? this.b_byteArr2[intValue2][intValue1] : this.b_byteArr2[intValue2][intValue1] - 101)]
                   & 255
             )
             <= 7) {
@@ -1018,57 +1016,57 @@ public final class GameEngine {
          }
       }
 
-      if (this.u_int == 0 && var3 == 0 && (this.a_obj_f.a_intArr3[0][var1 >> 5][var2] >> (var1 & 31) & 1) == 0) {
+      if (this.u_int == 0 && intValue3 == 0 && (this.resources.a_intArr3[0][intValue1 >> 5][intValue2] >> (intValue1 & 31) & 1) == 0) {
          return 0;
-      } else if (var3 == 0
-         && this.b_byteArr2[var2][var1] <= -111 - (this.u_int ^ 1) * 3 * 2
-         && this.b_byteArr2[var2][var1] > -111 - (this.u_int ^ 1) * 3 * 2 - 3
+      } else if (intValue3 == 0
+         && this.b_byteArr2[intValue2][intValue1] <= -111 - (this.u_int ^ 1) * 3 * 2
+         && this.b_byteArr2[intValue2][intValue1] > -111 - (this.u_int ^ 1) * 3 * 2 - 3
          && this.a_byteArr[1414 + this.v_int] >= 12) {
          return 0;
-      } else if (this.b_byteArr2[var2][var1] == this.v_int + var3) {
+      } else if (this.b_byteArr2[intValue2][intValue1] == this.v_int + intValue3) {
          return 0;
-      } else if (var3 != 0
+      } else if (intValue3 != 0
          || this.a_byteArr[4848 + this.v_int] <= 0
-         || this.b_byteArr2[var2][var1] <= this.u_int * 50
-         || this.b_byteArr2[var2][var1] > (this.u_int + 1) * 50
+         || this.b_byteArr2[intValue2][intValue1] <= this.u_int * 50
+         || this.b_byteArr2[intValue2][intValue1] > (this.u_int + 1) * 50
          || this.b_byteArr[this.a_shortArr[43] + this.a_byteArr[2828 + this.v_int]]
-               <= this.b_byteArr[this.a_shortArr[43] + this.a_byteArr[2828 + this.b_byteArr2[var2][var1]]]
-            && this.b_byteArr[this.a_shortArr[43] + this.a_byteArr[2828 + this.b_byteArr2[var2][var1]]] != 0
-         || (this.a_byteArr[2929 + this.b_byteArr2[var2][var1]] < 8 || this.a_byteArr[2929 + this.b_byteArr2[var2][var1]] >= 21)
-            && this.a_byteArr[2929 + this.b_byteArr2[var2][var1]] != -101
-            && this.a_byteArr[2929 + this.b_byteArr2[var2][var1]] != -100
+               <= this.b_byteArr[this.a_shortArr[43] + this.a_byteArr[2828 + this.b_byteArr2[intValue2][intValue1]]]
+            && this.b_byteArr[this.a_shortArr[43] + this.a_byteArr[2828 + this.b_byteArr2[intValue2][intValue1]]] != 0
+         || (this.a_byteArr[2929 + this.b_byteArr2[intValue2][intValue1]] < 8 || this.a_byteArr[2929 + this.b_byteArr2[intValue2][intValue1]] >= 21)
+            && this.a_byteArr[2929 + this.b_byteArr2[intValue2][intValue1]] != -101
+            && this.a_byteArr[2929 + this.b_byteArr2[intValue2][intValue1]] != -100
             && (
-               (this.a_byteArr[2929 + this.b_byteArr2[var2][var1]] & 255) <= 7
-                  || this.a_byteArr[2828 + this.b_byteArr2[var2][var1]] != 69
-                     && this.a_byteArr[2828 + this.b_byteArr2[var2][var1]] != 79
-                     && this.a_byteArr[2828 + this.b_byteArr2[var2][var1]] != 80
-                     && (this.a_byteArr[2828 + this.b_byteArr2[var2][var1]] < 83 || this.a_byteArr[2828 + this.b_byteArr2[var2][var1]] > 85)
+               (this.a_byteArr[2929 + this.b_byteArr2[intValue2][intValue1]] & 255) <= 7
+                  || this.a_byteArr[2828 + this.b_byteArr2[intValue2][intValue1]] != 69
+                     && this.a_byteArr[2828 + this.b_byteArr2[intValue2][intValue1]] != 79
+                     && this.a_byteArr[2828 + this.b_byteArr2[intValue2][intValue1]] != 80
+                     && (this.a_byteArr[2828 + this.b_byteArr2[intValue2][intValue1]] < 83 || this.a_byteArr[2828 + this.b_byteArr2[intValue2][intValue1]] > 85)
             )) {
-         return (byte)(var3 == 0 && this.b_byteArr2[var2][var1] == -127 && this.a_byteArr[2828 + this.v_int] == 13 ? 0 : 1);
+         return (byte)(intValue3 == 0 && this.b_byteArr2[intValue2][intValue1] == -127 && this.a_byteArr[2828 + this.v_int] == 13 ? 0 : 1);
       } else {
          return 0;
       }
    }
 
    // $VF: renamed from: g (int) void
-   private void g_void(int var1) {
+   private void g_void(int intValue1) {
       try {
          if (this.a_byteArr[6161 + this.v_int] > 1) {
             this.a_byteArr[6161 + this.v_int] = (byte)(this.a_byteArr[6161 + this.v_int] == 2 ? 1 : 0);
-            if (this.I_byte == 1 || this.I_byte == 2 || this.a_obj_f.q_byte == 2 && this.u_int == 1 && this.f_byte == 1) {
+            if (this.I_byte == 1 || this.I_byte == 2 || this.resources.q_byte == 2 && this.u_int == 1 && this.f_byte == 1) {
                this.a_byteArr[7777 + this.v_int] = 3;
             }
          }
 
-         if (var1 < 3) {
-            this.d_void3(this.v_int, var1);
+         if (intValue1 < 3) {
+            this.d_void3(this.v_int, intValue1);
          }
 
          if (this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] != this.v_int) {
             this.U();
          } else {
-            this.a_void6(this.a_byteArr[3131 + this.v_int], this.a_byteArr[3232 + this.v_int], var1 > 0);
-            if (this.l_byte >= 0 && (this.l_byte != 10 || var1 < 2)) {
+            this.a_void6(this.a_byteArr[3131 + this.v_int], this.a_byteArr[3232 + this.v_int], intValue1 > 0);
+            if (this.l_byte >= 0 && (this.l_byte != 10 || intValue1 < 2)) {
                this.a_byteArr[3131 + this.v_int] = this.a_byteArr[0 + this.v_int];
                this.a_byteArr[3232 + this.v_int] = this.a_byteArr[101 + this.v_int];
                this.Q();
@@ -1076,20 +1074,20 @@ public final class GameEngine {
                   this.a_void19(this.l_byte, this.v_int, this.v_int);
                }
             } else {
-               this.h_void(var1);
+               this.h_void(intValue1);
             }
          }
-      } catch (Exception var3) {
+      } catch (Exception ignoredException1) {
       }
    }
 
    // $VF: renamed from: h (int) void
-   private void h_void(int var1) {
+   private void h_void(int intValue1) {
       this.a_byteArr[4444 + this.v_int] = this.k_byteArr[2];
       if (this.m_byte == 2 || this.m_byte == 7) {
          this.a_byteArr[7979 + this.v_int] = (byte)(
             this.a_byteArr[2828 + this.v_int] != 60
-                  && var1 != 0
+                  && intValue1 != 0
                   && (
                      this.a_byteArr[2828 + this.v_int] != 2 && this.a_byteArr[2828 + this.v_int] != 7
                         || (this.a_byteArr[7979 + this.v_int] & 128) != 0
@@ -1100,25 +1098,25 @@ public final class GameEngine {
       }
 
       if ((
-            var1 == 0
-               || !this.a_obj_f.N_bool
+            intValue1 == 0
+               || !this.resources.N_bool
                   && (this.m_byte == 12 || this.m_byte == 16)
                   && (
                      this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]] == 3
                         || this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]] == 7
                   )
          )
-         && (!this.a_obj_f.N_bool && this.K_byte >= 50 || this.b_byteArr[this.a_shortArr[41] + this.m_byte] != 0)) {
+         && (!this.resources.N_bool && this.K_byte >= 50 || this.b_byteArr[this.a_shortArr[41] + this.m_byte] != 0)) {
          if (this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] == this.v_int
             && (
                this.b_byteArr[this.a_shortArr[39] + this.m_byte] != 1
                   || this.a_byteArr[8810 + this.k_byteArr[2]] != this.v_int && this.b_byteArr[this.a_shortArr[41] + this.m_byte] != 0
             )) {
-            this.a_obj_f.c_void5(this.v_int);
+            this.resources.c_void5(this.v_int);
          }
 
          if (this.b_byteArr[this.a_shortArr[39] + this.m_byte] != 1) {
-            this.a_byteArr[6464 + this.v_int] = var1 == 0 && this.m_byte >= 19 && this.m_byte <= 26
+            this.a_byteArr[6464 + this.v_int] = intValue1 == 0 && this.m_byte >= 19 && this.m_byte <= 26
                ? 69
                : this.b_byteArr[this.a_shortArr[29] + this.m_byte];
             this.a_byteArr[6262 + this.v_int] = this.a_byteArr[3131 + this.v_int];
@@ -1128,8 +1126,8 @@ public final class GameEngine {
 
       if (this.a_byteArr[1414 + this.v_int] >= 12
          && (
-            var1 < 2
-               || !this.a_obj_f.N_bool
+            intValue1 < 2
+               || !this.resources.N_bool
                   && (this.m_byte == 12 || this.m_byte == 16)
                   && (
                      this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]] == 3
@@ -1148,7 +1146,7 @@ public final class GameEngine {
             this.a_byteArr[3131 + this.v_int]--;
          }
 
-         if (this.a_byteArr[3131 + this.v_int] < this.a_obj_f.c_short - 1
+         if (this.a_byteArr[3131 + this.v_int] < this.resources.c_short - 1
             && (
                this.b_byteArr2[this.a_byteArr[3232 + this.v_int]][this.a_byteArr[3131 + this.v_int] + 1] == -127
                   || this.b_byteArr2[this.a_byteArr[3232 + this.v_int]][this.a_byteArr[3131 + this.v_int] + 1] == this.v_int
@@ -1163,18 +1161,18 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (int, int, boolean) void
-   private void a_void6(int var1, int var2, boolean var3) {
-      if (var3) {
-         this.a_byteArr[4747 + this.v_int] = this.b_byteArr2[var2][var1];
+   private void a_void6(int intValue1, int intValue2, boolean flag1) {
+      if (flag1) {
+         this.a_byteArr[4747 + this.v_int] = this.b_byteArr2[intValue2][intValue1];
       }
 
-      this.c_void7(var1, var2, this.u_int, 0);
+      this.c_void7(intValue1, intValue2, this.u_int, 0);
       this.k_byte = this.k_byteArr[0];
       this.l_byte = this.a_byte6();
       if (this.k_byteArr[3] == 0) {
          this.m_byte = this.b_byteArr[this.a_shortArr[16] + this.b_byteArr[this.a_shortArr[17] + this.k_byte] + this.k_byteArr[this.k_byte != 4 ? 1 : 2]];
          if (this.k_byte == 2) {
-            if (this.k_byteArr[1] == 6 && this.a_byteArr[3636 + this.v_int] > 0 && this.a_byteArr[3535 + this.v_int] <= 13 && !var3) {
+            if (this.k_byteArr[1] == 6 && this.a_byteArr[3636 + this.v_int] > 0 && this.a_byteArr[3535 + this.v_int] <= 13 && !flag1) {
                this.m_byte = this.b_byteArr[this.a_shortArr[121] + this.a_byteArr[3535 + this.v_int]];
             }
 
@@ -1186,48 +1184,48 @@ public final class GameEngine {
       } else if (this.a_byteArr[1414 + this.k_byteArr[2]] < 12 && this.k_byteArr[0] != 2) {
          this.m_byte = 107;
       } else {
-         this.m_byte = (byte)(this.b_byteArr[this.a_shortArr[19] + this.k_byte - 1] + (var3 ? 1 : 0));
+         this.m_byte = (byte)(this.b_byteArr[this.a_shortArr[19] + this.k_byte - 1] + (flag1 ? 1 : 0));
       }
 
       if (this.m_byte <= 9) {
          this.m_byte = (byte)(this.m_byte + this.b_byteArr[this.a_shortArr[18] + this.a_byteArr[6565 + this.v_int]]);
       }
 
-      if (this.a_obj_f.q_byte == 3 && this.b_byteArr[this.a_shortArr[41] + this.m_byte] != 0) {
+      if (this.resources.q_byte == 3 && this.b_byteArr[this.a_shortArr[41] + this.m_byte] != 0) {
          this.m_byte = 69;
       }
    }
 
    // $VF: renamed from: a (int, byte) void
-   private void a_void7(int var1, byte var2) {
-      if (this.a_byteArr[2828 + var1] != var2) {
-         this.a_byteArr[404 + var1] = 0;
-         this.a_byteArr[2828 + var1] = var2;
-         this.a_byteArr[1111 + var1] = (byte)(this.a_byteArr[1111 + var1] & 15);
-         this.B_int = this.b_byteArr[this.a_shortArr[38] + var2];
+   private void a_void7(int intValue1, byte byteValue1) {
+      if (this.a_byteArr[2828 + intValue1] != byteValue1) {
+         this.a_byteArr[404 + intValue1] = 0;
+         this.a_byteArr[2828 + intValue1] = byteValue1;
+         this.a_byteArr[1111 + intValue1] = (byte)(this.a_byteArr[1111 + intValue1] & 15);
+         this.B_int = this.b_byteArr[this.a_shortArr[38] + byteValue1];
          if (this.B_int < 0) {
-            this.B_int = this.a_byteArr[this.b_shortArr[-this.B_int] + var1];
+            this.B_int = this.a_byteArr[this.b_shortArr[-this.B_int] + intValue1];
          }
 
-         if (var2 < 83 || var2 > 85) {
+         if (byteValue1 < 83 || byteValue1 > 85) {
             this.C();
          }
       }
 
-      this.a_byteArr[3838 + var1] = this.b_byteArr[this.a_shortArr[32] + var2] == 0
-         ? (byte)var1
-         : this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[32] + var2]] + var1];
+      this.a_byteArr[3838 + intValue1] = this.b_byteArr[this.a_shortArr[32] + byteValue1] == 0
+         ? (byte)intValue1
+         : this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[32] + byteValue1]] + intValue1];
    }
 
    // $VF: renamed from: b (int, int) void
-   private void b_void(int var1, int var2) {
+   private void b_void(int intValue1, int intValue2) {
       this.o_int = this.a_int = 0;
 
-      for (this.p_int = 10000; this.a_int < this.b_byteArr[this.a_shortArr[20] + var1]; this.a_int++) {
-         this.q_int = this.a_byteArr[8383 + var2] + this.b_byteArr[this.a_shortArr[22] + var1 * 3 + this.a_int];
-         this.r_int = this.a_byteArr[8444 + var2] + this.b_byteArr[this.a_shortArr[23] + var1 * 3 + this.a_int];
-         if (this.q_int < this.a_obj_f.c_short
-            && this.r_int < this.a_obj_f.d_short
+      for (this.p_int = 10000; this.a_int < this.b_byteArr[this.a_shortArr[20] + intValue1]; this.a_int++) {
+         this.q_int = this.a_byteArr[8383 + intValue2] + this.b_byteArr[this.a_shortArr[22] + intValue1 * 3 + this.a_int];
+         this.r_int = this.a_byteArr[8444 + intValue2] + this.b_byteArr[this.a_shortArr[23] + intValue1 * 3 + this.a_int];
+         if (this.q_int < this.resources.c_short
+            && this.r_int < this.resources.d_short
             && this.q_int >= 0
             && this.r_int >= 0
             && (this.b_byteArr2[this.r_int][this.q_int] == 0 || this.a_byte4(this.q_int, this.r_int, 0) == 0)) {
@@ -1240,9 +1238,9 @@ public final class GameEngine {
          }
       }
 
-      this.a_byteArr[3131 + this.v_int] = (byte)(this.a_byteArr[8383 + var2] + this.b_byteArr[this.a_shortArr[22] + var1 * 3 + this.o_int]);
-      this.a_byteArr[3232 + this.v_int] = (byte)(this.a_byteArr[8444 + var2] + this.b_byteArr[this.a_shortArr[23] + var1 * 3 + this.o_int]);
-      this.a_byteArr[4040 + this.v_int] = this.b_byteArr[this.a_shortArr[21] + var1 * 3 + this.o_int];
+      this.a_byteArr[3131 + this.v_int] = (byte)(this.a_byteArr[8383 + intValue2] + this.b_byteArr[this.a_shortArr[22] + intValue1 * 3 + this.o_int]);
+      this.a_byteArr[3232 + this.v_int] = (byte)(this.a_byteArr[8444 + intValue2] + this.b_byteArr[this.a_shortArr[23] + intValue1 * 3 + this.o_int]);
+      this.a_byteArr[4040 + this.v_int] = this.b_byteArr[this.a_shortArr[21] + intValue1 * 3 + this.o_int];
    }
 
    // $VF: renamed from: q () void
@@ -1289,7 +1287,7 @@ public final class GameEngine {
                   if (this.a_byteArr[2828 + this.v_int] >= 94
                      && this.a_byteArr[2828 + this.v_int] <= 97
                      && (this.a_byteArr[7979 + this.v_int] & 16) > 0) {
-                     this.a_obj_f.a_byte5(this.v_int, (byte)0);
+                     this.resources.a_byte5(this.v_int, (byte)0);
                      this.a_byteArr[7979 + this.v_int] = (byte)(this.a_byteArr[7979 + this.v_int] & 239);
                   }
                }
@@ -1361,9 +1359,9 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: b (boolean) void
-   private void b_void2(boolean var1) {
+   private void b_void2(boolean flag1) {
       for (this.s_int = this.u_int * 30 + 1; this.s_int <= (this.u_int + 1) * 30; this.s_int++) {
-         if ((this.a_byteArr[8749 + this.s_int] == 11 || var1) && this.a_byteArr[8932 + this.s_int] >= 1) {
+         if ((this.a_byteArr[8749 + this.s_int] == 11 || flag1) && this.a_byteArr[8932 + this.s_int] >= 1) {
             for (this.t_int = this.a_byteArr[8993 + this.s_int]; this.t_int > 0; this.t_int = this.a_byteArr[4545 + this.t_int]) {
                if (this.t_int == this.v_int) {
                   this.a_byteArr[4444 + this.v_int] = (byte)this.s_int;
@@ -1378,41 +1376,41 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (int, int, int) int
-   private int a_int2(int var1, int var2, int var3) {
-      if (var3 == 0 && this.a_byteArr[4444 + this.v_int] < -1) {
+   private int a_int2(int intValue1, int intValue2, int intValue3) {
+      if (intValue3 == 0 && this.a_byteArr[4444 + this.v_int] < -1) {
          return 0;
       } else {
-         byte var4;
-         if ((var4 = this.a_byteArr[this.b_shortArr[var3 == 0 ? 44 : 110] + this.v_int]) >= 1
+         byte byteValue1;
+         if ((byteValue1 = this.a_byteArr[this.b_shortArr[intValue3 == 0 ? 44 : 110] + this.v_int]) >= 1
             && this.b_byteArr[this.a_shortArr[28] + this.a_byteArr[2828 + this.v_int]] != 43
-            && var3 == 0) {
-            this.q_byte = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[28] + this.a_byteArr[2828 + this.v_int]]] + var4];
-            this.r_byte = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[28] + this.a_byteArr[2828 + this.v_int]] + 1] + var4];
+            && intValue3 == 0) {
+            this.q_byte = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[28] + this.a_byteArr[2828 + this.v_int]]] + byteValue1];
+            this.r_byte = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[28] + this.a_byteArr[2828 + this.v_int]] + 1] + byteValue1];
             if (this.b_byteArr[this.a_shortArr[28] + this.a_byteArr[2828 + this.v_int]] == 83) {
-               this.q_byte = (byte)b_int2(var1, this.q_byte, this.q_byte + this.b_byteArr[this.a_shortArr[138] + 104 + this.a_byteArr[8749 + var4]] - 1);
-               this.r_byte = (byte)b_int2(var2, this.r_byte, this.r_byte + this.b_byteArr[this.a_shortArr[138] + 130 + this.a_byteArr[8749 + var4]] - 1);
+               this.q_byte = (byte)b_int2(intValue1, this.q_byte, this.q_byte + this.b_byteArr[this.a_shortArr[138] + 104 + this.a_byteArr[8749 + byteValue1]] - 1);
+               this.r_byte = (byte)b_int2(intValue2, this.r_byte, this.r_byte + this.b_byteArr[this.a_shortArr[138] + 130 + this.a_byteArr[8749 + byteValue1]] - 1);
                if (this.a_byteArr[2828 + this.v_int] <= 9) {
                   this.a_byteArr[3131 + this.v_int] = this.q_byte;
                   this.a_byteArr[3232 + this.v_int] = this.r_byte;
                }
             }
          } else {
-            this.q_byte = this.a_byteArr[this.b_shortArr[var3 == 0 ? 31 : 112] + this.v_int];
-            this.r_byte = this.a_byteArr[this.b_shortArr[var3 == 0 ? 32 : 113] + this.v_int];
+            this.q_byte = this.a_byteArr[this.b_shortArr[intValue3 == 0 ? 31 : 112] + this.v_int];
+            this.r_byte = this.a_byteArr[this.b_shortArr[intValue3 == 0 ? 32 : 113] + this.v_int];
          }
 
-         byte var5 = (byte)(this.q_byte - var1);
-         byte var6 = (byte)(this.r_byte - var2);
-         return var5 >= -12 && var6 >= -12 && var5 <= 12 && var6 <= 12 ? this.b_byteArr[this.a_shortArr[53] + (12 + var6) * 25 + 12 + var5] : 200;
+         byte byteValue2 = (byte)(this.q_byte - intValue1);
+         byte byteValue3 = (byte)(this.r_byte - intValue2);
+         return byteValue2 >= -12 && byteValue3 >= -12 && byteValue2 <= 12 && byteValue3 <= 12 ? this.b_byteArr[this.a_shortArr[53] + (12 + byteValue3) * 25 + 12 + byteValue2] : 200;
       }
    }
 
    // $VF: renamed from: b (int, int, int) int
-   private static int b_int2(int var0, int var1, int var2) {
-      if (var0 < var1) {
-         return var1;
+   private static int b_int2(int intValue1, int intValue2, int intValue3) {
+      if (intValue1 < intValue2) {
+         return intValue2;
       } else {
-         return var0 < var2 ? var0 : var2;
+         return intValue1 < intValue3 ? intValue1 : intValue3;
       }
    }
 
@@ -1420,14 +1418,14 @@ public final class GameEngine {
    final void b_void3() {
       for (this.v_int = 1; this.v_int <= 50; this.v_int++) {
          if ((
-               this.a_obj_f.N_bool
+               this.resources.N_bool
                   || this.b_byteArr[this.a_shortArr[100] + this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[2828 + this.v_int]]]
                            + this.b_byteArr[this.a_shortArr[100] + this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]]]
                         > 1
                      && this.a_byteArr[6565 + this.v_int] != 9
                      && (this.a_byteArr[1717 + this.v_int] > 4 || this.a_byteArr[1616 + this.v_int] > 4 || this.a_byteArr[7575 + this.v_int] > 4)
             )
-            && (!this.a_obj_f.L_bool || (this.a_byteArr[7979 + this.v_int] & 64) == 0)) {
+            && (!this.resources.L_bool || (this.a_byteArr[7979 + this.v_int] & 64) == 0)) {
             this.a_byteArr[7979 + this.v_int] = (byte)(this.a_byteArr[7979 + this.v_int] | 96);
          }
       }
@@ -1445,51 +1443,51 @@ public final class GameEngine {
 
    // $VF: renamed from: d () void
    final void d_void2() {
-      for (int var1 = 0; var1 < 3; var1++) {
-         for (int var2 = 0; var2 < 96; var2++) {
-            this.a_obj_f.a_intArr3[1][var1][var2] = 0;
+      for (int loopIndex1 = 0; loopIndex1 < 3; loopIndex1++) {
+         for (int loopIndex2 = 0; loopIndex2 < 96; loopIndex2++) {
+            this.resources.a_intArr3[1][loopIndex1][loopIndex2] = 0;
          }
       }
 
-      for (int var4 = 1; var4 <= 50; var4++) {
-         if (this.a_byteArr[1919 + var4] != 0) {
-            this.a_void17(this.a_byteArr[0 + var4], this.a_byteArr[101 + var4], this.a_byteArr[4949 + var4]);
+      for (int loopIndex3 = 1; loopIndex3 <= 50; loopIndex3++) {
+         if (this.a_byteArr[1919 + loopIndex3] != 0) {
+            this.a_void17(this.a_byteArr[0 + loopIndex3], this.a_byteArr[101 + loopIndex3], this.a_byteArr[4949 + loopIndex3]);
          }
       }
 
-      for (int var5 = 51; var5 <= 100; var5++) {
-         if (this.a_byteArr[1919 + var5] != 0
-            && this.a_byteArr[2929 + var5] >= 23
-            && this.a_byteArr[2929 + var5] <= 36
-            && this.a_byteArr[2828 + var5] <= 9
-            && this.a_byteArr[2828 + var5] != 2
-            && this.a_byteArr[2828 + var5] != 7) {
-            this.a_void17(this.a_byteArr[0 + var5], this.a_byteArr[101 + var5], 0);
+      for (int loopIndex4 = 51; loopIndex4 <= 100; loopIndex4++) {
+         if (this.a_byteArr[1919 + loopIndex4] != 0
+            && this.a_byteArr[2929 + loopIndex4] >= 23
+            && this.a_byteArr[2929 + loopIndex4] <= 36
+            && this.a_byteArr[2828 + loopIndex4] <= 9
+            && this.a_byteArr[2828 + loopIndex4] != 2
+            && this.a_byteArr[2828 + loopIndex4] != 7) {
+            this.a_void17(this.a_byteArr[0 + loopIndex4], this.a_byteArr[101 + loopIndex4], 0);
          }
       }
 
-      for (int var6 = 1; var6 <= 30; var6++) {
-         if (this.a_byteArr[8505 + var6] != 0) {
-            if (this.a_byteArr[8749 + var6] >= 12) {
+      for (int loopIndex5 = 1; loopIndex5 <= 30; loopIndex5++) {
+         if (this.a_byteArr[8505 + loopIndex5] != 0) {
+            if (this.a_byteArr[8749 + loopIndex5] >= 12) {
                this.a_void18(
-                  this.a_byteArr[8383 + var6],
-                  this.a_byteArr[8444 + var6],
-                  this.b_byteArr[this.a_shortArr[138] + 104 + this.a_byteArr[8749 + var6]],
-                  this.b_byteArr[this.a_shortArr[138] + 130 + this.a_byteArr[8749 + var6]]
+                  this.a_byteArr[8383 + loopIndex5],
+                  this.a_byteArr[8444 + loopIndex5],
+                  this.b_byteArr[this.a_shortArr[138] + 104 + this.a_byteArr[8749 + loopIndex5]],
+                  this.b_byteArr[this.a_shortArr[138] + 130 + this.a_byteArr[8749 + loopIndex5]]
                );
             } else {
                this.a_void17(
-                  this.a_byteArr[8383 + var6] + this.b_byteArr[this.a_shortArr[138] + 104 + this.a_byteArr[8749 + var6]] / 2,
-                  this.a_byteArr[8444 + var6] + this.b_byteArr[this.a_shortArr[138] + 130 + this.a_byteArr[8749 + var6]] / 2,
-                  this.a_byteArr[8688 + var6] & 15
+                  this.a_byteArr[8383 + loopIndex5] + this.b_byteArr[this.a_shortArr[138] + 104 + this.a_byteArr[8749 + loopIndex5]] / 2,
+                  this.a_byteArr[8444 + loopIndex5] + this.b_byteArr[this.a_shortArr[138] + 130 + this.a_byteArr[8749 + loopIndex5]] / 2,
+                  this.a_byteArr[8688 + loopIndex5] & 15
                );
             }
          }
       }
 
-      for (int var3 = 0; var3 < 3; var3++) {
-         for (int var7 = 0; var7 < 96; var7++) {
-            this.a_obj_f.a_intArr3[0][var3][var7] = this.a_obj_f.a_intArr3[0][var3][var7] | this.a_obj_f.a_intArr3[1][var3][var7];
+      for (int loopIndex6 = 0; loopIndex6 < 3; loopIndex6++) {
+         for (int loopIndex7 = 0; loopIndex7 < 96; loopIndex7++) {
+            this.resources.a_intArr3[0][loopIndex6][loopIndex7] = this.resources.a_intArr3[0][loopIndex6][loopIndex7] | this.resources.a_intArr3[1][loopIndex6][loopIndex7];
          }
       }
    }
@@ -1510,7 +1508,7 @@ public final class GameEngine {
             }
 
             if (this.a_shortArr2[this.u_int][18]
-               >= (this.u_int == 0 ? 750 : this.b_byteArr[this.a_shortArr[273 + this.a_obj_f.b_byte] + this.a_obj_f.q_byte] * 50)) {
+               >= (this.u_int == 0 ? 750 : this.b_byteArr[this.a_shortArr[273 + this.resources.b_byte] + this.resources.q_byte] * 50)) {
                this.a_shortArr2[this.u_int][18] = -1;
             }
 
@@ -1522,7 +1520,7 @@ public final class GameEngine {
                         continue;
                      }
 
-                     if (this.a_obj_f.c_int % 15 == (this.v_int & 7) && this.u_int == 0 && this.a_byteArr[1414 + this.v_int] >= 12) {
+                     if (this.resources.c_int % 15 == (this.v_int & 7) && this.u_int == 0 && this.a_byteArr[1414 + this.v_int] >= 12) {
                         this.B();
                      }
 
@@ -1576,26 +1574,26 @@ public final class GameEngine {
                this.a_shortArr2[0][this.v_int] = 999;
             }
          }
-      } catch (Exception var2) {
+      } catch (Exception ignoredException1) {
       }
    }
 
    // $VF: renamed from: s () void
    private void s_void() {
-      this.a_obj_f.a_obj_c.b_void2();
-      if ((this.a_obj_f.c_int & 3) == 0) {
+      this.resources.renderer.b_void2();
+      if ((this.resources.c_int & 3) == 0) {
          this.d_void2();
       }
 
-      if (this.a_obj_f.L_bool && (this.a_obj_f.c_int & 63) == 2) {
+      if (this.resources.L_bool && (this.resources.c_int & 63) == 2) {
          this.b_void3();
       }
 
-      if (this.a_obj_f.c_int == this.b_byteArr[this.a_shortArr[277] + this.a_obj_f.q_byte] * (1000 / (1 + this.a_obj_f.b_byte * 3))) {
+      if (this.resources.c_int == this.b_byteArr[this.a_shortArr[277] + this.resources.q_byte] * (1000 / (1 + this.resources.b_byte * 3))) {
          this.a_shortArr2[1][8] = 5000;
       }
 
-      if (this.a_obj_f.c_int == this.b_byteArr[this.a_shortArr[278] + this.a_obj_f.q_byte] * (1000 / (1 + this.a_obj_f.b_byte * 3))) {
+      if (this.resources.c_int == this.b_byteArr[this.a_shortArr[278] + this.resources.q_byte] * (1000 / (1 + this.resources.b_byte * 3))) {
          this.a_shortArr2[1][9] = 5000;
          this.a_shortArr2[1][10] = 5000;
       }
@@ -1609,7 +1607,7 @@ public final class GameEngine {
    private boolean a_bool2() {
       if (this.a_byteArr[1919 + this.v_int] < 0) {
          this.a_byteArr[3030 + this.v_int]++;
-         if (this.a_byteArr[3030 + this.v_int] >= this.a_obj_f.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255]) {
+         if (this.a_byteArr[3030 + this.v_int] >= this.resources.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255]) {
             this.m_void(this.v_int);
          }
 
@@ -1633,28 +1631,28 @@ public final class GameEngine {
             this.a_void14(19, this.a_byteArr[0 + this.v_int], this.a_byteArr[101 + this.v_int], (byte)this.v_int);
             return true;
          } else {
-            if ((this.a_obj_f.c_int & (this.a_byteArr[1414 + this.v_int] < 12 ? 1 : (this.u_int == 0 ? 3 : 15))) == 0) {
+            if ((this.resources.c_int & (this.a_byteArr[1414 + this.v_int] < 12 ? 1 : (this.u_int == 0 ? 3 : 15))) == 0) {
                this.a_byteArr[6666 + this.v_int]++;
             }
 
-            if ((this.a_obj_f.c_int & 3) == (this.v_int & 3) && !this.q_bool()) {
+            if ((this.resources.c_int & 3) == (this.v_int & 3) && !this.q_bool()) {
                return true;
             } else {
-               if ((this.a_obj_f.c_int & 31) == (this.v_int & 15)) {
+               if ((this.resources.c_int & 31) == (this.v_int & 15)) {
                   this.W();
                }
 
-               if (this.a_byteArr[3434 + this.v_int] < 1 && this.a_byteArr[1414 + this.v_int] >= 12 && (this.a_obj_f.c_int & 31) == 0) {
+               if (this.a_byteArr[3434 + this.v_int] < 1 && this.a_byteArr[1414 + this.v_int] >= 12 && (this.resources.c_int & 31) == 0) {
                   this.V();
                }
 
                if ((this.a_byteArr[7979 + this.v_int] & 4) != 0
-                  && (this.a_obj_f.c_int & 7) == (this.v_int & 7)
+                  && (this.resources.c_int & 7) == (this.v_int & 7)
                   && this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] == this.v_int) {
                   this.Y();
                }
 
-               if ((this.a_obj_f.c_int & 1) == 1 && (this.a_byteArr[7979 + this.v_int] & 4) == 0) {
+               if ((this.resources.c_int & 1) == 1 && (this.a_byteArr[7979 + this.v_int] & 4) == 0) {
                   this.X();
                }
 
@@ -1690,7 +1688,7 @@ public final class GameEngine {
             }
 
             if (this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]] == this.b_byteArr[this.a_shortArr[41] + this.m_byte]
-               || this.b_byteArr[this.a_shortArr[41] + this.m_byte] == 0 && (this.a_obj_f.N_bool || this.K_byte < 50)) {
+               || this.b_byteArr[this.a_shortArr[41] + this.m_byte] == 0 && (this.resources.N_bool || this.K_byte < 50)) {
                this.c_bool = false;
             }
          }
@@ -1731,7 +1729,7 @@ public final class GameEngine {
 
    // $VF: renamed from: b () boolean
    private boolean b_bool2() {
-      if (((this.a_obj_f.c_int & 31) == (this.v_int & 31) || this.a_obj_f.c_int == 0)
+      if (((this.resources.c_int & 31) == (this.v_int & 31) || this.resources.c_int == 0)
          && this.u_int == 0
          && this.a_byteArr[1414 + this.v_int] >= 12) {
          this.A();
@@ -1774,7 +1772,7 @@ public final class GameEngine {
             }
 
             if ((
-                  this.u_int == 0 && !this.a_obj_f.N_bool && (!this.a_obj_f.L_bool || (this.a_byteArr[7979 + this.v_int] & 64) == 0)
+                  this.u_int == 0 && !this.resources.N_bool && (!this.resources.L_bool || (this.a_byteArr[7979 + this.v_int] & 64) == 0)
                      || this.u_int == 1 && this.Q_byte < 0
                )
                && this.a_byteArr[1414 + this.v_int] >= 12
@@ -1819,7 +1817,7 @@ public final class GameEngine {
             if (this.a_byteArr[4444 + this.v_int] >= 0) {
                this.q_void();
             } else if (this.a_byteArr[4444 + this.v_int] >= -1) {
-               if ((this.a_obj_f.c_int & 63) == (this.v_int & 63)) {
+               if ((this.resources.c_int & 63) == (this.v_int & 63)) {
                   this.an();
                }
             } else {
@@ -1861,7 +1859,7 @@ public final class GameEngine {
                this.a_byteArr[3030 + this.v_int] = 0;
                this.a_byteArr[808 + this.v_int] = 0;
                this.a_byteArr[1313 + this.v_int] = 1;
-               this.a_obj_f.c_void7(this.a_byteArr[0 + this.v_int], this.a_byteArr[101 + this.v_int], 1, 1);
+               this.resources.c_void7(this.a_byteArr[0 + this.v_int], this.a_byteArr[101 + this.v_int], 1, 1);
                if (this.u_int == 0) {
                   this.R_byte--;
                   return;
@@ -1885,7 +1883,7 @@ public final class GameEngine {
                + this.a_byteArr3[1][this.v_int][this.a_byteArr[707 + this.v_int]]
                - this.a_byteArr[101 + this.v_int]
                + 1];
-         } catch (Exception var2) {
+         } catch (Exception ignoredException1) {
             this.N();
             this.a_byteArr[808 + this.v_int] = 0;
             return true;
@@ -1964,7 +1962,7 @@ public final class GameEngine {
             this.a_byteArr[2929 + this.v_int] = 34;
          } else {
             this.w();
-            if (this.a_byteArr[3030 + this.v_int] >= this.a_obj_f.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255]) {
+            if (this.a_byteArr[3030 + this.v_int] >= this.resources.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255]) {
                this.a_byteArr[3030 + this.v_int] = 0;
                if (this.a_byteArr[4646 + this.v_int] < -1) {
                   this.a_byteArr[4646 + this.v_int] = -1;
@@ -1982,7 +1980,7 @@ public final class GameEngine {
                            this.b_byteArr[this.a_shortArr[138] + 156 + this.a_byteArr[8749 + this.a_byteArr[4444 + this.v_int]]] >= 0
                               || this.a_byteArr[8627 + this.a_byteArr[4444 + this.v_int]] != 0
                         )) {
-                        this.a_obj_f.a_void13(this.a_byteArr[4444 + this.v_int], false);
+                        this.resources.a_void13(this.a_byteArr[4444 + this.v_int], false);
                      }
 
                      this.x();
@@ -1999,7 +1997,7 @@ public final class GameEngine {
 
             this.y();
          }
-      } catch (Exception var2) {
+      } catch (Exception ignoredException1) {
       }
    }
 
@@ -2012,15 +2010,15 @@ public final class GameEngine {
 
       if (this.a_byteArr[2828 + this.v_int] <= 4
          && this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[26] + this.a_byteArr[2828 + this.v_int]]] + this.a_byteArr[4444 + this.v_int]] > 0
-         && this.a_obj_f.j_byteArr2[5][this.a_byteArr[2929 + this.v_int] & 255] == this.a_byteArr[3030 + this.v_int]) {
+         && this.resources.j_byteArr2[5][this.a_byteArr[2929 + this.v_int] & 255] == this.a_byteArr[3030 + this.v_int]) {
          this.c_void5(
             this.a_byteArr[0 + this.v_int] + this.b_byteArr[this.a_shortArr[1] + this.a_byteArr[606 + this.v_int]],
             this.a_byteArr[101 + this.v_int] + this.b_byteArr[this.a_shortArr[1] + 8 + this.a_byteArr[606 + this.v_int]],
-            this.a_obj_f.j_byteArr2[6][this.a_byteArr[2929 + this.v_int] & 255]
+            this.resources.j_byteArr2[6][this.a_byteArr[2929 + this.v_int] & 255]
          );
       }
 
-      if (this.a_byteArr[3030 + this.v_int] == this.a_obj_f.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255] - 1
+      if (this.a_byteArr[3030 + this.v_int] == this.resources.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255] - 1
          && this.a_byteArr[2929 + this.v_int] >= 35
          && this.a_byteArr[2929 + this.v_int] <= 36) {
          if (this.a_byteArr[2828 + this.v_int] >= 5 && this.a_byteArr[2828 + this.v_int] <= 9) {
@@ -2076,8 +2074,8 @@ public final class GameEngine {
             this.a_byteArr[1919 + this.v_int] = (byte)(
                this.a_byteArr[1919 + this.v_int] - this.b_byteArr[this.a_shortArr[106] + this.a_byteArr[2929 + this.v_int] - 106]
             );
-            this.a_obj_f.a_obj_c.f_byteArr[this.v_int] = (byte)(
-               this.a_obj_f.a_obj_c.f_byteArr[this.v_int] - this.b_byteArr[this.a_shortArr[106] + this.a_byteArr[2929 + this.v_int] - 106]
+            this.resources.renderer.f_byteArr[this.v_int] = (byte)(
+               this.resources.renderer.f_byteArr[this.v_int] - this.b_byteArr[this.a_shortArr[106] + this.a_byteArr[2929 + this.v_int] - 106]
             );
             this.P();
             this.a_byteArr[1313 + this.v_int] = 0;
@@ -2151,22 +2149,22 @@ public final class GameEngine {
       this.P();
       this.a_byteArr[1111 + this.v_int] = (byte)(this.a_byteArr[1111 + this.v_int] & 240);
       this.a_byteArr[5050 + this.v_int] = this.a_byteArr[1010 + this.v_int];
-      this.a_obj_f.h_void2(this.v_int);
+      this.resources.h_void2(this.v_int);
       if (this.a_byteArr[2828 + this.v_int] >= 109) {
          this.a_byteArr[6161 + this.v_int] = 0;
       }
 
-      if ((this.a_obj_f.p_byte & 3) == 1 && this.a_byteArr[7575 + this.v_int] > 3 && this.u_int == 0 && this.a_obj_f.q_byte < 7) {
+      if ((this.resources.p_byte & 3) == 1 && this.a_byteArr[7575 + this.v_int] > 3 && this.u_int == 0 && this.resources.q_byte < 7) {
          this.b_void6(this.v_int, 0, 1);
-         this.a_obj_f.b_void3(61);
-         this.a_obj_f.p_byte = (byte)(this.a_obj_f.p_byte | 2);
+         this.resources.b_void3(61);
+         this.resources.p_byte = (byte)(this.resources.p_byte | 2);
       } else if (this.b_byteArr[this.a_shortArr[160] + this.a_byteArr[2828 + this.v_int]] == 69 && this.a_byteArr[2828 + this.v_int] < 109) {
          if (!this.n_bool()) {
             this.a_bool4(
                1,
                21,
-               b_int2(this.a_byteArr[0 + this.v_int] - 3 + this.a_obj_f.a_int2(255, 6), 0, this.a_obj_f.c_short - 1),
-               b_int2(this.a_byteArr[101 + this.v_int] - 3 + this.a_obj_f.a_int2(255, 6), 0, this.a_obj_f.d_short - 1)
+               b_int2(this.a_byteArr[0 + this.v_int] - 3 + this.resources.a_int2(255, 6), 0, this.resources.c_short - 1),
+               b_int2(this.a_byteArr[101 + this.v_int] - 3 + this.resources.a_int2(255, 6), 0, this.resources.d_short - 1)
             );
             this.Q();
          }
@@ -2265,7 +2263,7 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: i (int) void
-   private void i_void(int var1) {
+   private void i_void(int intValue1) {
       if (!this.f_bool2()) {
          if (this.a_byteArr[2828 + this.v_int] != 69 || this.a_byteArr[202 + this.v_int] != 0 || this.a_byteArr[303 + this.v_int] != 0) {
             if (this.a_byteArr[2828 + this.v_int] == 84 && this.a_byteArr[3939 + this.v_int] == 69 && this.x_int < 10) {
@@ -2273,7 +2271,7 @@ public final class GameEngine {
             }
          } else if (this.x_int < 3) {
             this.a_byteArr[606 + this.v_int] = (byte)(this.a_byteArr[606 + this.v_int] + this.x_int % 3 + 7 & 7);
-         } else if (this.x_int < 5 && var1 == 0 && (this.a_byteArr[7979 + this.v_int] & 2) == 0) {
+         } else if (this.x_int < 5 && intValue1 == 0 && (this.a_byteArr[7979 + this.v_int] & 2) == 0) {
             this.M();
          }
 
@@ -2283,21 +2281,21 @@ public final class GameEngine {
                   || this.a_byteArr[2828 + this.v_int] == 92
                   || this.a_byteArr[2828 + this.v_int] == 106
             )
-            && var1 / 10 <= this.B_int) {
+            && intValue1 / 10 <= this.B_int) {
             this.H_int = this.a_byteArr[6565 + this.v_int];
-            this.y_int = this.a_obj_f
+            this.y_int = this.resources
                .a_int2(16777215, this.b_byteArr[this.a_shortArr[18] + this.H_int] == 0 ? 2 + this.a_byteArr[1717 + this.v_int] : 1);
             this.a_byteArr[2929 + this.v_int] = this.b_byteArr[this.a_shortArr[161] + this.b_byteArr[this.a_shortArr[163] + this.H_int] + this.y_int];
-         } else if (this.b_bool3(var1)) {
+         } else if (this.b_bool3(intValue1)) {
             return;
          }
 
          if (this.b_byteArr[this.a_shortArr[38] + this.H_int] != 0 && this.H_int != 105) {
-            this.a_byteArr[606 + this.v_int] = (byte)(var1 % 10);
+            this.a_byteArr[606 + this.v_int] = (byte)(intValue1 % 10);
          }
 
          if (this.H_int >= 94 && this.H_int <= 97 && (this.a_byteArr[7979 + this.v_int] & 16) == 0) {
-            this.a_obj_f.a_byte5(this.v_int, (byte)1);
+            this.resources.a_byte5(this.v_int, (byte)1);
             this.a_byteArr[7979 + this.v_int] = (byte)(this.a_byteArr[7979 + this.v_int] | 16);
          }
 
@@ -2307,11 +2305,11 @@ public final class GameEngine {
 
          if (this.H_int == 57
             && this.u_int == 0
-            && this.a_obj_f.q_byte < 7
-            && ((this.a_obj_f.p_byte & 5) == 1 || (this.a_obj_f.p_byte & 9) == 1 && this.a_byteArr[9115 + this.a_byteArr[4444 + this.v_int]] == 2)) {
+            && this.resources.q_byte < 7
+            && ((this.resources.p_byte & 5) == 1 || (this.resources.p_byte & 9) == 1 && this.a_byteArr[9115 + this.a_byteArr[4444 + this.v_int]] == 2)) {
             this.b_void6(this.v_int, 0, 1);
-            this.a_obj_f.b_void3((this.a_obj_f.p_byte & 5) == 1 ? 60 : 62);
-            this.a_obj_f.p_byte = (byte)(this.a_obj_f.p_byte | ((this.a_obj_f.p_byte & 5) == 1 ? 4 : 8));
+            this.resources.b_void3((this.resources.p_byte & 5) == 1 ? 60 : 62);
+            this.resources.p_byte = (byte)(this.resources.p_byte | ((this.resources.p_byte & 5) == 1 ? 4 : 8));
          }
       }
    }
@@ -2322,7 +2320,7 @@ public final class GameEngine {
          return true;
       } else {
          if (this.a_byteArr[4646 + this.v_int] >= 0 && this.a_byteArr[1313 + this.v_int] == -2) {
-            this.a_obj_f.d_void5(this.a_byteArr[4444 + this.v_int]);
+            this.resources.d_void5(this.a_byteArr[4444 + this.v_int]);
             if (this.a_byteArr[2828 + this.v_int] == 51) {
                this.C_int = this.a_byteArr[8810 + this.a_byteArr[4444 + this.v_int]];
                if (this.a_byteArr[1313 + this.C_int] >= 0 && this.a_byteArr[4646 + this.C_int] >= 0) {
@@ -2372,16 +2370,16 @@ public final class GameEngine {
             }
          }
 
-         this.x_int = this.a_obj_f.a_int2(16777215, 100);
+         this.x_int = this.resources.a_int2(16777215, 100);
          return false;
       }
    }
 
    // $VF: renamed from: b (int) boolean
-   private boolean b_bool3(int var1) {
+   private boolean b_bool3(int intValue1) {
       if ((
             this.a_byteArr[4444 + this.v_int] < 0
-               || var1 / 10 > this.B_int
+               || intValue1 / 10 > this.B_int
                || this.b_byteArr[this.a_shortArr[39] + this.a_byteArr[2828 + this.v_int]] == 1 && this.a_byteArr[4646 + this.v_int] < 0
          )
          && this.a_byteArr[2828 + this.v_int] != 105
@@ -2473,7 +2471,7 @@ public final class GameEngine {
    private boolean g_bool2() {
       for (this.C_int = this.a_byteArr[0 + this.v_int] - 1; this.C_int < this.a_byteArr[0 + this.v_int] + 2; this.C_int += 2) {
          for (this.D_int = this.a_byteArr[101 + this.v_int] - 1; this.D_int < this.a_byteArr[101 + this.v_int] + 2; this.D_int++) {
-            if (this.C_int > 0 && this.C_int < this.a_obj_f.c_short - 1 && this.D_int > 0 && this.D_int < this.a_obj_f.d_short - 1) {
+            if (this.C_int > 0 && this.C_int < this.resources.c_short - 1 && this.D_int > 0 && this.D_int < this.resources.d_short - 1) {
                this.y_int = this.b_byteArr2[this.D_int][this.C_int];
                if (this.y_int > this.u_int * 50
                   && this.y_int <= (this.u_int + 1) * 50
@@ -2524,58 +2522,58 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: c (int) boolean
-   private boolean c_bool3(int var1) {
-      if (!this.d_bool3(var1)) {
+   private boolean c_bool3(int intValue1) {
+      if (!this.d_bool3(intValue1)) {
          this.Q();
          return false;
       } else {
-         this.s_byte = this.a_byteArr[8627 + var1] == 0
-            ? this.b_byteArr[this.a_shortArr[138] + (this.a_byteArr[9115 + var1] - 1) * 26 + this.a_byteArr[8749 + var1]]
-            : this.b_byteArr[this.a_shortArr[138] + 494 + this.a_byteArr[8749 + var1]];
-         if ((this.b_byteArr[this.a_shortArr[138] + 156 + this.a_byteArr[8749 + var1]] > -1 || this.a_byteArr[8627 + var1] != 0)
-            && this.a_byteArr[8810 + var1] > 0
-            && this.a_byteArr[8810 + var1] != this.v_int
+         this.s_byte = this.a_byteArr[8627 + intValue1] == 0
+            ? this.b_byteArr[this.a_shortArr[138] + (this.a_byteArr[9115 + intValue1] - 1) * 26 + this.a_byteArr[8749 + intValue1]]
+            : this.b_byteArr[this.a_shortArr[138] + 494 + this.a_byteArr[8749 + intValue1]];
+         if ((this.b_byteArr[this.a_shortArr[138] + 156 + this.a_byteArr[8749 + intValue1]] > -1 || this.a_byteArr[8627 + intValue1] != 0)
+            && this.a_byteArr[8810 + intValue1] > 0
+            && this.a_byteArr[8810 + intValue1] != this.v_int
             && (
-               this.b_byteArr2[this.a_byteArr[101 + this.a_byteArr[8810 + var1]]][this.a_byteArr[0 + this.a_byteArr[8810 + var1]]] == this.a_byteArr[8810 + var1]
-                  || this.a_byteArr[4444 + this.a_byteArr[8810 + var1]] != var1
+               this.b_byteArr2[this.a_byteArr[101 + this.a_byteArr[8810 + intValue1]]][this.a_byteArr[0 + this.a_byteArr[8810 + intValue1]]] == this.a_byteArr[8810 + intValue1]
+                  || this.a_byteArr[4444 + this.a_byteArr[8810 + intValue1]] != intValue1
             )) {
             this.s_byte--;
          }
 
          return this.a_byteArr[2828 + this.v_int] == 51
-            ? this.a_byteArr[8810 + var1] >= 1
-               && this.a_byteArr[2828 + this.a_byteArr[8810 + var1]] == 57
-               && this.a_byteArr[1313 + this.a_byteArr[8810 + var1]] >= 1
-               && this.a_byteArr[8932 + var1] == 1
-               && this.a_byteArr[9237 + var1] == 0
-            : this.s_byte > this.a_byteArr[8932 + var1];
+            ? this.a_byteArr[8810 + intValue1] >= 1
+               && this.a_byteArr[2828 + this.a_byteArr[8810 + intValue1]] == 57
+               && this.a_byteArr[1313 + this.a_byteArr[8810 + intValue1]] >= 1
+               && this.a_byteArr[8932 + intValue1] == 1
+               && this.a_byteArr[9237 + intValue1] == 0
+            : this.s_byte > this.a_byteArr[8932 + intValue1];
       }
    }
 
    // $VF: renamed from: a (int) byte
-   final byte a_byte5(int var1) {
-      byte var2 = this.a_byteArr[8932 + var1];
-      if ((this.b_byteArr[this.a_shortArr[138] + 156 + this.a_byteArr[8749 + var1]] > -1 || this.a_byteArr[8627 + var1] != 0)
-         && this.a_byteArr[8810 + var1] > 0
-         && (this.a_byteArr[4646 + this.a_byteArr[8810 + var1]] < 0 || this.a_byteArr[4444 + this.a_byteArr[8810 + var1]] != var1)) {
-         var2++;
+   final byte a_byte5(int intValue1) {
+      byte byteValue1 = this.a_byteArr[8932 + intValue1];
+      if ((this.b_byteArr[this.a_shortArr[138] + 156 + this.a_byteArr[8749 + intValue1]] > -1 || this.a_byteArr[8627 + intValue1] != 0)
+         && this.a_byteArr[8810 + intValue1] > 0
+         && (this.a_byteArr[4646 + this.a_byteArr[8810 + intValue1]] < 0 || this.a_byteArr[4444 + this.a_byteArr[8810 + intValue1]] != intValue1)) {
+         byteValue1++;
       }
 
-      byte var3;
-      return var3 = (byte)(
-         var2
+      byte byteValue2;
+      return byteValue2 = (byte)(
+         byteValue1
             + (
                b_int2(
                      (
-                           this.a_byteArr[8627 + var1] == 0
+                           this.a_byteArr[8627 + intValue1] == 0
                               ? (
-                                 this.a_byteArr[8749 + var1] != 3
-                                    ? this.b_byteArr[this.a_shortArr[138] + (this.a_byteArr[9115 + var1] - 1) * 26 + this.a_byteArr[8749 + var1]]
+                                 this.a_byteArr[8749 + intValue1] != 3
+                                    ? this.b_byteArr[this.a_shortArr[138] + (this.a_byteArr[9115 + intValue1] - 1) * 26 + this.a_byteArr[8749 + intValue1]]
                                     : 1
                               )
-                              : this.b_byteArr[this.a_shortArr[138] + 494 + this.a_byteArr[8749 + var1]]
+                              : this.b_byteArr[this.a_shortArr[138] + 494 + this.a_byteArr[8749 + intValue1]]
                         )
-                        - var2,
+                        - byteValue1,
                      0,
                      7
                   )
@@ -2585,19 +2583,19 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: d (int) boolean
-   private boolean d_bool3(int var1) {
-      if (this.a_byteArr[8749 + var1] >= 12 && this.a_byteArr[8505 + var1] >= this.b_byteArr[this.a_shortArr[138] + 182 + this.a_byteArr[9237 + var1]]) {
+   private boolean d_bool3(int intValue1) {
+      if (this.a_byteArr[8749 + intValue1] >= 12 && this.a_byteArr[8505 + intValue1] >= this.b_byteArr[this.a_shortArr[138] + 182 + this.a_byteArr[9237 + intValue1]]) {
          return false;
-      } else if (this.a_byteArr[8505 + var1] <= 0) {
+      } else if (this.a_byteArr[8505 + intValue1] <= 0) {
          return false;
       } else {
-         this.a_void6(this.a_byteArr[8383 + var1], this.a_byteArr[8444 + var1], true);
+         this.a_void6(this.a_byteArr[8383 + intValue1], this.a_byteArr[8444 + intValue1], true);
          return this.b_byteArr[this.a_shortArr[41] + this.m_byte] == this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[2828 + this.v_int]];
       }
    }
 
    // $VF: renamed from: a (byte, boolean) boolean
-   private boolean a_bool3(byte var1, boolean var2) {
+   private boolean a_bool3(byte byteValue1, boolean flag1) {
       if (this.a_byteArr[4646 + this.v_int] < 0
          || this.a_byteArr[2929 + this.v_int]
                != this.b_byteArr[this.a_shortArr[173]
@@ -2610,17 +2608,17 @@ public final class GameEngine {
          if (this.a_byteArr[2828 + this.v_int] == 79
             || this.a_byteArr[2828 + this.v_int] == 80
             || this.a_byteArr[2828 + this.v_int] >= 83 && this.a_byteArr[2828 + this.v_int] <= 85
-            || var2 && this.b_byteArr[this.a_shortArr[42] + this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]]] != 0
+            || flag1 && this.b_byteArr[this.a_shortArr[42] + this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]]] != 0
             || this.a_byteArr[2929 + this.v_int] == -108
-               && this.a_byteArr[3030 + this.v_int] != this.a_obj_f.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255] - 1) {
+               && this.a_byteArr[3030 + this.v_int] != this.resources.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255] - 1) {
             if (this.a_byteArr[2828 + this.v_int] != 83 && this.a_byteArr[2828 + this.v_int] != 84) {
                if (this.a_byteArr[2828 + this.v_int] != 79) {
-                  if (var2
+                  if (flag1
                      && this.b_byteArr[this.a_shortArr[42] + this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]]] > 0
                      && this.a_byteArr[2929 + this.v_int] != -108) {
                      this.a_byteArr[808 + this.v_int] = 0;
                      this.a_byteArr[2929 + this.v_int] = -108;
-                     this.a_byteArr[3030 + this.v_int] = var1;
+                     this.a_byteArr[3030 + this.v_int] = byteValue1;
                      if (this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] != this.v_int) {
                         this.a_byteArr[1313 + this.v_int] = (byte)(this.a_byteArr[8627 + this.a_byteArr[4444 + this.v_int]] != 0
                            ? 50
@@ -2639,7 +2637,7 @@ public final class GameEngine {
             }
 
             this.i_void(0);
-            this.a_byteArr[3030 + this.v_int] = var1;
+            this.a_byteArr[3030 + this.v_int] = byteValue1;
             return true;
          } else {
             return false;
@@ -2651,20 +2649,20 @@ public final class GameEngine {
 
    // $VF: renamed from: h () boolean
    private boolean h_bool2() {
-      if ((this.a_obj_f.c_int & 7) == (this.v_int & 7)) {
+      if ((this.resources.c_int & 7) == (this.v_int & 7)) {
          this.a_byteArr[7979 + this.v_int] = (byte)(this.a_byteArr[7979 + this.v_int] | 1);
          this.a_bool4(7, 17, this.a_byteArr[0 + this.v_int], this.a_byteArr[101 + this.v_int]);
          if (this.u_int == 0) {
             for (this.B_byte = 0; this.B_byte < 5; this.B_byte++) {
-               if (this.a_obj_f.c_byteArr3[1][this.B_byte][2] >= 0 && this.a_obj_f.c_byteArr3[1][this.B_byte][3] != 1) {
-                  this.z_byte = (byte)(this.a_obj_f.c_byteArr3[1][this.B_byte][0] - this.a_byteArr[0 + this.v_int]);
-                  this.A_byte = (byte)(this.a_obj_f.c_byteArr3[1][this.B_byte][1] - this.a_byteArr[101 + this.v_int]);
+               if (this.resources.c_byteArr3[1][this.B_byte][2] >= 0 && this.resources.c_byteArr3[1][this.B_byte][3] != 1) {
+                  this.z_byte = (byte)(this.resources.c_byteArr3[1][this.B_byte][0] - this.a_byteArr[0 + this.v_int]);
+                  this.A_byte = (byte)(this.resources.c_byteArr3[1][this.B_byte][1] - this.a_byteArr[101 + this.v_int]);
                   if (this.b_byteArr[this.a_shortArr[53]
                            + (this.A_byte > -10 && this.A_byte < 10 ? 12 + this.A_byte : 0) * 25
                            + (this.z_byte > -10 && this.z_byte < 10 ? 12 + this.z_byte : 0)]
                         / 10
                      <= this.a_byteArr[7575 + this.v_int] - 3) {
-                     this.a_obj_f.c_byteArr3[1][this.B_byte][3] = 1;
+                     this.resources.c_byteArr3[1][this.B_byte][3] = 1;
                   }
                }
             }
@@ -2673,7 +2671,7 @@ public final class GameEngine {
 
       if (this.a_byteArr[2929 + this.v_int] == -106 || this.a_byteArr[2929 + this.v_int] == -107) {
          this.a_byteArr[3030 + this.v_int]++;
-         if (this.a_byteArr[3030 + this.v_int] < this.a_obj_f.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255]) {
+         if (this.a_byteArr[3030 + this.v_int] < this.resources.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255]) {
             return true;
          } else {
             if (this.a_byteArr[2929 + this.v_int] == -107) {
@@ -2762,7 +2760,7 @@ public final class GameEngine {
    private void B() {
       if (this.a_byteArr[2929 + this.v_int] != 39 && this.a_byteArr[2929 + this.v_int] != 104 && this.a_byteArr[2929 + this.v_int] != 105) {
          if (this.a_byteArr[3333 + this.v_int] >= 0) {
-            this.a_byteArr[3333 + this.v_int] = (byte)(-2 - this.a_obj_f.a_int2(255, 4));
+            this.a_byteArr[3333 + this.v_int] = (byte)(-2 - this.resources.a_int2(255, 4));
          } else if (this.a_byteArr[3333 + this.v_int] < -1) {
             this.a_byteArr[3333 + this.v_int]++;
          }
@@ -2771,13 +2769,13 @@ public final class GameEngine {
             if (this.a_byteArr[2828 + this.v_int] >= 109 && this.a_byteArr[2828 + this.v_int] <= 111) {
                this.a_byteArr[3333 + this.v_int] = 1;
             } else {
-               this.I_int = this.a_obj_f.a_int2(16777215, 22);
+               this.I_int = this.resources.a_int2(16777215, 22);
                if (this.I_int < 11
                   && this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[56] + this.I_int]] + this.v_int]
                      >= this.b_byteArr[this.a_shortArr[56] + 11 + this.I_int]
                   && this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[56] + this.I_int]] + this.v_int]
                      <= this.b_byteArr[this.a_shortArr[56] + 22 + this.I_int]
-                  && this.a_obj_f.a_int2(16777215, 100) < this.b_byteArr[this.a_shortArr[56] + 33 + this.I_int]) {
+                  && this.resources.a_int2(16777215, 100) < this.b_byteArr[this.a_shortArr[56] + 33 + this.I_int]) {
                   this.a_byteArr[3333 + this.v_int] = (byte)this.I_int;
                }
 
@@ -2813,34 +2811,34 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (byte) void
-   private void a_void8(byte var1) {
+   private void a_void8(byte byteValue1) {
       this.u_byte = (byte)this.v_int;
-      this.v_int = var1;
-      if (!this.a_bool3((byte)(var1 < this.u_byte ? 0 : -1), false)) {
-         this.a_byteArr[808 + var1] = 0;
-         this.t_byte = this.a_byteArr[0 + var1];
-         this.a_byteArr[0 + var1] = this.a_byteArr[0 + this.u_byte];
+      this.v_int = byteValue1;
+      if (!this.a_bool3((byte)(byteValue1 < this.u_byte ? 0 : -1), false)) {
+         this.a_byteArr[808 + byteValue1] = 0;
+         this.t_byte = this.a_byteArr[0 + byteValue1];
+         this.a_byteArr[0 + byteValue1] = this.a_byteArr[0 + this.u_byte];
          this.a_byteArr[0 + this.u_byte] = this.t_byte;
-         this.t_byte = this.a_byteArr[101 + var1];
-         this.a_byteArr[101 + var1] = this.a_byteArr[101 + this.u_byte];
+         this.t_byte = this.a_byteArr[101 + byteValue1];
+         this.a_byteArr[101 + byteValue1] = this.a_byteArr[101 + this.u_byte];
          this.a_byteArr[101 + this.u_byte] = this.t_byte;
-         if (this.a_byteArr[6262 + var1] == this.a_byteArr[0 + this.u_byte] && this.a_byteArr[6363 + var1] == this.a_byteArr[101 + this.u_byte]) {
-            this.a_byteArr[6262 + var1] = this.a_byteArr[0 + var1];
-            this.a_byteArr[6363 + var1] = this.a_byteArr[101 + var1];
-            this.a_byteArr[3131 + var1] = this.a_byteArr[0 + var1];
-            this.a_byteArr[3232 + var1] = this.a_byteArr[101 + var1];
+         if (this.a_byteArr[6262 + byteValue1] == this.a_byteArr[0 + this.u_byte] && this.a_byteArr[6363 + byteValue1] == this.a_byteArr[101 + this.u_byte]) {
+            this.a_byteArr[6262 + byteValue1] = this.a_byteArr[0 + byteValue1];
+            this.a_byteArr[6363 + byteValue1] = this.a_byteArr[101 + byteValue1];
+            this.a_byteArr[3131 + byteValue1] = this.a_byteArr[0 + byteValue1];
+            this.a_byteArr[3232 + byteValue1] = this.a_byteArr[101 + byteValue1];
          }
 
          this.b_byteArr2[this.a_byteArr[101 + this.u_byte]][this.a_byteArr[0 + this.u_byte]] = this.u_byte;
-         this.b_byteArr2[this.a_byteArr[101 + var1]][this.a_byteArr[0 + var1]] = var1;
-         this.a_byteArr[606 + var1] = (byte)(this.a_byteArr[606 + this.u_byte] + 4 & 7);
-         this.a_byteArr[1111 + var1] = (byte)(this.a_byteArr[1111 + var1] & 240);
-         this.a_byteArr[4848 + var1] = 120;
+         this.b_byteArr2[this.a_byteArr[101 + byteValue1]][this.a_byteArr[0 + byteValue1]] = byteValue1;
+         this.a_byteArr[606 + byteValue1] = (byte)(this.a_byteArr[606 + this.u_byte] + 4 & 7);
+         this.a_byteArr[1111 + byteValue1] = (byte)(this.a_byteArr[1111 + byteValue1] & 240);
+         this.a_byteArr[4848 + byteValue1] = 120;
          this.a_byteArr[4848 + this.u_byte] = 120;
-         this.a_byteArr[2929 + var1] = this.b_byte3(var1);
+         this.a_byteArr[2929 + byteValue1] = this.b_byte3(byteValue1);
          this.D();
-         if (var1 > this.u_byte) {
-            this.a_byteArr[1111 + var1] = (byte)(this.a_byteArr[1111 + var1] & 240);
+         if (byteValue1 > this.u_byte) {
+            this.a_byteArr[1111 + byteValue1] = (byte)(this.a_byteArr[1111 + byteValue1] & 240);
          }
 
          this.E_int = 1;
@@ -2953,7 +2951,7 @@ public final class GameEngine {
       if (this.a_byteArr[6161 + this.v_int] <= 1
          && this.b_byteArr[this.a_shortArr[39] + this.a_byteArr[2828 + this.v_int]] == 1
          && this.d_bool3(this.a_byteArr[4444 + this.v_int])) {
-         this.a_obj_f.h_void2(this.v_int);
+         this.resources.h_void2(this.v_int);
          this.a_byteArr[6161 + this.v_int] = 0;
          this.a_byteArr[3131 + this.v_int] = this.a_byteArr[0 + this.v_int];
          this.a_byteArr[3232 + this.v_int] = this.a_byteArr[101 + this.v_int];
@@ -3063,7 +3061,7 @@ public final class GameEngine {
       }
 
       this.a_byteArr[4646 + this.v_int] = (byte)(
-         this.a_obj_f
+         this.resources
                .a_int2(
                   16777215,
                   (
@@ -3109,60 +3107,60 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: b (byte) void
-   private void b_void4(byte var1) {
-      this.a_byteArr[8688 + var1] = 5;
-      if (this.u_int == 0 && this.a_byteArr[8749 + var1] == 11) {
-         for (this.M_int = this.a_byteArr[8993 + var1]; this.M_int > 0; this.M_int = this.a_byteArr[4545 + this.M_int]) {
-            if (this.a_byteArr[4949 + this.M_int] + 3 > (this.a_byteArr[8688 + var1] & 15)) {
-               this.a_byteArr[8688 + var1] = (byte)((this.a_byteArr[8688 + var1] & 240) + this.a_byteArr[4949 + this.M_int] + 3);
+   private void b_void4(byte byteValue1) {
+      this.a_byteArr[8688 + byteValue1] = 5;
+      if (this.u_int == 0 && this.a_byteArr[8749 + byteValue1] == 11) {
+         for (this.M_int = this.a_byteArr[8993 + byteValue1]; this.M_int > 0; this.M_int = this.a_byteArr[4545 + this.M_int]) {
+            if (this.a_byteArr[4949 + this.M_int] + 3 > (this.a_byteArr[8688 + byteValue1] & 15)) {
+               this.a_byteArr[8688 + byteValue1] = (byte)((this.a_byteArr[8688 + byteValue1] & 240) + this.a_byteArr[4949 + this.M_int] + 3);
             }
 
-            if (this.a_byteArr[7575 + this.M_int] > this.a_byteArr[8688 + var1] >> 4) {
-               this.a_byteArr[8688 + var1] = (byte)((this.a_byteArr[8688 + var1] & 15) + (this.a_byteArr[7575 + this.M_int] << 4));
+            if (this.a_byteArr[7575 + this.M_int] > this.a_byteArr[8688 + byteValue1] >> 4) {
+               this.a_byteArr[8688 + byteValue1] = (byte)((this.a_byteArr[8688 + byteValue1] & 15) + (this.a_byteArr[7575 + this.M_int] << 4));
             }
          }
       }
    }
 
    // $VF: renamed from: a (int, int, int, int) boolean
-   final boolean a_bool4(int var1, int var2, int var3, int var4) {
-      byte var6 = 0;
-      byte var7 = 1;
-      byte[] var10 = new byte[2];
+   final boolean a_bool4(int intValue1, int intValue2, int intValue3, int intValue4) {
+      byte byteValue1 = 0;
+      byte byteValue2 = 1;
+      byte[] arrayValue1 = new byte[2];
       this.y_byte = 0;
 
-      for (byte var9 = (byte)(this.u_int ^ 1); var6 < var2; var7 *= -1) {
-         var6++;
+      for (byte byteIndex1 = (byte)(this.u_int ^ 1); byteValue1 < intValue2; byteValue2 *= -1) {
+         byteValue1++;
 
-         for (byte var5 = 0; var5 < 2; var5++) {
-            for (byte var8 = 0; var8 < var6; var8++) {
-               var10[var5] += var7;
-               if (var3 + var10[0] >= 0 && var3 + var10[0] < this.a_obj_f.c_short && var4 + var10[1] >= 0 && var4 + var10[1] < this.a_obj_f.d_short) {
-                  this.B_byte = this.b_byteArr2[var4 + var10[1]][var3 + var10[0]];
-                  if (var2 < 24) {
-                     this.C_byte = (byte)(this.b_byteArr[this.a_shortArr[53] + (12 + var10[1]) * 25 + 12 + var10[0]] / 10);
-                     this.E_byte = (byte)(this.b_byteArr[this.a_shortArr[53] + (12 + var10[1]) * 25 + 12 + var10[0]] % 10 + 4 & 7);
+         for (byte byteIndex2 = 0; byteIndex2 < 2; byteIndex2++) {
+            for (byte byteIndex3 = 0; byteIndex3 < byteValue1; byteIndex3++) {
+               arrayValue1[byteIndex2] += byteValue2;
+               if (intValue3 + arrayValue1[0] >= 0 && intValue3 + arrayValue1[0] < this.resources.c_short && intValue4 + arrayValue1[1] >= 0 && intValue4 + arrayValue1[1] < this.resources.d_short) {
+                  this.B_byte = this.b_byteArr2[intValue4 + arrayValue1[1]][intValue3 + arrayValue1[0]];
+                  if (intValue2 < 24) {
+                     this.C_byte = (byte)(this.b_byteArr[this.a_shortArr[53] + (12 + arrayValue1[1]) * 25 + 12 + arrayValue1[0]] / 10);
+                     this.E_byte = (byte)(this.b_byteArr[this.a_shortArr[53] + (12 + arrayValue1[1]) * 25 + 12 + arrayValue1[0]] % 10 + 4 & 7);
                   }
 
-                  if (var1 > 4) {
-                     if (var1 == 6) {
+                  if (intValue1 > 4) {
+                     if (intValue1 == 6) {
                         if (this.C_byte <= 3) {
                            if (-this.B_byte > 0 && -this.B_byte <= 30 && this.a_byteArr[9601 + this.v_int] == 0) {
                               if (this.a_byteArr[8505 + -this.B_byte] > 0 && this.a_byteArr[8932 + -this.B_byte] != 0) {
-                                 this.a_void9(var3 + var10[0], var4 + var10[1], this.B_byte, 50);
+                                 this.a_void9(intValue3 + arrayValue1[0], intValue4 + arrayValue1[1], this.B_byte, 50);
                               }
                            } else if (this.B_byte > 0
                               && this.B_byte <= 100
                               && this.a_byteArr[1919 + this.B_byte] > 0
                               && (this.a_byteArr[9601 + this.v_int] <= 0 || this.B_byte > 50)) {
-                              this.a_void9(var3 + var10[0], var4 + var10[1], this.B_byte, 50);
+                              this.a_void9(intValue3 + arrayValue1[0], intValue4 + arrayValue1[1], this.B_byte, 50);
                               if (this.B_byte > 50) {
                                  return true;
                               }
                            }
                         }
-                     } else if (var1 == 7) {
-                        if (this.B_byte > var9 * 50 && this.B_byte <= (var9 + 1) * 50) {
+                     } else if (intValue1 == 7) {
+                        if (this.B_byte > byteIndex1 * 50 && this.B_byte <= (byteIndex1 + 1) * 50) {
                            if (this.a_byteArr[1919 + this.B_byte] > 0
                               && (
                                  (this.a_byteArr[7979 + this.v_int] & 2) > 0
@@ -3175,12 +3173,12 @@ public final class GameEngine {
                               this.a_byteArr[7979 + this.v_int] = (byte)(this.a_byteArr[7979 + this.v_int] & 254);
                               return true;
                            }
-                        } else if (-this.B_byte > var9 * 30 && -this.B_byte <= (var9 + 1) * 30) {
+                        } else if (-this.B_byte > byteIndex1 * 30 && -this.B_byte <= (byteIndex1 + 1) * 30) {
                            if (this.a_byteArr[8505 + -this.B_byte] > 0
                               && this.a_byteArr[8932 + -this.B_byte] != 0
-                              && var3 + var10[0]
+                              && intValue3 + arrayValue1[0]
                                  == this.a_byteArr[8383 + -this.B_byte] + this.b_byteArr[this.a_shortArr[138] + 104 + this.a_byteArr[8749 + -this.B_byte]] / 2
-                              && var4 + var10[1]
+                              && intValue4 + arrayValue1[1]
                                  == this.a_byteArr[8444 + -this.B_byte] + this.b_byteArr[this.a_shortArr[138] + 130 + this.a_byteArr[8749 + -this.B_byte]] / 2
                               && (
                                  (this.a_byteArr[7979 + this.v_int] & 2) > 0
@@ -3197,42 +3195,42 @@ public final class GameEngine {
                            && -this.B_byte < 111 + 6 * (this.u_int ^ 1) + 3
                            && this.a_byteArr[7575 + this.v_int] >= 6
                            && this.C_byte <= this.a_byteArr[7575 + this.v_int] - 4) {
-                           this.b_byteArr2[var4 + var10[1]][var3 + var10[0]] = (byte)(this.b_byteArr2[var4 + var10[1]][var3 + var10[0]] + (3 - this.u_int * 6));
-                           this.a_obj_f.c_void7(var3 + var10[0], var4 + var10[1], 1, 1);
+                           this.b_byteArr2[intValue4 + arrayValue1[1]][intValue3 + arrayValue1[0]] = (byte)(this.b_byteArr2[intValue4 + arrayValue1[1]][intValue3 + arrayValue1[0]] + (3 - this.u_int * 6));
+                           this.resources.c_void7(intValue3 + arrayValue1[0], intValue4 + arrayValue1[1], 1, 1);
                            if (this.u_int == 0) {
                               this.R_byte--;
                            }
                         }
-                     } else if (var1 >= 8
-                        && this.B_byte >= (var1 == 9 ? 51 : 1)
-                        && this.B_byte <= (var1 == 9 ? 100 : 50)
+                     } else if (intValue1 >= 8
+                        && this.B_byte >= (intValue1 == 9 ? 51 : 1)
+                        && this.B_byte <= (intValue1 == 9 ? 100 : 50)
                         && this.a_byteArr[1919 + this.B_byte] > 0
                         && this.a_byteArr[1414 + this.B_byte] >= 12) {
-                        this.a_obj_f.p_byteArr[6 + this.O_int] = this.B_byte;
+                        this.resources.p_byteArr[6 + this.O_int] = this.B_byte;
                         this.O_int++;
                      }
                   } else {
-                     if (var1 == 3) {
+                     if (intValue1 == 3) {
                         if (this.B_byte != 0 && this.B_byte != this.c_byteArr2[0][this.ae] && this.B_byte != this.c_byteArr2[1][this.ae]
-                           || var3 + var10[0] >= this.a_obj_f.c_short - 1) {
+                           || intValue3 + arrayValue1[0] >= this.resources.c_short - 1) {
                            continue;
                         }
 
-                        this.B_byte = this.b_byteArr2[var4 + var10[1]][var3 + var10[0] + 1];
+                        this.B_byte = this.b_byteArr2[intValue4 + arrayValue1[1]][intValue3 + arrayValue1[0] + 1];
                         if (this.B_byte != 0 && this.B_byte != this.c_byteArr2[1][this.ae]) {
                            continue;
                         }
 
                         this.B_byte = this.c_byteArr2[1 - (this.a_byteArr[8282 + this.v_int] & 1)][this.ae];
                         if (this.a_byteArr[2828 + this.B_byte] == 109) {
-                           this.a_byteArr[3131 + this.B_byte] = (byte)(var3 + var10[0] + 1 - (this.a_byteArr[8282 + this.v_int] & 1));
-                           this.a_byteArr[3232 + this.B_byte] = (byte)(var4 + var10[1]);
+                           this.a_byteArr[3131 + this.B_byte] = (byte)(intValue3 + arrayValue1[0] + 1 - (this.a_byteArr[8282 + this.v_int] & 1));
+                           this.a_byteArr[3232 + this.B_byte] = (byte)(intValue4 + arrayValue1[1]);
                         }
-                     } else if (var1 != 2 && var1 != 1
+                     } else if (intValue1 != 2 && intValue1 != 1
                         ? (
-                           var1 == 4
-                              ? this.a_obj_f.b_byteArr2[var4 + var10[1]][var3 + var10[0]] < 95
-                                 || this.a_obj_f.b_byteArr2[var4 + var10[1]][var3 + var10[0]] > 114
+                           intValue1 == 4
+                              ? this.resources.b_byteArr2[intValue4 + arrayValue1[1]][intValue3 + arrayValue1[0]] < 95
+                                 || this.resources.b_byteArr2[intValue4 + arrayValue1[1]][intValue3 + arrayValue1[0]] > 114
                                  || this.B_byte != 0
                               : !this.c_bool4(this.B_byte)
                         )
@@ -3240,11 +3238,11 @@ public final class GameEngine {
                         continue;
                      }
 
-                     this.a_byteArr[this.b_shortArr[var1 == 2 ? 112 : 31] + this.v_int] = (byte)(
-                        var3 + var10[0] + (var1 == 3 ? this.a_byteArr[8282 + this.v_int] & 1 : 0)
+                     this.a_byteArr[this.b_shortArr[intValue1 == 2 ? 112 : 31] + this.v_int] = (byte)(
+                        intValue3 + arrayValue1[0] + (intValue1 == 3 ? this.a_byteArr[8282 + this.v_int] & 1 : 0)
                      );
-                     this.a_byteArr[this.b_shortArr[var1 == 2 ? 113 : 32] + this.v_int] = (byte)(var4 + var10[1]);
-                     if (var1 >= 1 && var1 <= 3 || this.v_int == 0) {
+                     this.a_byteArr[this.b_shortArr[intValue1 == 2 ? 113 : 32] + this.v_int] = (byte)(intValue4 + arrayValue1[1]);
+                     if (intValue1 >= 1 && intValue1 <= 3 || this.v_int == 0) {
                         return true;
                      }
 
@@ -3274,12 +3272,12 @@ public final class GameEngine {
 
    // $VF: renamed from: H () void
    private void H() {
-      this.P_int = this.a_shortArr[101] + this.a_obj_f.q_byte * 4;
+      this.P_int = this.a_shortArr[101] + this.resources.q_byte * 4;
       if ((this.I_byte & this.u_int + 1) == 0
          || this.f_byte < 50
             && (
                this.y_byte == 2
-                  || this.y_byte == 1 && this.a_obj_f.q_byte != 2
+                  || this.y_byte == 1 && this.resources.q_byte != 2
                   || this.z_byte < this.b_byteArr[this.P_int]
                   || this.A_byte < this.b_byteArr[this.P_int + 1]
                   || this.z_byte > this.b_byteArr[this.P_int + 2]
@@ -3296,7 +3294,7 @@ public final class GameEngine {
             this.f_bool = this.a_byteArr[6565 + this.v_int] != 9
                || this.a_byteArr[2828 + this.v_int] <= 9
                || this.u_int == 1
-               || this.a_obj_f.N_bool
+               || this.resources.N_bool
                || this.y_byte == 1
                || this.a_byteArr[0 + this.v_int] - this.a_byteArr[8384] >= -6
                   && this.a_byteArr[0 + this.v_int] - this.a_byteArr[8384] <= 6
@@ -3345,7 +3343,7 @@ public final class GameEngine {
 
             if (this.d_shortArr[0] < 0) {
                this.d_shortArr[0] = 0;
-               this.a_obj_f.a_void19((byte)6, this.z_byte, this.A_byte, (byte)0);
+               this.resources.a_void19((byte)6, this.z_byte, this.A_byte, (byte)0);
             }
          }
 
@@ -3364,9 +3362,9 @@ public final class GameEngine {
          }
       }
 
-      if (this.f_byte < this.b_byteArr[this.a_shortArr[291] + this.a_obj_f.q_byte]
+      if (this.f_byte < this.b_byteArr[this.a_shortArr[291] + this.resources.q_byte]
          && this.u_int == 0
-         && this.b_byteArr[this.a_shortArr[287] + this.b_byteArr[this.a_shortArr[288] + this.a_obj_f.q_byte] + this.f_byte] == 1
+         && this.b_byteArr[this.a_shortArr[287] + this.b_byteArr[this.a_shortArr[288] + this.resources.q_byte] + this.f_byte] == 1
          && this.y_byte == 4
          && this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] == this.v_int) {
          this.b_void5(this.v_int, this.B_byte > 0 ? this.B_byte : 0, this.z_byte, this.A_byte);
@@ -3374,19 +3372,19 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (int, int, byte, int) void
-   private void a_void9(int var1, int var2, byte var3, int var4) {
-      if (this.b_byteArr[this.a_shortArr[181] + this.a_byteArr[9535 + this.v_int]] <= var4 && this.a_byteArr[9601 + this.v_int] == 0) {
+   private void a_void9(int intValue1, int intValue2, byte byteValue1, int intValue3) {
+      if (this.b_byteArr[this.a_shortArr[181] + this.a_byteArr[9535 + this.v_int]] <= intValue3 && this.a_byteArr[9601 + this.v_int] == 0) {
          this.e_void3(true);
       } else {
-         this.a_byteArr[9645 + this.v_int] = (byte)var1;
-         this.a_byteArr[9667 + this.v_int] = (byte)var2;
-         this.a_byteArr[9601 + this.v_int] = var3;
+         this.a_byteArr[9645 + this.v_int] = (byte)intValue1;
+         this.a_byteArr[9667 + this.v_int] = (byte)intValue2;
+         this.a_byteArr[9601 + this.v_int] = byteValue1;
       }
    }
 
    // $VF: renamed from: c (byte) boolean
-   private boolean c_bool4(byte var1) {
-      if (var1 == this.a_byteArr[4747 + this.v_int]
+   private boolean c_bool4(byte byteValue1) {
+      if (byteValue1 == this.a_byteArr[4747 + this.v_int]
          && this.a_byteArr[2828 + this.v_int] != 10
          && this.a_byteArr[2828 + this.v_int] != 15
          && this.a_byteArr[2828 + this.v_int] != 12
@@ -3394,12 +3392,12 @@ public final class GameEngine {
          && this.a_byteArr[2828 + this.v_int] != 13) {
          return true;
       } else {
-         if (this.a_byteArr[2828 + this.v_int] >= 10 && this.a_byteArr[2828 + this.v_int] <= 16 && var1 <= -61 && var1 >= -110) {
-            byte var2 = this.b_byteArr[this.a_shortArr[16] + this.b_byteArr[this.a_shortArr[17] + 3] + this.a_byteArr[9772 - var1]];
+         if (this.a_byteArr[2828 + this.v_int] >= 10 && this.a_byteArr[2828 + this.v_int] <= 16 && byteValue1 <= -61 && byteValue1 >= -110) {
+            byte byteValue2 = this.b_byteArr[this.a_shortArr[16] + this.b_byteArr[this.a_shortArr[17] + 3] + this.a_byteArr[9772 - byteValue1]];
             if ((this.a_byteArr[2828 + this.v_int] == 12 || this.a_byteArr[2828 + this.v_int] == 16)
-                  && (var2 == 12 || var2 == 16)
-                  && this.a_byteArr[9822 - var1] > 0
-               || this.a_byteArr[9872 - var1] > 0 && var2 == this.a_byteArr[2828 + this.v_int]) {
+                  && (byteValue2 == 12 || byteValue2 == 16)
+                  && this.a_byteArr[9822 - byteValue1] > 0
+               || this.a_byteArr[9872 - byteValue1] > 0 && byteValue2 == this.a_byteArr[2828 + this.v_int]) {
                return true;
             }
          }
@@ -3409,60 +3407,60 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: b (int, int, int, int) void
-   private void b_void5(int var1, int var2, int var3, int var4) {
-      this.N_int = this.a_shortArr[289] + this.b_byteArr[this.a_shortArr[290] + this.a_obj_f.q_byte] + this.f_byte * 4;
-      if (var3 >= this.b_byteArr[this.N_int]
-         && var4 >= this.b_byteArr[this.N_int + 1]
-         && var3 <= this.b_byteArr[this.N_int + 2]
-         && var4 <= this.b_byteArr[this.N_int + 3]
-         && (this.a_obj_f.q_byte == 3 || this.a_byteArr[1919 + this.a_shortArr2[0][17]] > 0 && this.a_byteArr[1414 + this.a_shortArr2[0][17]] >= 12)) {
-         if (this.a_obj_f.q_byte == 4 && this.f_byte == 1) {
+   private void b_void5(int intValue1, int intValue2, int intValue3, int intValue4) {
+      this.N_int = this.a_shortArr[289] + this.b_byteArr[this.a_shortArr[290] + this.resources.q_byte] + this.f_byte * 4;
+      if (intValue3 >= this.b_byteArr[this.N_int]
+         && intValue4 >= this.b_byteArr[this.N_int + 1]
+         && intValue3 <= this.b_byteArr[this.N_int + 2]
+         && intValue4 <= this.b_byteArr[this.N_int + 3]
+         && (this.resources.q_byte == 3 || this.a_byteArr[1919 + this.a_shortArr2[0][17]] > 0 && this.a_byteArr[1414 + this.a_shortArr2[0][17]] >= 12)) {
+         if (this.resources.q_byte == 4 && this.f_byte == 1) {
             this.c_void2(false);
 
             for (this.N_int = 0; this.N_int < 4; this.N_int++) {
-               this.a_obj_f.p_byteArr[this.N_int + 1] = this.e_byteArr2[this.N_int][0] != 0 ? this.e_byteArr2[this.N_int][0] : this.e_byteArr2[0][0];
+               this.resources.p_byteArr[this.N_int + 1] = this.e_byteArr2[this.N_int][0] != 0 ? this.e_byteArr2[this.N_int][0] : this.e_byteArr2[0][0];
             }
          } else {
-            this.b_void6(var1, var2, 1);
-            this.a_byteArr[3131 + var2] = this.a_byteArr[0 + var2];
-            this.a_byteArr[3232 + var2] = this.a_byteArr[101 + var2];
+            this.b_void6(intValue1, intValue2, 1);
+            this.a_byteArr[3131 + intValue2] = this.a_byteArr[0 + intValue2];
+            this.a_byteArr[3232 + intValue2] = this.a_byteArr[101 + intValue2];
             this.O_int = 0;
             this.a_bool4(
-               this.a_obj_f.q_byte == 2 ? 9 : 8,
+               this.resources.q_byte == 2 ? 9 : 8,
                25,
-               this.a_byteArr[0 + (this.a_obj_f.q_byte == 2 ? var2 : var1)],
-               this.a_byteArr[101 + (this.a_obj_f.q_byte == 2 ? var2 : var1)]
+               this.a_byteArr[0 + (this.resources.q_byte == 2 ? intValue2 : intValue1)],
+               this.a_byteArr[101 + (this.resources.q_byte == 2 ? intValue2 : intValue1)]
             );
          }
 
-         this.a_obj_f.b_void3(this.b_byteArr[this.a_shortArr[286] + this.b_byteArr[this.a_shortArr[288] + this.a_obj_f.q_byte] + this.f_byte]);
+         this.resources.b_void3(this.b_byteArr[this.a_shortArr[286] + this.b_byteArr[this.a_shortArr[288] + this.resources.q_byte] + this.f_byte]);
          this.f_byte = (byte)(this.f_byte + 50);
       }
    }
 
    // $VF: renamed from: b (int, int, int) void
-   private void b_void6(int var1, int var2, int var3) {
-      this.a_obj_f.p_byteArr[1] = this.a_obj_f.p_byteArr[2] = (byte)this.a_shortArr2[0][17];
-      this.a_obj_f.p_byteArr[5] = (byte)var2;
-      if (var1 != 0) {
-         this.a_obj_f.p_byteArr[0] = this.a_obj_f.p_byteArr[2] = this.a_obj_f.p_byteArr[3] = this.a_obj_f.p_byteArr[4] = (byte)var1;
+   private void b_void6(int intValue1, int intValue2, int intValue3) {
+      this.resources.p_byteArr[1] = this.resources.p_byteArr[2] = (byte)this.a_shortArr2[0][17];
+      this.resources.p_byteArr[5] = (byte)intValue2;
+      if (intValue1 != 0) {
+         this.resources.p_byteArr[0] = this.resources.p_byteArr[2] = this.resources.p_byteArr[3] = this.resources.p_byteArr[4] = (byte)intValue1;
       }
 
-      this.O_int = var3;
+      this.O_int = intValue3;
 
-      for (this.N_int = var1 != this.a_shortArr2[0][17] && var1 != 0 ? 3 : 2; this.O_int <= 50 && this.N_int <= 4; this.O_int++) {
+      for (this.N_int = intValue1 != this.a_shortArr2[0][17] && intValue1 != 0 ? 3 : 2; this.O_int <= 50 && this.N_int <= 4; this.O_int++) {
          if (this.a_byteArr[1919 + this.O_int] > 0
             && this.a_byteArr[1414 + this.O_int] >= 12
-            && this.O_int != var1
+            && this.O_int != intValue1
             && this.O_int != this.a_shortArr2[0][17]) {
-            this.a_obj_f.p_byteArr[this.N_int] = (byte)this.O_int;
+            this.resources.p_byteArr[this.N_int] = (byte)this.O_int;
             this.N_int++;
          }
       }
    }
 
    // $VF: renamed from: c (boolean) void
-   private void c_void2(boolean var1) {
+   private void c_void2(boolean flag1) {
       this.e_bool = false;
       this.H_byte = 0;
       if (this.a_byteArr[8994] == this.a_shortArr2[0][17]) {
@@ -3480,17 +3478,17 @@ public final class GameEngine {
             this.Q_int = this.a_byteArr[1717 + this.O_int] > this.a_byteArr[1616 + this.O_int]
                ? this.a_byteArr[1717 + this.O_int]
                : this.a_byteArr[1616 + this.O_int];
-            GameEngine var10000 = this;
-            int var10001 = 1;
-            int var10002 = var1 && this.e_bool ? 1 : 0;
+            GameEngine engineRef1 = this;
+            int intValue1 = 1;
+            int intValue2 = flag1 && this.e_bool ? 1 : 0;
 
             while (true) {
-               var10000.N_int = var10001 + var10002;
+               engineRef1.N_int = intValue1 + intValue2;
                if (this.N_int >= 4) {
                   break;
                }
 
-               if (this.e_byteArr2[this.N_int][1] < this.Q_int || var1 && !this.e_bool && this.a_byteArr[6464 + this.O_int] == 57) {
+               if (this.e_byteArr2[this.N_int][1] < this.Q_int || flag1 && !this.e_bool && this.a_byteArr[6464 + this.O_int] == 57) {
                   for (this.P_int = 3; this.P_int > this.N_int; this.P_int--) {
                      this.e_byteArr2[this.P_int][0] = this.e_byteArr2[this.P_int - 1][0];
                      this.e_byteArr2[this.P_int][1] = this.e_byteArr2[this.P_int - 1][1];
@@ -3498,22 +3496,22 @@ public final class GameEngine {
 
                   this.e_byteArr2[this.N_int][0] = (byte)this.O_int;
                   this.e_byteArr2[this.N_int][1] = (byte)this.Q_int;
-                  if (var1 && !this.e_bool && this.a_byteArr[6464 + this.O_int] == 57) {
+                  if (flag1 && !this.e_bool && this.a_byteArr[6464 + this.O_int] == 57) {
                      this.e_bool = true;
                   }
                   break;
                }
 
-               var10000 = this;
-               var10001 = this.N_int;
-               var10002 = 1;
+               engineRef1 = this;
+               intValue1 = this.N_int;
+               intValue2 = 1;
             }
          }
       }
 
       for (this.G_byte = 1; this.G_byte < 4 && this.e_byteArr2[this.G_byte][0] != 0; this.G_byte++) {
          this.c_void3(this.e_byteArr2[this.G_byte][0], this.G_byte);
-         if (this.G_byte == 1 && var1) {
+         if (this.G_byte == 1 && flag1) {
             this.a_byteArr[6464 + this.e_byteArr2[this.G_byte][0]] = 57;
          }
       }
@@ -3522,21 +3520,21 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: c (int, int) void
-   private void c_void3(int var1, int var2) {
-      this.e_byteArr2[var2][0] = (byte)var1;
+   private void c_void3(int intValue1, int intValue2) {
+      this.e_byteArr2[intValue2][0] = (byte)intValue1;
 
       for (this.N_int = 1; this.N_int < 8; this.N_int++) {
-         this.e_byteArr2[var2][this.N_int] = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[186] + this.N_int]] + var1];
-         this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[186] + this.N_int]] + var1] = (byte)(
+         this.e_byteArr2[intValue2][this.N_int] = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[186] + this.N_int]] + intValue1];
+         this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[186] + this.N_int]] + intValue1] = (byte)(
             this.b_byteArr[this.a_shortArr[186] + this.N_int] == 29
-               ? this.b_byteArr[this.a_shortArr[188] + var2]
-               : (this.b_byteArr[this.a_shortArr[186] + this.N_int] == 46 ? var2 + 1 : this.b_byteArr[this.a_shortArr[187] + this.N_int])
+               ? this.b_byteArr[this.a_shortArr[188] + intValue2]
+               : (this.b_byteArr[this.a_shortArr[186] + this.N_int] == 46 ? intValue2 + 1 : this.b_byteArr[this.a_shortArr[187] + this.N_int])
          );
       }
 
-      if (var1 != this.a_shortArr2[0][17] || this.H_byte == 0) {
-         this.a_byteArr[4545 + var1] = this.a_byteArr[8994];
-         this.a_byteArr[8994] = (byte)var1;
+      if (intValue1 != this.a_shortArr2[0][17] || this.H_byte == 0) {
+         this.a_byteArr[4545 + intValue1] = this.a_byteArr[8994];
+         this.a_byteArr[8994] = (byte)intValue1;
       }
    }
 
@@ -3935,81 +3933,81 @@ public final class GameEngine {
             return;
          case 97:
             for (this.R_int = 3; this.R_int >= 0; this.R_int--) {
-               if (this.a_obj_f.c_byteArr3[this.u_int][this.R_int][2] >= 0) {
+               if (this.resources.c_byteArr3[this.u_int][this.R_int][2] >= 0) {
                   for (this.S_int = 0; this.S_int < 4; this.S_int++) {
-                     this.a_obj_f.c_byteArr3[this.u_int][this.R_int + 1][this.S_int] = this.a_obj_f.c_byteArr3[this.u_int][this.R_int][this.S_int];
+                     this.resources.c_byteArr3[this.u_int][this.R_int + 1][this.S_int] = this.resources.c_byteArr3[this.u_int][this.R_int][this.S_int];
                   }
                }
             }
 
-            this.a_obj_f.c_byteArr3[this.u_int][0][0] = this.a_byteArr[3131 + this.v_int];
-            this.a_obj_f.c_byteArr3[this.u_int][0][1] = this.a_byteArr[3232 + this.v_int];
-            this.a_obj_f.c_byteArr3[this.u_int][0][2] = 0;
-            this.a_obj_f.c_byteArr3[this.u_int][0][3] = (byte)(this.u_int ^ 1);
+            this.resources.c_byteArr3[this.u_int][0][0] = this.a_byteArr[3131 + this.v_int];
+            this.resources.c_byteArr3[this.u_int][0][1] = this.a_byteArr[3232 + this.v_int];
+            this.resources.c_byteArr3[this.u_int][0][2] = 0;
+            this.resources.c_byteArr3[this.u_int][0][3] = (byte)(this.u_int ^ 1);
       }
    }
 
    // $VF: renamed from: a (int, int) boolean
-   private boolean a_bool5(int var1, int var2) {
-      if (var2 > 1) {
-         this.a_byteArr[8080 + var1] = -100;
-         this.a_byteArr[7979 + var1] = (byte)(this.a_byteArr[7979 + var1] & 251);
+   private boolean a_bool5(int intValue1, int intValue2) {
+      if (intValue2 > 1) {
+         this.a_byteArr[8080 + intValue1] = -100;
+         this.a_byteArr[7979 + intValue1] = (byte)(this.a_byteArr[7979 + intValue1] & 251);
       }
 
-      if (this.a_byteArr[1919 + var1] >= this.a_byteArr[6767 + var1] && var2 > 0) {
+      if (this.a_byteArr[1919 + intValue1] >= this.a_byteArr[6767 + intValue1] && intValue2 > 0) {
          return true;
       } else {
-         if (this.u_int == 0 || var2 < 0) {
-            this.a_obj_f.a_obj_c.f_byteArr[var1] = (byte)(this.a_obj_f.a_obj_c.f_byteArr[var1] + var2);
+         if (this.u_int == 0 || intValue2 < 0) {
+            this.resources.renderer.f_byteArr[intValue1] = (byte)(this.resources.renderer.f_byteArr[intValue1] + intValue2);
          }
 
-         this.a_byteArr[1919 + var1] = (byte)b_int2(this.a_byteArr[1919 + var1] + var2, 0, this.a_byteArr[6767 + var1]);
-         return this.a_byteArr[1919 + var1] >= this.a_byteArr[6767 + var1];
+         this.a_byteArr[1919 + intValue1] = (byte)b_int2(this.a_byteArr[1919 + intValue1] + intValue2, 0, this.a_byteArr[6767 + intValue1]);
+         return this.a_byteArr[1919 + intValue1] >= this.a_byteArr[6767 + intValue1];
       }
    }
 
    // $VF: renamed from: c (byte) void
-   private void c_void4(byte var1) {
+   private void c_void4(byte byteValue1) {
       for (this.R_int = this.u_int * 50 + 1; this.R_int <= (this.u_int + 1) * 50; this.R_int++) {
          if (this.a_byteArr[1919 + this.R_int] == 0) {
             if (this.u_int == 1) {
-               this.a_obj_f.e_void4(var1);
-               this.a_obj_f.f_void4(var1);
-               this.a_void19((byte)17, this.a_shortArr2[0][17], var1);
+               this.resources.e_void4(byteValue1);
+               this.resources.f_void4(byteValue1);
+               this.a_void19((byte)17, this.a_shortArr2[0][17], byteValue1);
             }
 
-            this.a_byteArr[4444 + var1] = 0;
+            this.a_byteArr[4444 + byteValue1] = 0;
 
             for (this.S_int = 0; this.S_int < 83; this.S_int++) {
-               this.a_byteArr[this.b_shortArr[this.S_int] + this.R_int] = this.a_byteArr[this.b_shortArr[this.S_int] + var1];
+               this.a_byteArr[this.b_shortArr[this.S_int] + this.R_int] = this.a_byteArr[this.b_shortArr[this.S_int] + byteValue1];
             }
 
             for (this.S_int = 0; this.S_int < 65; this.S_int++) {
-               this.a_byteArr3[0][this.R_int][this.S_int] = this.a_byteArr3[0][var1][this.S_int];
-               this.a_byteArr3[1][this.R_int][this.S_int] = this.a_byteArr3[1][var1][this.S_int];
+               this.a_byteArr3[0][this.R_int][this.S_int] = this.a_byteArr3[0][byteValue1][this.S_int];
+               this.a_byteArr3[1][this.R_int][this.S_int] = this.a_byteArr3[1][byteValue1][this.S_int];
             }
 
             this.a_shortArr2[this.u_int][11]++;
             this.a_shortArr2[this.u_int ^ 1][11]--;
             this.a_shortArr2[this.u_int][12 + this.a_byteArr[1515 + this.R_int]]++;
             this.a_shortArr2[this.u_int ^ 1][12 + this.a_byteArr[1515 + this.R_int]]--;
-            this.a_byteArr[1919 + var1] = 0;
+            this.a_byteArr[1919 + byteValue1] = 0;
             this.b_byteArr2[this.a_byteArr[101 + this.R_int]][this.a_byteArr[0 + this.R_int]] = (byte)this.R_int;
-            this.a_obj_f.b_void6((byte)this.R_int);
-            this.a_obj_f.g_void2((byte)this.R_int);
+            this.resources.b_void6((byte)this.R_int);
+            this.resources.g_void2((byte)this.R_int);
             return;
          }
       }
    }
 
    // $VF: renamed from: j (int) void
-   private void j_void(int var1) {
+   private void j_void(int intValue1) {
       for (this.S_int = this.a_byteArr[8993 + this.a_byteArr[4444 + this.v_int]];
          this.S_int > 0;
          this.S_int = this.a_byteArr[4545 + this.S_int]
       ) {
          if (this.S_int != this.v_int) {
-            if (var1 == 0) {
+            if (intValue1 == 0) {
                this.a_byteArr[505 + this.S_int] = (byte)b_int2(
                   this.a_byteArr[505 + this.S_int] + (this.a_byteArr[7272 + this.v_int] + 2) / 2, 0, 99
                );
@@ -4042,18 +4040,18 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: b (int, int) boolean
-   private boolean b_bool4(int var1, int var2) {
+   private boolean b_bool4(int intValue1, int intValue2) {
       this.g_bool = true;
 
-      for (this.T = this.b_byteArr[this.a_shortArr[69] + var1 * 4 + var2];
-         this.T < this.b_byteArr[this.a_shortArr[69] + var1 * 4 + var2 + 1];
+      for (this.T = this.b_byteArr[this.a_shortArr[69] + intValue1 * 4 + intValue2];
+         this.T < this.b_byteArr[this.a_shortArr[69] + intValue1 * 4 + intValue2 + 1];
          this.T++
       ) {
          if (!this.a_bool6(
-            this.b_byteArr[this.a_shortArr[65] + this.b_byteArr[this.a_shortArr[68] + var1] + this.T],
-            this.b_byteArr[this.a_shortArr[66] + this.b_byteArr[this.a_shortArr[68] + var1] + this.T],
-            this.b_byteArr[this.a_shortArr[67] + this.b_byteArr[this.a_shortArr[68] + var1] + this.T],
-            this.b_byteArr[this.a_shortArr[63] + this.b_byteArr[this.a_shortArr[68] + var1] + this.T]
+            this.b_byteArr[this.a_shortArr[65] + this.b_byteArr[this.a_shortArr[68] + intValue1] + this.T],
+            this.b_byteArr[this.a_shortArr[66] + this.b_byteArr[this.a_shortArr[68] + intValue1] + this.T],
+            this.b_byteArr[this.a_shortArr[67] + this.b_byteArr[this.a_shortArr[68] + intValue1] + this.T],
+            this.b_byteArr[this.a_shortArr[63] + this.b_byteArr[this.a_shortArr[68] + intValue1] + this.T]
          )) {
             this.g_bool = false;
          }
@@ -4063,13 +4061,13 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (byte, byte, byte, byte) boolean
-   private boolean a_bool6(byte var1, byte var2, byte var3, byte var4) {
-      this.U = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[44] + var1]] + this.v_int];
-      if (this.a_obj_f.a_int2(16777215, 100) < var2 && this.U * var4 < var3 * var4) {
-         this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[44] + var1]] + this.v_int] = (byte)(
-            this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[44] + var1]] + this.v_int] + var4
+   private boolean a_bool6(byte byteValue1, byte byteValue2, byte byteValue3, byte byteValue4) {
+      this.U = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[44] + byteValue1]] + this.v_int];
+      if (this.resources.a_int2(16777215, 100) < byteValue2 && this.U * byteValue4 < byteValue3 * byteValue4) {
+         this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[44] + byteValue1]] + this.v_int] = (byte)(
+            this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[44] + byteValue1]] + this.v_int] + byteValue4
          );
-         if (var1 == 4) {
+         if (byteValue1 == 4) {
             if (this.a_byteArr[6767 + this.v_int] >= this.b_byteArr[this.a_shortArr[98] + this.a_byteArr[1414 + this.v_int]]) {
                this.a_byteArr[6767 + this.v_int] = this.b_byteArr[this.a_shortArr[98] + this.a_byteArr[1414 + this.v_int]];
             }
@@ -4079,30 +4077,30 @@ public final class GameEngine {
          }
       }
 
-      return this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[44] + var1]] + this.v_int] * var4 >= var3 * var4 && var2 >= 100;
+      return this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[44] + byteValue1]] + this.v_int] * byteValue4 >= byteValue3 * byteValue4 && byteValue2 >= 100;
    }
 
    // $VF: renamed from: a (int, boolean, int) boolean
-   private boolean a_bool7(int var1, boolean var2, int var3) {
-      this.S_int = var1 - 28;
-      this.f_bool = this.b_bool5(this.S_int, var2, var3);
+   private boolean a_bool7(int intValue1, boolean flag1, int intValue2) {
+      this.S_int = intValue1 - 28;
+      this.f_bool = this.b_bool5(this.S_int, flag1, intValue2);
       if (!this.f_bool) {
-         if (var2) {
+         if (flag1) {
             this.M();
             this.N();
          }
 
          return false;
       } else {
-         int var4 = var1 == 37 ? b_int2(9, 1, this.a_shortArr2[this.u_int][1]) : 0;
-         if (var1 != 99) {
+         int intValue3 = intValue1 == 37 ? b_int2(9, 1, this.a_shortArr2[this.u_int][1]) : 0;
+         if (intValue1 != 99) {
             for (this.R_int = this.b_byteArr[this.a_shortArr[73] + this.S_int];
                this.R_int < this.b_byteArr[this.a_shortArr[73] + this.S_int + 1];
                this.R_int++
             ) {
                this.a_shortArr2[this.u_int][this.b_byteArr[this.a_shortArr[71] + this.R_int]] = (short)(
                   this.a_shortArr2[this.u_int][this.b_byteArr[this.a_shortArr[71] + this.R_int]]
-                     - (var1 == 37 ? var4 : this.b_byteArr[this.a_shortArr[72] + this.R_int])
+                     - (intValue1 == 37 ? intValue3 : this.b_byteArr[this.a_shortArr[72] + this.R_int])
                );
             }
          } else {
@@ -4132,7 +4130,7 @@ public final class GameEngine {
                         : this.b_byteArr[this.a_shortArr[138] + (7 + this.a_byteArr[9115 + this.W] - 1) * 26 + this.a_byteArr[8749 + this.W]]
                            - this.b_byteArr[this.a_shortArr[138] + (7 + this.a_byteArr[9115 + this.W]) * 26 + this.a_byteArr[8749 + this.W]]
                   );
-                  if (!var2) {
+                  if (!flag1) {
                      this.g_byteArr2[2][this.aK] = (byte)(this.g_byteArr2[2][this.aK] * -1);
                   }
                   break;
@@ -4140,23 +4138,23 @@ public final class GameEngine {
             }
          }
 
-         if (var2) {
-            if (this.a_byteArr[2828 + var3] == 99) {
-               this.a_byteArr[3636 + var3] = 9;
-               this.a_byteArr[3535 + var3] = 2;
-            } else if (this.a_byteArr[2828 + var3] >= 44) {
-               if (this.a_byteArr[6565 + var3] <= 5) {
-                  this.a_shortArr2[this.u_int][this.b_byteArr[this.a_shortArr[88] + this.a_byteArr[6565 + var3]]] = (short)(
-                     this.a_shortArr2[this.u_int][this.b_byteArr[this.a_shortArr[88] + this.a_byteArr[6565 + var3]]]
-                        + this.b_byteArr[this.a_shortArr[105] + this.a_byteArr[6565 + var3]]
+         if (flag1) {
+            if (this.a_byteArr[2828 + intValue2] == 99) {
+               this.a_byteArr[3636 + intValue2] = 9;
+               this.a_byteArr[3535 + intValue2] = 2;
+            } else if (this.a_byteArr[2828 + intValue2] >= 44) {
+               if (this.a_byteArr[6565 + intValue2] <= 5) {
+                  this.a_shortArr2[this.u_int][this.b_byteArr[this.a_shortArr[88] + this.a_byteArr[6565 + intValue2]]] = (short)(
+                     this.a_shortArr2[this.u_int][this.b_byteArr[this.a_shortArr[88] + this.a_byteArr[6565 + intValue2]]]
+                        + this.b_byteArr[this.a_shortArr[105] + this.a_byteArr[6565 + intValue2]]
                   );
                }
 
-               this.a_byteArr[6565 + var3] = (byte)(this.a_byteArr[2828 + var3] - 44);
-               this.a_obj_f.d_void5(this.a_byteArr[4444 + var3]);
+               this.a_byteArr[6565 + intValue2] = (byte)(this.a_byteArr[2828 + intValue2] - 44);
+               this.resources.d_void5(this.a_byteArr[4444 + intValue2]);
             } else {
-               this.a_byteArr[3636 + var3] = (byte)(var1 == 37 ? var4 : this.b_byteArr[this.a_shortArr[75] + this.S_int]);
-               this.a_byteArr[3535 + var3] = this.b_byteArr[this.a_shortArr[74] + this.S_int];
+               this.a_byteArr[3636 + intValue2] = (byte)(intValue1 == 37 ? intValue3 : this.b_byteArr[this.a_shortArr[75] + this.S_int]);
+               this.a_byteArr[3535 + intValue2] = this.b_byteArr[this.a_shortArr[74] + this.S_int];
             }
          }
 
@@ -4165,9 +4163,9 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: b (int, boolean, int) boolean
-   private boolean b_bool5(int var1, boolean var2, int var3) {
-      if (var1 == 71) {
-         this.W = var2 ? -this.b_byteArr2[this.a_byteArr[6363 + var3]][this.a_byteArr[6262 + var3]] : this.v_int;
+   private boolean b_bool5(int intValue1, boolean flag1, int intValue2) {
+      if (intValue1 == 71) {
+         this.W = flag1 ? -this.b_byteArr2[this.a_byteArr[6363 + intValue2]][this.a_byteArr[6262 + intValue2]] : this.v_int;
          if (this.a_byteArr[8627 + this.W] == 2) {
             this.V = this.a_byteArr[8566 + this.W] - this.a_byteArr[8505 + this.W];
 
@@ -4176,10 +4174,10 @@ public final class GameEngine {
                   < this.b_byteArr[this.a_shortArr[138] + (10 + this.R_int) * 26 + this.a_byteArr[8749 + this.W]]
                      * this.V
                      / (this.a_byteArr[8566 + this.W] * 2)) {
-                  this.a_byteArr[3535 + var3] = this.b_byteArr[this.a_shortArr[76] + 2 + this.R_int];
+                  this.a_byteArr[3535 + intValue2] = this.b_byteArr[this.a_shortArr[76] + 2 + this.R_int];
                   if (this.d_shortArr[1] < 0 && this.u_int == 0) {
                      this.d_shortArr[1] = 0;
-                     this.a_obj_f.a_void19((byte)9, (byte)0, (byte)0, (byte)0);
+                     this.resources.a_void19((byte)9, (byte)0, (byte)0, (byte)0);
                   }
 
                   return false;
@@ -4191,10 +4189,10 @@ public final class GameEngine {
             for (this.R_int = 0; this.R_int < 3; this.R_int++) {
                if (this.a_shortArr2[this.u_int][2 + this.R_int]
                   < this.b_byteArr[this.a_shortArr[138] + (13 + this.R_int) * 26 + this.a_byteArr[8749 + this.W]]) {
-                  this.a_byteArr[3535 + var3] = this.b_byteArr[this.a_shortArr[76] + 2 + this.R_int];
+                  this.a_byteArr[3535 + intValue2] = this.b_byteArr[this.a_shortArr[76] + 2 + this.R_int];
                   if (this.d_shortArr[1] < 0 && this.u_int == 0) {
                      this.d_shortArr[1] = 0;
-                     this.a_obj_f.a_void19((byte)9, (byte)0, (byte)0, (byte)0);
+                     this.resources.a_void19((byte)9, (byte)0, (byte)0, (byte)0);
                   }
 
                   return false;
@@ -4204,14 +4202,14 @@ public final class GameEngine {
             return true;
          }
       } else {
-         for (this.R_int = this.b_byteArr[this.a_shortArr[73] + var1]; this.R_int < this.b_byteArr[this.a_shortArr[73] + var1 + 1]; this.R_int++) {
+         for (this.R_int = this.b_byteArr[this.a_shortArr[73] + intValue1]; this.R_int < this.b_byteArr[this.a_shortArr[73] + intValue1 + 1]; this.R_int++) {
             if (this.a_shortArr2[this.u_int][this.b_byteArr[this.a_shortArr[71] + this.R_int]] < this.b_byteArr[this.a_shortArr[72] + this.R_int]
-               && this.a_byteArr[6565 + var3] != var1 - 16) {
-               if (var1 < 16) {
-                  this.a_byteArr[3535 + var3] = this.b_byteArr[this.a_shortArr[76] + this.b_byteArr[this.a_shortArr[71] + this.R_int]];
+               && this.a_byteArr[6565 + intValue2] != intValue1 - 16) {
+               if (intValue1 < 16) {
+                  this.a_byteArr[3535 + intValue2] = this.b_byteArr[this.a_shortArr[76] + this.b_byteArr[this.a_shortArr[71] + this.R_int]];
                   if (this.d_shortArr[1] < 0 && this.u_int == 0) {
                      this.d_shortArr[1] = 0;
-                     this.a_obj_f.a_void19((byte)9, (byte)0, (byte)0, (byte)0);
+                     this.resources.a_void19((byte)9, (byte)0, (byte)0, (byte)0);
                   }
                }
 
@@ -4235,7 +4233,7 @@ public final class GameEngine {
                   - this.b_byteArr[this.a_shortArr[104] + this.Y]
             );
             this.a_byteArr[6565 + this.v_int] = this.b_byteArr[this.a_shortArr[103] + this.Y];
-            this.a_obj_f.d_void5(this.a_byteArr[4444 + this.v_int]);
+            this.resources.d_void5(this.a_byteArr[4444 + this.v_int]);
             return;
          }
       }
@@ -4248,7 +4246,7 @@ public final class GameEngine {
       this.R_int = this.b_byteArr[this.a_shortArr[169] + this.a_byteArr[3939 + this.v_int]];
       this.a_byteArr[1313 + this.v_int] = (byte)(
          this.b_byteArr[this.a_shortArr[168] + 0 + this.R_int]
-            + this.a_obj_f
+            + this.resources
                .a_int2(16777215, this.b_byteArr[this.a_shortArr[168] + 2 + this.R_int] - this.b_byteArr[this.a_shortArr[168] + 0 + this.R_int] + 1)
       );
    }
@@ -4291,8 +4289,8 @@ public final class GameEngine {
             this.a_bool4(
                0,
                this.a_byteArr[4949 + this.v_int] * 2 + 1,
-               b_int2(this.a_byteArr[0 + this.v_int] - 3 + this.a_obj_f.a_int2(255, 6), 0, this.a_obj_f.c_short - 1),
-               b_int2(this.a_byteArr[101 + this.v_int] - 3 + this.a_obj_f.a_int2(255, 6), 0, this.a_obj_f.d_short - 1)
+               b_int2(this.a_byteArr[0 + this.v_int] - 3 + this.resources.a_int2(255, 6), 0, this.resources.c_short - 1),
+               b_int2(this.a_byteArr[101 + this.v_int] - 3 + this.resources.a_int2(255, 6), 0, this.resources.d_short - 1)
             );
          }
       } else if (this.a_byteArr[2828 + this.v_int] == 109) {
@@ -4323,31 +4321,31 @@ public final class GameEngine {
       } else if (this.a_byteArr[2828 + this.v_int] >= 94 && this.a_byteArr[2828 + this.v_int] <= 97) {
          this.aO = 0;
 
-         while (this.aO < 30 && this.a_obj_f.b_byteArr3[this.u_int][0][this.aO] != this.a_byteArr[4040 + this.v_int]) {
+         while (this.aO < 30 && this.resources.b_byteArr3[this.u_int][0][this.aO] != this.a_byteArr[4040 + this.v_int]) {
             this.aO++;
          }
 
-         if (this.a_obj_f.b_byteArr3[this.u_int][2][this.aO] < 0) {
+         if (this.resources.b_byteArr3[this.u_int][2][this.aO] < 0) {
             this.ap();
          } else if (this.a_byteArr[2828 + this.v_int] != 97) {
-            this.a_byteArr[3131 + this.v_int] = this.a_byteArr[0 + this.a_obj_f.b_byteArr3[this.u_int][2][this.aO]];
-            this.a_byteArr[3232 + this.v_int] = this.a_byteArr[101 + this.a_obj_f.b_byteArr3[this.u_int][2][this.aO]];
-            this.a_byteArr[4444 + this.v_int] = this.a_byteArr[4747 + this.v_int] = this.a_obj_f.b_byteArr3[this.u_int][2][this.aO];
+            this.a_byteArr[3131 + this.v_int] = this.a_byteArr[0 + this.resources.b_byteArr3[this.u_int][2][this.aO]];
+            this.a_byteArr[3232 + this.v_int] = this.a_byteArr[101 + this.resources.b_byteArr3[this.u_int][2][this.aO]];
+            this.a_byteArr[4444 + this.v_int] = this.a_byteArr[4747 + this.v_int] = this.resources.b_byteArr3[this.u_int][2][this.aO];
          } else {
-            this.a_byteArr[3131 + this.v_int] = this.a_obj_f.b_byteArr3[this.u_int][2][this.aO];
-            this.a_byteArr[3232 + this.v_int] = this.a_obj_f.b_byteArr3[this.u_int][3][this.aO];
+            this.a_byteArr[3131 + this.v_int] = this.resources.b_byteArr3[this.u_int][2][this.aO];
+            this.a_byteArr[3232 + this.v_int] = this.resources.b_byteArr3[this.u_int][3][this.aO];
             this.g_void(2);
          }
       } else {
          if (this.a_byteArr[2828 + this.v_int] == 27) {
             for (this.aN = 0; this.aN < 10; this.aN++) {
-               this.aP = this.a_obj_f.a_byteArr3[this.u_int][this.aN][11];
+               this.aP = this.resources.a_byteArr3[this.u_int][this.aN][11];
                if (this.aP > 0 && this.v_int == this.a_byteArr[8810 + this.aP]) {
                   for (this.aO = 0; this.aO < 30; this.aO++) {
-                     if (this.a_obj_f.f_byteArr2[0][this.aO] == this.aP
-                        && this.a_obj_f.f_byteArr2[1][this.aO] == this.a_obj_f.a_byteArr3[this.u_int][this.aN][10] + 14) {
-                        this.a_byteArr[3131 + this.v_int] = this.a_obj_f.f_byteArr2[2][this.aO];
-                        this.a_byteArr[3232 + this.v_int] = this.a_obj_f.f_byteArr2[3][this.aO];
+                     if (this.resources.f_byteArr2[0][this.aO] == this.aP
+                        && this.resources.f_byteArr2[1][this.aO] == this.resources.a_byteArr3[this.u_int][this.aN][10] + 14) {
+                        this.a_byteArr[3131 + this.v_int] = this.resources.f_byteArr2[2][this.aO];
+                        this.a_byteArr[3232 + this.v_int] = this.resources.f_byteArr2[3][this.aO];
                         this.g_void(2);
                         return;
                      }
@@ -4381,27 +4379,27 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (int) boolean
-   final boolean a_bool8(int var1) {
+   final boolean a_bool8(int intValue1) {
       this.aa = 1000000;
       this.h_bool = false;
-      boolean var2 = var1 == 6;
+      boolean flag1 = intValue1 == 6;
 
       for (this.Z = this.u_int * 30 + 1; this.Z <= (this.u_int + 1) * 30; this.Z++) {
          if (this.a_byteArr[8505 + this.Z] > 0
             && (
-               this.a_byteArr[8749 + this.Z] == var1
-                  || var2
+               this.a_byteArr[8749 + this.Z] == intValue1
+                  || flag1
                      && this.a_byteArr[8749 + this.Z] == 16
                      && this.a_byteArr[9237 + this.Z] == 6
                      && this.a_byteArr[2828 + this.v_int] <= 25
             )) {
             this.h_bool = true;
-            if ((this.a_byteArr[8627 + this.Z] == 0 || var1 == 6)
-               && (this.b_byteArr[this.a_shortArr[138] + 156 + var1] < 0 || this.a_byteArr[8810 + this.Z] >= 1)
+            if ((this.a_byteArr[8627 + this.Z] == 0 || intValue1 == 6)
+               && (this.b_byteArr[this.a_shortArr[138] + 156 + intValue1] < 0 || this.a_byteArr[8810 + this.Z] >= 1)
                && (
                   this.a_byteArr[8932 + this.Z] <= 0
-                     || this.a_byteArr[8932 + this.Z] < this.b_byteArr[this.a_shortArr[138] + (this.a_byteArr[9115 + this.Z] - 1) * 26 + var1]
-                     || var1 == 6
+                     || this.a_byteArr[8932 + this.Z] < this.b_byteArr[this.a_shortArr[138] + (this.a_byteArr[9115 + this.Z] - 1) * 26 + intValue1]
+                     || intValue1 == 6
                )) {
                this.ab = (
                         this.a_byteArr[8383 + this.Z]
@@ -4423,8 +4421,8 @@ public final class GameEngine {
                            + this.b_byteArr[this.a_shortArr[138] + 130 + this.a_byteArr[8749 + this.Z]] / 2
                            - this.a_byteArr[101 + this.v_int]
                      );
-               if (this.aa > this.ab || var2 && this.a_byteArr[8749 + this.Z] == var1) {
-                  var2 = this.a_byteArr[8749 + this.Z] != var1;
+               if (this.aa > this.ab || flag1 && this.a_byteArr[8749 + this.Z] == intValue1) {
+                  flag1 = this.a_byteArr[8749 + this.Z] != intValue1;
                   this.aa = this.ab;
                   this.ac = this.Z;
                }
@@ -4470,12 +4468,12 @@ public final class GameEngine {
             return false;
          }
       } else if ((this.a_byteArr[7979 + this.v_int] & 32) != 0
-         || this.a_obj_f.N_bool
+         || this.resources.N_bool
             && this.a_byteArr[3131 + this.v_int] == this.a_byteArr[0 + this.v_int]
             && this.a_byteArr[3232 + this.v_int] == this.a_byteArr[101 + this.v_int]
-            && (this.a_obj_f.c_int & 31) <= this.a_byteArr[1010 + this.v_int]) {
+            && (this.resources.c_int & 31) <= this.a_byteArr[1010 + this.v_int]) {
          if (this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] == this.v_int) {
-            if (this.a_obj_f.N_bool && (this.a_byteArr[7979 + this.v_int] & 64) != 0) {
+            if (this.resources.N_bool && (this.a_byteArr[7979 + this.v_int] & 64) != 0) {
                this.a_byteArr[3636 + this.v_int] = 0;
                if (this.a_byteArr[2828 + this.v_int] != 50) {
                   if (this.a_bool8(6) && this.a_byteArr[6565 + this.v_int] == 9) {
@@ -4488,8 +4486,8 @@ public final class GameEngine {
                   this.a_byteArr[7979 + this.v_int] = (byte)(this.a_byteArr[7979 + this.v_int] & 191);
                }
             } else {
-               this.a_byteArr[3131 + this.v_int] = this.a_obj_f.q_byteArr[0];
-               this.a_byteArr[3232 + this.v_int] = this.a_obj_f.q_byteArr[1];
+               this.a_byteArr[3131 + this.v_int] = this.resources.q_byteArr[0];
+               this.a_byteArr[3232 + this.v_int] = this.resources.q_byteArr[1];
                this.a_byteArr[7979 + this.v_int] = (byte)(this.a_byteArr[7979 + this.v_int] & 223);
                if (this.a_byteArr[0 + this.v_int] != this.a_byteArr[3131 + this.v_int]
                   || this.a_byteArr[101 + this.v_int] != this.a_byteArr[3232 + this.v_int]) {
@@ -4499,7 +4497,7 @@ public final class GameEngine {
                   return true;
                }
             }
-         } else if ((this.a_obj_f.N_bool || this.a_byteArr[2020 + this.v_int] > 30 || this.a_byteArr[8749 + this.a_byteArr[4444 + this.v_int]] != 4)
+         } else if ((this.resources.N_bool || this.a_byteArr[2020 + this.v_int] > 30 || this.a_byteArr[8749 + this.a_byteArr[4444 + this.v_int]] != 4)
             && this.a_byteArr[1313 + this.v_int] > 0) {
             this.a_byteArr[2828 + this.v_int] = 87;
             this.a_byteArr[6161 + this.v_int] = 3;
@@ -4514,9 +4512,9 @@ public final class GameEngine {
 
    // $VF: renamed from: n () boolean
    private boolean n_bool() {
-      if (this.a_obj_f.q_byte != 3
-         && !this.a_obj_f.N_bool
-         && (!this.a_obj_f.L_bool && this.u_int != 1 || (this.a_byteArr[7979 + this.v_int] & 64) == 0)
+      if (this.resources.q_byte != 3
+         && !this.resources.N_bool
+         && (!this.resources.L_bool && this.u_int != 1 || (this.a_byteArr[7979 + this.v_int] & 64) == 0)
          && this.a_byteArr[1414 + this.v_int] >= 12) {
          if (this.u_int == 0) {
             if (this.o_bool()) {
@@ -4536,7 +4534,7 @@ public final class GameEngine {
                this.a_void7(this.v_int, (byte)87);
                this.g_void(1);
             } else {
-               this.aJ = this.a_obj_f.a_int2(255, 3);
+               this.aJ = this.resources.a_int2(255, 3);
                if (this.a_byteArr[3434 + this.v_int] > 0
                   && this.a_byteArr[8627 + this.a_byteArr[3434 + this.v_int]] == 0
                   && this.a_byteArr[9237 + this.a_byteArr[3434 + this.v_int]] < 2) {
@@ -4592,8 +4590,8 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (int, byte) boolean
-   private boolean a_bool9(int var1, byte var2) {
-      if (this.a_bool8(var1)) {
+   private boolean a_bool9(int intValue1, byte byteValue1) {
+      if (this.a_bool8(intValue1)) {
          if (this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] != this.v_int) {
             this.a_void7(this.v_int, (byte)87);
          }
@@ -4602,7 +4600,7 @@ public final class GameEngine {
          return true;
       } else {
          if (!this.h_bool) {
-            this.a_void19(var2, this.v_int, this.v_int);
+            this.a_void19(byteValue1, this.v_int, this.v_int);
          }
 
          return false;
@@ -4610,36 +4608,36 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (boolean) boolean
-   private boolean a_bool10(boolean var1) {
-      if (!var1) {
+   private boolean a_bool10(boolean flag1) {
+      if (!flag1) {
          if (this.a_shortArr2[this.u_int][18] >= 0) {
             return false;
          }
 
-         if (this.a_obj_f.a_int2(65535, 10) < 4 || this.a_byteArr[505 + this.v_int] < 75) {
+         if (this.resources.a_int2(65535, 10) < 4 || this.a_byteArr[505 + this.v_int] < 75) {
             return false;
          }
       }
 
-      int var3 = this.a_obj_f.a_int2(65535, this.a_shortArr2[this.u_int][11] / 2 + 1);
+      int intValue1 = this.resources.a_int2(65535, this.a_shortArr2[this.u_int][11] / 2 + 1);
       this.ad = this.u_int * 50 + 1;
-      int var2 = 0;
+      int intValue2 = 0;
 
       while (true) {
-         if ((this.a_byteArr[505 + this.ad] >= 75 || var1)
-            && (!var1 || this.ad != this.R_int)
+         if ((this.a_byteArr[505 + this.ad] >= 75 || flag1)
+            && (!flag1 || this.ad != this.R_int)
             && this.a_byteArr[1515 + this.v_int] != this.a_byteArr[1515 + this.ad]
             && this.a_byteArr[1919 + this.ad] > 0
             && this.a_byteArr[1414 + this.ad] >= 12
             && this.a_byteArr[2828 + this.ad] < 109
             && (this.a_byteArr[8282 + this.ad] & 127) == 0) {
-            if (++var2 > var3) {
+            if (++intValue2 > intValue1) {
                break;
             }
          }
 
          if (this.ad > (this.u_int + 1) * 50) {
-            if (var2 == 0) {
+            if (intValue2 == 0) {
                break;
             }
 
@@ -4654,9 +4652,9 @@ public final class GameEngine {
       } else {
          for (this.x_int = 0; this.x_int < 10; this.x_int++) {
             if (this.c_byteArr2[4][this.x_int] == 0) {
-               var3 = this.a_obj_f.a_int2(65535, this.a_shortArr2[this.u_int][14] / 2 + 1);
+               intValue1 = this.resources.a_int2(65535, this.a_shortArr2[this.u_int][14] / 2 + 1);
                this.ae = this.u_int * 30 + 1;
-               var2 = 0;
+               intValue2 = 0;
 
                while (true) {
                   if (this.a_byteArr[8505 + this.ae] >= 0
@@ -4664,7 +4662,7 @@ public final class GameEngine {
                      && this.a_byteArr[8627 + this.ae] == 0
                      && this.a_byteArr[9237 + this.ae] == 0
                      && this.a_byteArr[8932 + this.ae] <= 1) {
-                     if (++var2 > var3) {
+                     if (++intValue2 > intValue1) {
                         this.a_shortArr2[this.u_int][18] = 0;
                         this.c_byteArr2[4][this.x_int] = 1;
                         this.c_byteArr2[0][this.x_int] = (byte)this.v_int;
@@ -4682,7 +4680,7 @@ public final class GameEngine {
                   }
 
                   if (this.ae > (this.u_int + 1) * 30) {
-                     if (var2 == 0) {
+                     if (intValue2 == 0) {
                         return false;
                      }
 
@@ -4738,13 +4736,13 @@ public final class GameEngine {
                this.a_byteArr[606 + this.c_byteArr2[1][this.x_int]] = 4;
                this.a_byteArr[4646 + this.c_byteArr2[0][this.x_int]] = -90;
                this.a_byteArr[9237 + this.c_byteArr2[5][this.x_int]] = 2;
-               this.a_obj_f.a_void13(this.c_byteArr2[5][this.x_int], true);
+               this.resources.a_void13(this.c_byteArr2[5][this.x_int], true);
             } else if (this.a_byteArr[3030 + this.v_int] == 6 && this.a_byteArr[3535 + this.C_int] == 15) {
                this.a_byteArr[3535 + this.C_int] = 0;
                this.a_byteArr[3535 + this.D_int] = 15;
                this.a_byteArr[3636 + this.C_int] = 0;
                this.a_byteArr[3636 + this.D_int] = 1;
-            } else if (this.a_byteArr[3030 + this.v_int] == this.a_obj_f.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255] - 1) {
+            } else if (this.a_byteArr[3030 + this.v_int] == this.resources.j_byteArr2[4][this.a_byteArr[2929 + this.v_int] & 255] - 1) {
                this.a_byteArr[3131 + this.C_int] = this.a_byteArr[8383 + this.c_byteArr2[5][this.x_int]];
                this.a_byteArr[3232 + this.C_int] = this.a_byteArr[8444 + this.c_byteArr2[5][this.x_int]];
                this.a_byteArr[3131 + this.D_int] = this.a_byteArr[8383 + this.c_byteArr2[5][this.x_int]];
@@ -4771,21 +4769,21 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: d (int, int) void
-   private void d_void3(int var1, int var2) {
-      this.ae = ((this.a_byteArr[8282 + var1] & 127) >> 1) - 1;
+   private void d_void3(int intValue1, int intValue2) {
+      this.ae = ((this.a_byteArr[8282 + intValue1] & 127) >> 1) - 1;
       if (this.ae >= 0) {
-         if (var2 > 0 && this.c_byteArr2[4][this.ae] != 3) {
+         if (intValue2 > 0 && this.c_byteArr2[4][this.ae] != 3) {
             return;
          }
 
          this.c_byteArr2[4][this.ae] = 0;
-         this.k_void(this.c_byteArr2[0 + (this.a_byteArr[8282 + var1] + 1 & 1)][this.ae]);
-         if (var2 < 0) {
-            this.k_void(var1);
+         this.k_void(this.c_byteArr2[0 + (this.a_byteArr[8282 + intValue1] + 1 & 1)][this.ae]);
+         if (intValue2 < 0) {
+            this.k_void(intValue1);
          }
 
-         if (this.a_byteArr[3535 + var1] == 15) {
-            this.a_byteArr[3636 + var1] = 0;
+         if (this.a_byteArr[3535 + intValue1] == 15) {
+            this.a_byteArr[3636 + intValue1] = 0;
          }
 
          this.a_byteArr[8282 + this.c_byteArr2[0][this.ae]] = (byte)(this.a_byteArr[8282 + this.c_byteArr2[0][this.ae]] & 128);
@@ -4797,10 +4795,10 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (int) void
-   final void a_void10(int var1) {
-      if (this.a_byteArr[9237 + var1] >= 1) {
+   final void a_void10(int intValue1) {
+      if (this.a_byteArr[9237 + intValue1] >= 1) {
          for (this.af = 0; this.af < 10; this.af++) {
-            if (this.c_byteArr2[4][this.af] != 0 && this.c_byteArr2[5][this.af] == var1) {
+            if (this.c_byteArr2[4][this.af] != 0 && this.c_byteArr2[5][this.af] == intValue1) {
                this.d_void3(this.c_byteArr2[0][this.af], -1);
                return;
             }
@@ -4809,40 +4807,40 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: k (int) void
-   private void k_void(int var1) {
-      if (this.a_byteArr[3535 + var1] == 15) {
-         this.a_byteArr[3636 + var1] = 0;
+   private void k_void(int intValue1) {
+      if (this.a_byteArr[3535 + intValue1] == 15) {
+         this.a_byteArr[3636 + intValue1] = 0;
       }
 
-      if (this.a_byteArr[2828 + var1] >= 109) {
-         if (this.b_byteArr2[this.a_byteArr[101 + var1]][this.a_byteArr[0 + var1]] == var1) {
-            this.a_byteArr[3131 + var1] = this.a_byteArr[0 + var1];
-            this.a_byteArr[3232 + var1] = this.a_byteArr[101 + var1];
-            this.a_void7(var1, (byte)69);
+      if (this.a_byteArr[2828 + intValue1] >= 109) {
+         if (this.b_byteArr2[this.a_byteArr[101 + intValue1]][this.a_byteArr[0 + intValue1]] == intValue1) {
+            this.a_byteArr[3131 + intValue1] = this.a_byteArr[0 + intValue1];
+            this.a_byteArr[3232 + intValue1] = this.a_byteArr[101 + intValue1];
+            this.a_void7(intValue1, (byte)69);
             return;
          }
 
-         this.a_byteArr[6161 + var1] = 3;
-         this.a_void7(var1, (byte)87);
+         this.a_byteArr[6161 + intValue1] = 3;
+         this.a_void7(intValue1, (byte)87);
       }
    }
 
    // $VF: renamed from: b (int) byte
-   final byte b_byte3(int var1) {
-      if (this.a_byteArr[1414 + var1] < 12) {
-         this.a_byteArr[7777 + var1] = 0;
+   final byte b_byte3(int intValue1) {
+      if (this.a_byteArr[1414 + intValue1] < 12) {
+         this.a_byteArr[7777 + intValue1] = 0;
          return 6;
-      } else if ((this.a_byteArr[7979 + var1] & 2) <= 0 || this.a_byteArr[7777 + var1] != 0 && this.a_byteArr[3535 + var1] == 0 && this.a_byteArr[6565 + var1] != 1
+      } else if ((this.a_byteArr[7979 + intValue1] & 2) <= 0 || this.a_byteArr[7777 + intValue1] != 0 && this.a_byteArr[3535 + intValue1] == 0 && this.a_byteArr[6565 + intValue1] != 1
          )
        {
-         if (this.a_byteArr[3535 + var1] != 0 || this.a_byteArr[6565 + var1] == 1) {
-            this.a_byteArr[7777 + var1] = 0;
+         if (this.a_byteArr[3535 + intValue1] != 0 || this.a_byteArr[6565 + intValue1] == 1) {
+            this.a_byteArr[7777 + intValue1] = 0;
             return 1;
          } else {
-            return (byte)(this.a_byteArr[7777 + var1] > 0 ? 7 : 0);
+            return (byte)(this.a_byteArr[7777 + intValue1] > 0 ? 7 : 0);
          }
       } else {
-         this.a_byteArr[7777 + var1] = 0;
+         this.a_byteArr[7777 + intValue1] = 0;
          return 5;
       }
    }
@@ -4863,15 +4861,15 @@ public final class GameEngine {
 
    // $VF: renamed from: p () boolean
    private boolean p_bool() {
-      if ((this.a_obj_f.q_byte != 3 || this.f_byte < 5) && (this.a_obj_f.q_byte != 2 || this.f_byte != 1)) {
+      if ((this.resources.q_byte != 3 || this.f_byte < 5) && (this.resources.q_byte != 2 || this.f_byte != 1)) {
          this.b_void7(this.a_byteArr[0 + this.v_int], this.a_byteArr[101 + this.v_int], this.a_byteArr[4949 + this.v_int]);
          this.y_byte = 0;
 
-         for (this.ag = this.u_int * (this.a_obj_f.q_byte == 3 ? 6 : 3);
-            this.ag <= this.u_int * (this.a_obj_f.q_byte == 3 ? 6 : 3) + 2;
+         for (this.ag = this.u_int * (this.resources.q_byte == 3 ? 6 : 3);
+            this.ag <= this.u_int * (this.resources.q_byte == 3 ? 6 : 3) + 2;
             this.ag++
          ) {
-            if (this.a_obj_f.q_byte != 3 || this.ag != 1) {
+            if (this.resources.q_byte != 3 || this.ag != 1) {
                this.aj = this.b_byteArr[this.a_shortArr[120] + this.ag];
                this.a_void12(this.a_byteArr[0 + this.v_int], this.a_byteArr[101 + this.v_int], (byte)0, (byte)0);
                if (this.y_byte == this.b_byteArr[this.a_shortArr[119] + this.aj]) {
@@ -4901,23 +4899,23 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (byte, byte, byte) void
-   private void a_void11(byte var1, byte var2, byte var3) {
-      this.b_void7(var1, var2, var3);
+   private void a_void11(byte byteValue1, byte byteValue2, byte byteValue3) {
+      this.b_void7(byteValue1, byteValue2, byteValue3);
       this.aj = this.u_int;
-      this.a_void12(var1, var2, this.D_byte, var3);
+      this.a_void12(byteValue1, byteValue2, this.D_byte, byteValue3);
    }
 
    // $VF: renamed from: b (byte, byte, byte) void
-   private void b_void7(byte var1, byte var2, byte var3) {
+   private void b_void7(byte byteValue1, byte byteValue2, byte byteValue3) {
       this.an = 0;
-      this.at = b_int2(var1 - var3 >> 4, 0, 5);
-      this.au = b_int2(var1 + var3 >> 4, 0, 5);
-      this.av = b_int2(var2 - var3 >> 4, 0, 5);
-      this.aw = b_int2(var2 + var3 >> 4, 0, 5);
+      this.at = b_int2(byteValue1 - byteValue3 >> 4, 0, 5);
+      this.au = b_int2(byteValue1 + byteValue3 >> 4, 0, 5);
+      this.av = b_int2(byteValue2 - byteValue3 >> 4, 0, 5);
+      this.aw = b_int2(byteValue2 + byteValue3 >> 4, 0, 5);
    }
 
    // $VF: renamed from: a (byte, byte, byte, byte) void
-   private void a_void12(byte var1, byte var2, byte var3, byte var4) {
+   private void a_void12(byte byteValue1, byte byteValue2, byte byteValue3, byte byteValue4) {
       for (this.ah = this.at; this.ah <= this.au; this.ah++) {
          for (this.ai = this.av; this.ai <= this.aw; this.ai++) {
             for (this.ak = this.c_byteArr3[this.aj][this.ai][this.ah];
@@ -4929,17 +4927,17 @@ public final class GameEngine {
                   + (this.aj != 2 && this.aj != 3 ? 0 : this.b_byteArr[this.a_shortArr[138] + 104 + this.a_byteArr[8749 + this.al]] / 2);
                this.aq = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[118] + this.aj] + 1] + this.al]
                   + (this.aj != 2 && this.aj != 3 ? 0 : this.b_byteArr[this.a_shortArr[138] + 130 + this.a_byteArr[8749 + this.al]] / 2);
-               this.ar = this.ap - var1;
-               this.as = this.aq - var2;
+               this.ar = this.ap - byteValue1;
+               this.as = this.aq - byteValue2;
                this.ao = this.b_byteArr[this.a_shortArr[53]
                      + (this.ar >= -12 && this.ar <= 12 ? 12 + this.ar : 0) * 25
                      + (this.as >= -12 && this.as <= 12 ? 12 + this.as : 0)]
                   / 10;
-               if (var3 == 0) {
+               if (byteValue3 == 0) {
                   if (this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[117] + this.aj]] + this.al] > 0
                      && (this.aj > 1 || (this.a_byteArr[7979 + this.al] & 1) == 0)
                      && (this.aj != 4 || this.a_byteArr[2828 + this.v_int] == 60 || this.a_byteArr[9601 + this.al] != 0)
-                     && this.ao <= this.a_byteArr[this.b_shortArr[this.b_byteArr2[var2][var1] == this.v_int ? 49 : 18] + this.v_int]) {
+                     && this.ao <= this.a_byteArr[this.b_shortArr[this.b_byteArr2[byteValue2][byteValue1] == this.v_int ? 49 : 18] + this.v_int]) {
                      this.am = this.aj < 2 && this.a_byteArr[1414 + this.al] < 12 ? 1 : this.b_byteArr[this.a_shortArr[119] + this.aj];
                      if (this.y_byte < this.am || this.y_byte == this.am && this.ao < this.an) {
                         this.y_byte = (byte)this.am;
@@ -4949,7 +4947,7 @@ public final class GameEngine {
                         this.F_byte = (byte)this.al;
                      }
                   }
-               } else if (this.ao <= var4
+               } else if (this.ao <= byteValue4
                   && this.b_byteArr2[this.a_byteArr[101 + this.al]][this.a_byteArr[0 + this.al]] == this.al
                   && this.a_byteArr[1919 + this.al] > 0
                   && this.a_byteArr[1414 + this.al] >= 12
@@ -4959,7 +4957,7 @@ public final class GameEngine {
                   && this.a_byteArr[2828 + this.al] != 87
                   && this.a_byteArr[2828 + this.al] != 50) {
                   this.a_byteArr[6161 + this.al] = 4;
-                  this.a_byteArr[4747 + this.al] = var3;
+                  this.a_byteArr[4747 + this.al] = byteValue3;
                }
             }
          }
@@ -4967,12 +4965,12 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (byte, byte, int, int) void
-   private void a_void13(byte var1, byte var2, int var3, int var4) {
+   private void a_void13(byte byteValue1, byte byteValue2, int intValue1, int intValue2) {
       try {
          if (this.a_byteArr[5959 + this.v_int] <= 0) {
             this.aG = this.b_byteArr[this.a_shortArr[77] + this.a_byteArr[6565 + this.v_int]];
-            this.aE = this.a_byteArr[3131 + this.v_int] - var1;
-            this.aF = this.a_byteArr[3232 + this.v_int] - var2;
+            this.aE = this.a_byteArr[3131 + this.v_int] - byteValue1;
+            this.aF = this.a_byteArr[3232 + this.v_int] - byteValue2;
             if (this.b_byteArr[this.a_shortArr[53]
                      + (this.aF >= -12 && this.aF <= 12 ? 12 + this.aF : 0) * 25
                      + (this.aE >= -12 && this.aE <= 12 ? 12 + this.aE : 0)]
@@ -5024,7 +5022,7 @@ public final class GameEngine {
                );
 
                for (this.ay = 0; this.ay <= this.a_byteArr[5959 + this.v_int]; this.ay++) {
-                  this.a_obj_f.h_byteArr2[this.ay][this.v_int] = (byte)(
+                  this.resources.h_byteArr2[this.ay][this.v_int] = (byte)(
                      (
                               -this.b_byteArr[this.a_shortArr[159] + this.aG]
                                     * this.ay
@@ -5033,17 +5031,17 @@ public final class GameEngine {
                                  + this.ax * this.b_byteArr[this.a_shortArr[159] + this.aG] * this.ay
                            )
                            / this.b_shortArr[this.c_shortArr[3] + this.aG * 8 + this.a_byteArr[606 + this.v_int]]
-                        + var3
-                        - var4 * this.ay / this.a_byteArr[5959 + this.v_int]
+                        + intValue1
+                        - intValue2 * this.ay / this.a_byteArr[5959 + this.v_int]
                   );
-                  this.a_obj_f.i_byteArr2[this.ay][this.v_int] = (byte)(
+                  this.resources.i_byteArr2[this.ay][this.v_int] = (byte)(
                      this.aG == 2
                         ? this.ay & 1
                         : b_int2(
                            (
                                     this.ax
                                        - 2 * this.b_byteArr[this.a_shortArr[159] + this.aG] * this.ay
-                                       - var4 * this.b_shortArr[this.c_shortArr[3] + this.aG * 8 + this.a_byteArr[606 + this.v_int]] / this.ax
+                                       - intValue2 * this.b_shortArr[this.c_shortArr[3] + this.aG * 8 + this.a_byteArr[606 + this.v_int]] / this.ax
                                  )
                                  * -4
                                  / this.b_shortArr[this.c_shortArr[3] + this.aG * 8 + this.a_byteArr[606 + this.v_int]]
@@ -5056,11 +5054,11 @@ public final class GameEngine {
 
                this.a_byteArr[7676 + this.v_int] = (byte)(this.b_byteArr[this.a_shortArr[53] + (this.aF + 12) * 25 + this.aE + 12] % 10);
                this.a_byteArr[5858 + this.v_int] = this.a_byteArr[5454 + this.v_int] = this.a_byteArr[5555 + this.v_int] = 0;
-               this.a_byteArr[5252 + this.v_int] = var1;
-               this.a_byteArr[5353 + this.v_int] = var2;
+               this.a_byteArr[5252 + this.v_int] = byteValue1;
+               this.a_byteArr[5353 + this.v_int] = byteValue2;
             }
          }
-      } catch (Exception var6) {
+      } catch (Exception ignoredException1) {
          this.a_byteArr[5959 + this.v_int] = 0;
       }
    }
@@ -5099,101 +5097,101 @@ public final class GameEngine {
          this.a_byteArr[4444 + this.v_int],
          0,
          (this.a_byteArr[1616 + this.v_int] / 3 + this.b_byteArr[this.a_shortArr[102] + this.a_byteArr[6565 + this.v_int]])
-            * (this.a_obj_f.a_int2(65535, 11 - this.a_byteArr[7878 + this.v_int]) + this.a_byteArr[7878 + this.v_int])
+            * (this.resources.a_int2(65535, 11 - this.a_byteArr[7878 + this.v_int]) + this.a_byteArr[7878 + this.v_int])
             / 10,
          1
       );
    }
 
    // $VF: renamed from: a (int, int, int, byte) void
-   private void a_void14(int var1, int var2, int var3, byte var4) {
-      if (var1 == 106) {
-         this.l_void(var4);
-         this.a_obj_f.a_void16(6, var2, var3, this.b_byteArr[this.a_shortArr[183] + this.a_byteArr[9535 + var4]]);
-         this.a_obj_f.c_void7(var2, var3, 1, 1);
-      } else if (var1 == 19) {
-         if (var4 <= 50) {
-            switch (this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + var4]]) {
+   private void a_void14(int intValue1, int intValue2, int intValue3, byte byteValue1) {
+      if (intValue1 == 106) {
+         this.l_void(byteValue1);
+         this.resources.a_void16(6, intValue2, intValue3, this.b_byteArr[this.a_shortArr[183] + this.a_byteArr[9535 + byteValue1]]);
+         this.resources.c_void7(intValue2, intValue3, 1, 1);
+      } else if (intValue1 == 19) {
+         if (byteValue1 <= 50) {
+            switch (this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + byteValue1]]) {
                case 8:
-                  this.a_obj_f.a_void19((byte)14, (byte)var2, (byte)var3, var4);
+                  this.resources.a_void19((byte)14, (byte)intValue2, (byte)intValue3, byteValue1);
                   break;
                case 9:
-                  this.a_obj_f.a_void19((byte)12, (byte)var2, (byte)var3, var4);
+                  this.resources.a_void19((byte)12, (byte)intValue2, (byte)intValue3, byteValue1);
                   break;
                case 10:
-                  this.a_obj_f.a_void19((byte)15, (byte)var2, (byte)var3, var4);
+                  this.resources.a_void19((byte)15, (byte)intValue2, (byte)intValue3, byteValue1);
                   break;
                case 11:
-                  this.a_obj_f.a_void19((byte)13, (byte)var2, (byte)var3, var4);
+                  this.resources.a_void19((byte)13, (byte)intValue2, (byte)intValue3, byteValue1);
             }
 
-            if (var4 == this.a_shortArr2[0][17]) {
-               for (int var5 = 1; var5 <= 50; var5++) {
-                  if (this.a_byteArr[1414 + var5] >= 12) {
-                     this.a_byteArr[505 + var5] = (byte)b_int2(this.a_byteArr[505 + var5] - 25, 0, 99);
+            if (byteValue1 == this.a_shortArr2[0][17]) {
+               for (int loopIndex1 = 1; loopIndex1 <= 50; loopIndex1++) {
+                  if (this.a_byteArr[1414 + loopIndex1] >= 12) {
+                     this.a_byteArr[505 + loopIndex1] = (byte)b_int2(this.a_byteArr[505 + loopIndex1] - 25, 0, 99);
                   }
                }
             }
          }
 
-         this.a_obj_f.a_void14(var4);
-         this.a_byteArr[2929 + var4] = (byte)(this.a_byteArr[1414 + var4] >= 12 ? 43 : 44);
-         this.a_byteArr[3030 + var4] = (byte)(var4 > this.v_int ? -1 : 0);
-         this.a_byteArr[4646 + var4] = -64;
-         this.e_void4((var4 - 1) / 50, var4);
-      } else if (var1 == 85) {
-         this.a_obj_f.c_void6(var4, true);
+         this.resources.a_void14(byteValue1);
+         this.a_byteArr[2929 + byteValue1] = (byte)(this.a_byteArr[1414 + byteValue1] >= 12 ? 43 : 44);
+         this.a_byteArr[3030 + byteValue1] = (byte)(byteValue1 > this.v_int ? -1 : 0);
+         this.a_byteArr[4646 + byteValue1] = -64;
+         this.e_void4((byteValue1 - 1) / 50, byteValue1);
+      } else if (intValue1 == 85) {
+         this.resources.c_void6(byteValue1, true);
       }
 
-      if (this.f_byte < this.b_byteArr[this.a_shortArr[291] + this.a_obj_f.q_byte]
-         && this.b_byteArr[this.a_shortArr[287] + this.b_byteArr[this.a_shortArr[288] + this.a_obj_f.q_byte] + this.f_byte] == 10
-         && (var1 == 106 || var1 == 19 && var4 > 50)) {
+      if (this.f_byte < this.b_byteArr[this.a_shortArr[291] + this.resources.q_byte]
+         && this.b_byteArr[this.a_shortArr[287] + this.b_byteArr[this.a_shortArr[288] + this.resources.q_byte] + this.f_byte] == 10
+         && (intValue1 == 106 || intValue1 == 19 && byteValue1 > 50)) {
          this.b_void6(0, 0, 1);
-         this.a_obj_f.b_void3(this.b_byteArr[this.a_shortArr[286] + this.b_byteArr[this.a_shortArr[288] + this.a_obj_f.q_byte] + this.f_byte]);
+         this.resources.b_void3(this.b_byteArr[this.a_shortArr[286] + this.b_byteArr[this.a_shortArr[288] + this.resources.q_byte] + this.f_byte]);
          this.f_byte = (byte)(this.f_byte + 50);
       }
    }
 
    // $VF: renamed from: l (int) void
-   private void l_void(int var1) {
-      if ((this.a_byteArr[9557 + var1] & 255) <= 7
-         && this.a_byteArr[9623 + var1]
-            < (this.b_byteArr[this.a_shortArr[15] + (this.a_byteArr[9491 + var1] & 1) * 9 + this.b_byteArr[this.a_shortArr[179] + this.a_byteArr[9535 + var1]]] + 1)
+   private void l_void(int intValue1) {
+      if ((this.a_byteArr[9557 + intValue1] & 255) <= 7
+         && this.a_byteArr[9623 + intValue1]
+            < (this.b_byteArr[this.a_shortArr[15] + (this.a_byteArr[9491 + intValue1] & 1) * 9 + this.b_byteArr[this.a_shortArr[179] + this.a_byteArr[9535 + intValue1]]] + 1)
                / 2
-         && this.b_byteArr2[this.a_byteArr[9381 + var1] + this.b_byteArr[this.a_shortArr[1] + 8 + this.a_byteArr[9491 + var1]]][this.a_byteArr[9359 + var1]
-               + this.b_byteArr[this.a_shortArr[1] + this.a_byteArr[9491 + var1]]]
+         && this.b_byteArr2[this.a_byteArr[9381 + intValue1] + this.b_byteArr[this.a_shortArr[1] + 8 + this.a_byteArr[9491 + intValue1]]][this.a_byteArr[9359 + intValue1]
+               + this.b_byteArr[this.a_shortArr[1] + this.a_byteArr[9491 + intValue1]]]
             == -128) {
-         this.b_byteArr2[this.a_byteArr[9381 + var1] + this.b_byteArr[this.a_shortArr[1] + 8 + this.a_byteArr[9491 + var1]]][this.a_byteArr[9359 + var1]
-            + this.b_byteArr[this.a_shortArr[1] + this.a_byteArr[9491 + var1]]] = 0;
+         this.b_byteArr2[this.a_byteArr[9381 + intValue1] + this.b_byteArr[this.a_shortArr[1] + 8 + this.a_byteArr[9491 + intValue1]]][this.a_byteArr[9359 + intValue1]
+            + this.b_byteArr[this.a_shortArr[1] + this.a_byteArr[9491 + intValue1]]] = 0;
       }
 
-      this.b_byteArr2[this.a_byteArr[9381 + var1]][this.a_byteArr[9359 + var1]] = 0;
-      this.a_byteArr[9513 + var1] = 0;
-      if (this.a_byteArr[9469 + var1] < this.b_byteArr[this.a_shortArr[202] + this.a_obj_f.q_byte]) {
-         this.a_obj_f.t_byteArr[this.a_byteArr[9469 + var1]]--;
+      this.b_byteArr2[this.a_byteArr[9381 + intValue1]][this.a_byteArr[9359 + intValue1]] = 0;
+      this.a_byteArr[9513 + intValue1] = 0;
+      if (this.a_byteArr[9469 + intValue1] < this.b_byteArr[this.a_shortArr[202] + this.resources.q_byte]) {
+         this.resources.t_byteArr[this.a_byteArr[9469 + intValue1]]--;
       }
    }
 
    // $VF: renamed from: m (int) void
-   private void m_void(int var1) {
-      this.d_void3(var1, 0);
-      this.a_byteArr[1919 + var1] = 0;
-      this.a_byteArr[5959 + var1] = 0;
-      this.b_byteArr2[this.a_byteArr[101 + var1]][this.a_byteArr[0 + var1]] = this.a_byteArr[4545 + var1] <= -111 ? this.a_byteArr[4545 + var1] : 0;
-      this.a_shortArr2[(var1 - 1) / 50][11]--;
-      this.a_shortArr2[(var1 - 1) / 50][12 + this.a_byteArr[1515 + var1]]--;
-      this.b_void8(var1);
+   private void m_void(int intValue1) {
+      this.d_void3(intValue1, 0);
+      this.a_byteArr[1919 + intValue1] = 0;
+      this.a_byteArr[5959 + intValue1] = 0;
+      this.b_byteArr2[this.a_byteArr[101 + intValue1]][this.a_byteArr[0 + intValue1]] = this.a_byteArr[4545 + intValue1] <= -111 ? this.a_byteArr[4545 + intValue1] : 0;
+      this.a_shortArr2[(intValue1 - 1) / 50][11]--;
+      this.a_shortArr2[(intValue1 - 1) / 50][12 + this.a_byteArr[1515 + intValue1]]--;
+      this.b_void8(intValue1);
    }
 
    // $VF: renamed from: c (int, int, int) void
-   private void c_void5(int var1, int var2, int var3) {
+   private void c_void5(int intValue1, int intValue2, int intValue3) {
       if (this.a_bool11(
-            var1,
-            var2,
+            intValue1,
+            intValue2,
             this.u_int,
             this.b_byteArr[this.a_shortArr[79] + this.a_byteArr[2828 + this.v_int]],
             this.a_byteArr[4444 + this.v_int],
-            var3,
+            intValue3,
             this.b_byteArr[this.a_shortArr[124] + this.a_byteArr[1717 + this.v_int]] + this.b_byteArr[this.a_shortArr[102] + this.a_byteArr[6565 + this.v_int]],
             0
          )
@@ -5210,44 +5208,44 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (int, int, int, int, int, int, int, int) boolean
-   private boolean a_bool11(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-      this.ax = this.b_byteArr[this.a_shortArr[78] + 14 + var4];
-      this.ay = var4 == 0
+   private boolean a_bool11(int intValue1, int intValue2, int intValue3, int intValue4, int intValue5, int intValue6, int intValue7, int intValue8) {
+      this.ax = this.b_byteArr[this.a_shortArr[78] + 14 + intValue4];
+      this.ay = intValue4 == 0
          ? 10
          : (
-            var4 == 2
+            intValue4 == 2
                ? 0
                : this.b_byteArr[this.a_shortArr[53]
-                     + (12 + this.a_byteArr[this.b_shortArr[this.ax + 1] + var5] - var2) * 25
+                     + (12 + this.a_byteArr[this.b_shortArr[this.ax + 1] + intValue5] - intValue2) * 25
                      + 12
-                     + this.a_byteArr[this.b_shortArr[this.ax] + var5]
-                     - var1]
+                     + this.a_byteArr[this.b_shortArr[this.ax] + intValue5]
+                     - intValue1]
                   / 10
          );
-      if (this.ay <= var8 && this.ay > 0) {
-         var1 = this.a_byteArr[this.b_shortArr[this.ax] + var5];
-         var2 = this.a_byteArr[this.b_shortArr[this.ax + 1] + var5];
+      if (this.ay <= intValue8 && this.ay > 0) {
+         intValue1 = this.a_byteArr[this.b_shortArr[this.ax] + intValue5];
+         intValue2 = this.a_byteArr[this.b_shortArr[this.ax + 1] + intValue5];
       }
 
-      this.c_void7(var1, var2, var3 & 1, 1);
-      if (this.a_obj_f.ag_bool && this.k_byteArr[0] == 1 && this.k_byteArr[2] <= 50) {
+      this.c_void7(intValue1, intValue2, intValue3 & 1, 1);
+      if (this.resources.ag_bool && this.k_byteArr[0] == 1 && this.k_byteArr[2] <= 50) {
          return false;
       } else if (this.b_byteArr[this.a_shortArr[78] + this.k_byteArr[0]] == 127) {
          return false;
       } else if (this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[78] + this.k_byteArr[0]]] + this.k_byteArr[2]] <= 0) {
          return false;
-      } else if (var3 >= 2 || this.k_byteArr[3] != 0 || this.k_byteArr[0] != 1 && this.k_byteArr[0] != 2) {
-         if (var3 == 0
+      } else if (intValue3 >= 2 || this.k_byteArr[3] != 0 || this.k_byteArr[0] != 1 && this.k_byteArr[0] != 2) {
+         if (intValue3 == 0
             && this.a_byteArr[0 + this.v_int] - this.a_byteArr[0 + this.a_shortArr2[0][17]] >= -4
             && this.a_byteArr[0 + this.v_int] - this.a_byteArr[0 + this.a_shortArr2[0][17]] <= 4
             && this.a_byteArr[101 + this.v_int] - this.a_byteArr[101 + this.a_shortArr2[0][17]] >= -4
             && this.a_byteArr[101 + this.v_int] - this.a_byteArr[101 + this.a_shortArr2[0][17]] <= 4) {
-            var7 = var7 * 3 / 2;
+            intValue7 = intValue7 * 3 / 2;
          }
 
          if (this.k_byteArr[0] == 2) {
             if ((this.a_byteArr[9054 + this.k_byteArr[2]] & 128) == 0) {
-               this.D_byte = (byte)(this.v_int + (var3 == 2 ? 101 : 0));
+               this.D_byte = (byte)(this.v_int + (intValue3 == 2 ? 101 : 0));
                this.u_int ^= 1;
                this.a_void11(
                   (byte)(this.a_byteArr[8383 + this.k_byteArr[2]] + this.b_byteArr[this.a_shortArr[138] + 104 + this.k_byteArr[1]] / 2),
@@ -5258,15 +5256,15 @@ public final class GameEngine {
             }
 
             this.a_byteArr[9054 + this.k_byteArr[2]] = (byte)(this.a_byteArr[9054 + this.k_byteArr[2]] | 128);
-            this.a_obj_f.a_void13(this.k_byteArr[2], true);
-            var7 /= var7 > 1 ? 2 : 1;
+            this.resources.a_void13(this.k_byteArr[2], true);
+            intValue7 /= intValue7 > 1 ? 2 : 1;
          }
 
          if (this.k_byteArr[0] == 1 && (this.a_byteArr[7979 + this.k_byteArr[2]] & 8) != 0) {
-            var7 /= var7 > 1 ? 2 : 1;
+            intValue7 /= intValue7 > 1 ? 2 : 1;
          }
 
-         if ((var7 = var7 / (this.ay + 1)) < 1) {
+         if ((intValue7 = intValue7 / (this.ay + 1)) < 1) {
             return false;
          } else {
             if (this.k_byteArr[0] == 1
@@ -5282,42 +5280,42 @@ public final class GameEngine {
             }
 
             if (this.k_byteArr[0] == 1 || this.k_byteArr[0] == 5) {
-               this.a_obj_f.a_obj_c.f_byteArr[this.k_byteArr[2] + (this.k_byteArr[0] == 5 ? 101 : 0)] = (byte)(
-                  this.a_obj_f.a_obj_c.f_byteArr[this.k_byteArr[2] + (this.k_byteArr[0] == 5 ? 101 : 0)] - var7
+               this.resources.renderer.f_byteArr[this.k_byteArr[2] + (this.k_byteArr[0] == 5 ? 101 : 0)] = (byte)(
+                  this.resources.renderer.f_byteArr[this.k_byteArr[2] + (this.k_byteArr[0] == 5 ? 101 : 0)] - intValue7
                );
             }
 
-            if (this.k_byteArr[0] == 5 && var3 != 2 && this.a_byteArr[9601 + this.k_byteArr[2]] <= 0) {
+            if (this.k_byteArr[0] == 5 && intValue3 != 2 && this.a_byteArr[9601 + this.k_byteArr[2]] <= 0) {
                this.a_byteArr[9447 + this.k_byteArr[2]] = (byte)(19 + this.v_int);
             }
 
             this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[78] + this.k_byteArr[0]]] + this.k_byteArr[2]] = (byte)(
-               this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[78] + this.k_byteArr[0]]] + this.k_byteArr[2]] - var7
+               this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[78] + this.k_byteArr[0]]] + this.k_byteArr[2]] - intValue7
             );
             if (this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[78] + this.k_byteArr[0]]] + this.k_byteArr[2]] <= 0) {
-               this.a_void14(this.b_byteArr[this.a_shortArr[78] + this.k_byteArr[0]], var1, var2, this.k_byteArr[2]);
+               this.a_void14(this.b_byteArr[this.a_shortArr[78] + this.k_byteArr[0]], intValue1, intValue2, this.k_byteArr[2]);
                return false;
             } else {
                if (this.k_byteArr[0] == 2) {
-                  var6 = var1 - this.a_byteArr[8383 + this.k_byteArr[2]] + (var2 - this.a_byteArr[8444 + this.k_byteArr[2]] << 4);
+                  intValue6 = intValue1 - this.a_byteArr[8383 + this.k_byteArr[2]] + (intValue2 - this.a_byteArr[8444 + this.k_byteArr[2]] << 4);
                }
 
-               this.a_obj_f
+               this.resources
                   .a_void5(
                      this.k_byteArr[2],
                      this.b_byteArr[this.a_shortArr[178] + this.k_byteArr[0]],
-                     var6,
-                     b_int2(52 + var7 / 4 * 3 + this.a_obj_f.a_int2(255, 3), 52, 61)
+                     intValue6,
+                     b_int2(52 + intValue7 / 4 * 3 + this.resources.a_int2(255, 3), 52, 61)
                   );
                if (this.k_byteArr[0] == 1 && this.k_byteArr[2] <= 50) {
                   if (this.a_byteArr[1414 + this.k_byteArr[2]] < 12) {
                      this.a_void19((byte)16, this.a_shortArr2[0][17], this.k_byteArr[2]);
                   } else if (this.d_shortArr[0] < 0) {
                      this.d_shortArr[0] = 0;
-                     this.a_obj_f.a_void19((byte)7, (byte)var1, (byte)var2, (byte)0);
-                  } else if (var3 == 2 && this.a_byteArr[2828 + this.k_byteArr[2]] != 2 && this.a_byteArr[2828 + this.k_byteArr[2]] != 7) {
-                     this.z_byte = (byte)var1;
-                     this.A_byte = (byte)var2;
+                     this.resources.a_void19((byte)7, (byte)intValue1, (byte)intValue2, (byte)0);
+                  } else if (intValue3 == 2 && this.a_byteArr[2828 + this.k_byteArr[2]] != 2 && this.a_byteArr[2828 + this.k_byteArr[2]] != 7) {
+                     this.z_byte = (byte)intValue1;
+                     this.A_byte = (byte)intValue2;
                      this.a_void19((byte)5, this.k_byteArr[2], this.k_byteArr[2]);
                   }
                }
@@ -5330,57 +5328,22 @@ public final class GameEngine {
       }
    }
 
-    // $VF: renamed from: T () void
+   // $VF: renamed from: T () void
    private void T() {
-      int kBase = this.a_obj_f.K_byte & 0xFF;
-      int iBase = this.a_obj_f.I_byte & 0xFF;
-      int oLen  = this.a_obj_f.O_byte & 0xFF;
-      int gridRows = this.a_obj_f.g_byteArr2.length;
-
-      boolean dbg = (this.a_obj_f.c_int % 120 == 0);
-      int dbgAlive = 0, dbgPlaced = 0;
-      java.lang.StringBuilder sb = dbg ? new java.lang.StringBuilder() : null;
-
       for (this.u_int = 0; this.u_int < 2; this.u_int++) {
          for (this.v_int = this.u_int * 50 + 1; this.v_int <= (this.u_int + 1) * 50; this.v_int++) {
-            int entityX = this.a_byteArr[5252 + this.v_int] & 0xFF;
-            int entityY = this.a_byteArr[5353 + this.v_int] & 0xFF;
-            int rowIdx  = entityY - kBase;
-            int colIdx  = entityX - iBase;
-
-            if (this.a_byteArr[5959 + this.v_int] > 0) {
-               if (dbg) dbgAlive++;
-               if (rowIdx >= 0 && rowIdx < gridRows && colIdx >= 0 && colIdx < oLen) {
-                  byte oldVal = this.a_obj_f.g_byteArr2[rowIdx][colIdx];
-                  this.a_byteArr[6060 + this.v_int] = (oldVal == (byte)this.v_int) ? 0 : oldVal;
-                  this.a_obj_f.g_byteArr2[rowIdx][colIdx] = (byte)this.v_int;
-                  if (dbg) {
-                     dbgPlaced++;
-                     sb.append("  [T] ent=").append(this.v_int).append(" tileX=").append(entityX)
-                       .append(" tileY=").append(entityY).append(" row=").append(rowIdx)
-                       .append(" col=").append(colIdx).append(" type=")
-                       .append(this.a_byteArr[6565 + this.v_int] & 0xFF).append("\n");
-                  }
-               } else if (dbg) {
-                  sb.append("  [T-SKIP] ent=").append(this.v_int).append(" tileX=").append(entityX)
-                    .append(" tileY=").append(entityY).append(" row=").append(rowIdx)
-                    .append("/").append(gridRows).append(" col=").append(colIdx)
-                    .append("/").append(oLen).append("\n");
-               }
+            if (this.a_byteArr[5959 + this.v_int] > 0
+               && this.a_byteArr[5252 + this.v_int] >= this.resources.I_byte
+               && this.a_byteArr[5252 + this.v_int] < this.resources.I_byte + this.resources.O_byte
+               && this.a_byteArr[5353 + this.v_int] >= this.resources.K_byte
+               && this.a_byteArr[5353 + this.v_int] < this.resources.K_byte + this.resources.P_byte) {
+               this.a_byteArr[6060 + this.v_int] = this.resources.g_byteArr2[this.a_byteArr[5353 + this.v_int] - this.resources.K_byte][this.a_byteArr[5252
+                     + this.v_int]
+                  - this.resources.I_byte];
+               this.resources.g_byteArr2[this.a_byteArr[5353 + this.v_int] - this.resources.K_byte][this.a_byteArr[5252 + this.v_int]
+                  - this.resources.I_byte] = (byte)this.v_int;
             }
          }
-      }
-
-      if (dbg) {
-         sb.insert(0, "[T] frame=" + this.a_obj_f.c_int + " K=" + kBase + " I=" + iBase
-            + " O=" + oLen + " gridRows=" + gridRows + " alive=" + dbgAlive
-            + " placed=" + dbgPlaced + " sBool=" + this.a_obj_f.s_bool + "\n");
-         try {
-            java.io.FileWriter fw = new java.io.FileWriter(
-               "C:\\DepLor\\OTHER\\Tools\\DeobfuscateJAVA\\bolacthoitiensu\\debug_T.log", true);
-            fw.write(sb.toString());
-            fw.close();
-         } catch (java.io.IOException e) { /* ignore */ }
       }
    }
 
@@ -5408,7 +5371,7 @@ public final class GameEngine {
             + this.a_byteArr[4646 + this.v_int]];
       this.a_byteArr[3030 + this.v_int] = 0;
       this.a_byteArr[1313 + this.v_int] = -3;
-      this.a_obj_f.d_void5(this.a_byteArr[4444 + this.v_int]);
+      this.resources.d_void5(this.a_byteArr[4444 + this.v_int]);
       this.a_byteArr[3131 + this.v_int] = this.a_byteArr[0 + this.v_int];
       this.a_byteArr[3232 + this.v_int] = this.a_byteArr[101 + this.v_int];
       if (this.b_byteArr[this.a_shortArr[39] + this.a_byteArr[2828 + this.v_int]] != 2) {
@@ -5434,11 +5397,11 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: b (int) void
-   final void b_void8(int var1) {
-      byte var2;
-      if ((var2 = this.a_byteArr[3434 + var1]) > 0) {
-         this.a_byteArr[this.b_shortArr[this.a_byteArr[8627 + var2] == 0 ? 90 : 97] + var2]--;
-         this.a_byteArr[3434 + var1] = 0;
+   final void b_void8(int intValue1) {
+      byte byteValue1;
+      if ((byteValue1 = this.a_byteArr[3434 + intValue1]) > 0) {
+         this.a_byteArr[this.b_shortArr[this.a_byteArr[8627 + byteValue1] == 0 ? 90 : 97] + byteValue1]--;
+         this.a_byteArr[3434 + intValue1] = 0;
       }
    }
 
@@ -5447,7 +5410,7 @@ public final class GameEngine {
       if (this.a_byteArr[6666 + this.v_int] >= (this.u_int == 0 ? 125 : 50)) {
          this.a_byteArr[6666 + this.v_int] = 0;
          this.a_byteArr[1414 + this.v_int]++;
-         this.aJ = this.b_byteArr[this.a_shortArr[97] + this.a_byteArr[1414 + this.v_int]] + this.a_obj_f.a_int2(255, 5) - 2;
+         this.aJ = this.b_byteArr[this.a_shortArr[97] + this.a_byteArr[1414 + this.v_int]] + this.resources.a_int2(255, 5) - 2;
          if (this.a_byteArr[1515 + this.v_int] == 1) {
             this.aJ = this.aJ + (this.aJ > 0 ? -1 : 1);
          }
@@ -5481,7 +5444,7 @@ public final class GameEngine {
          }
 
          if (this.a_byteArr[1414 + this.v_int] == 12 || this.a_byteArr[1414 + this.v_int] == 35) {
-            this.a_obj_f.b_void6((byte)this.v_int);
+            this.resources.b_void6((byte)this.v_int);
          }
       }
 
@@ -5509,20 +5472,20 @@ public final class GameEngine {
 
    // $VF: renamed from: r () boolean
    private boolean r_bool() {
-      if (this.a_byteArr[1414 + this.v_int] >= 12 && this.a_obj_f.c_int >= this.b_shortArr[this.c_shortArr[4] + this.a_obj_f.q_byte]) {
-         if (this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]] == 9 && (this.a_obj_f.c_int & 63) == (this.v_int & 63)) {
+      if (this.a_byteArr[1414 + this.v_int] >= 12 && this.resources.c_int >= this.b_shortArr[this.c_shortArr[4] + this.resources.q_byte]) {
+         if (this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]] == 9 && (this.resources.c_int & 63) == (this.v_int & 63)) {
             if (this.a_byteArr[2020 + this.v_int] < 100) {
                this.a_byteArr[2020 + this.v_int]++;
             }
          } else if (this.b_byteArr[this.a_shortArr[50] + this.a_byteArr[2828 + this.v_int]] < 127
-            && this.a_obj_f.c_int % (this.b_byteArr[this.a_shortArr[50] + this.a_byteArr[2828 + this.v_int]] * (this.u_int * 4 + 1)) <= 3) {
+            && this.resources.c_int % (this.b_byteArr[this.a_shortArr[50] + this.a_byteArr[2828 + this.v_int]] * (this.u_int * 4 + 1)) <= 3) {
             if (this.a_byteArr[2020 + this.v_int] > 0) {
                this.a_byteArr[2020 + this.v_int]--;
             } else {
                this.a_bool5(this.v_int, -1);
             }
 
-            if (this.a_byteArr[2020 + this.v_int] <= 5 && this.a_obj_f.L_bool && (this.a_byteArr[7979 + this.v_int] & 64) != 0) {
+            if (this.a_byteArr[2020 + this.v_int] <= 5 && this.resources.L_bool && (this.a_byteArr[7979 + this.v_int] & 64) != 0) {
                this.a_void19((byte)14, this.v_int, this.v_int);
             }
          }
@@ -5530,14 +5493,14 @@ public final class GameEngine {
          this.aJ = (this.a_byteArr[2929 + this.v_int] & 255) <= 14
             ? this.b_byteArr[this.a_shortArr[170] + this.a_byteArr[2929 + this.v_int]]
             : this.b_byteArr[this.a_shortArr[52] + this.a_byteArr[2828 + this.v_int]];
-         if (this.aJ < 127 && this.a_obj_f.c_int % (this.aJ * (this.u_int * 4 + 1)) <= 3) {
+         if (this.aJ < 127 && this.resources.c_int % (this.aJ * (this.u_int * 4 + 1)) <= 3) {
             if (this.a_byteArr[2121 + this.v_int] > 0) {
                this.a_byteArr[2121 + this.v_int]--;
             } else {
                this.a_bool5(this.v_int, -1);
             }
 
-            if (this.a_byteArr[2121 + this.v_int] <= 5 && this.a_obj_f.L_bool && (this.a_byteArr[7979 + this.v_int] & 64) != 0) {
+            if (this.a_byteArr[2121 + this.v_int] <= 5 && this.resources.L_bool && (this.a_byteArr[7979 + this.v_int] & 64) != 0) {
                this.a_void19((byte)15, this.v_int, this.v_int);
             }
          }
@@ -5548,14 +5511,14 @@ public final class GameEngine {
       }
 
       if (this.a_byteArr[7373 + this.v_int] > 1 && this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]] == 11) {
-         if (this.a_obj_f.c_int % (46 - this.a_byteArr[7373 + this.v_int] * 3) <= 3) {
+         if (this.resources.c_int % (46 - this.a_byteArr[7373 + this.v_int] * 3) <= 3) {
             this.a_bool5(this.v_int, 2);
          }
-      } else if ((this.a_obj_f.c_int & 127) == (this.v_int & 15)) {
+      } else if ((this.resources.c_int & 127) == (this.v_int & 15)) {
          if ((this.a_byteArr[7979 + this.v_int] & 4) == 0) {
             this.a_bool5(this.v_int, 1);
          }
-      } else if ((this.a_byteArr[7979 + this.v_int] & 4) > 0 && (this.a_obj_f.c_int & 31) == (this.v_int & 15)) {
+      } else if ((this.a_byteArr[7979 + this.v_int] & 4) > 0 && (this.resources.c_int & 31) == (this.v_int & 15)) {
          this.a_bool5(this.v_int, -1);
          if (!this.s_bool()) {
             return false;
@@ -5583,7 +5546,7 @@ public final class GameEngine {
 
    // $VF: renamed from: W () void
    private void W() {
-      if (this.a_obj_f.c_int >= this.b_shortArr[this.c_shortArr[4] + this.a_obj_f.q_byte]) {
+      if (this.resources.c_int >= this.b_shortArr[this.c_shortArr[4] + this.resources.q_byte]) {
          this.w_int = this.a_byteArr[505 + this.v_int]
             + this.b_byteArr[this.a_shortArr[51] + this.a_byteArr[2828 + this.v_int]]
             + (this.b_byteArr[this.a_shortArr[51] + this.a_byteArr[2828 + this.v_int]] < 0 && this.a_byteArr[3434 + this.v_int] < 1 ? -3 : 0)
@@ -5600,7 +5563,7 @@ public final class GameEngine {
                      + this.a_byteArr[8749 + this.a_byteArr[4444 + this.v_int]]]
                   : 0
             );
-         this.a_byteArr[505 + this.v_int] = (byte)b_int2(this.w_int + (this.a_obj_f.q_byte < 2 ? 1 : 0) + this.u_int, 0, 99);
+         this.a_byteArr[505 + this.v_int] = (byte)b_int2(this.w_int + (this.resources.q_byte < 2 ? 1 : 0) + this.u_int, 0, 99);
       }
    }
 
@@ -5627,9 +5590,9 @@ public final class GameEngine {
       for (this.n_byte = -1; this.n_byte < 2; this.n_byte++) {
          for (this.o_byte = -1; this.o_byte < 2; this.o_byte++) {
             if (this.a_byteArr[0 + this.v_int] + this.n_byte >= 0
-               && this.a_byteArr[0 + this.v_int] + this.n_byte < this.a_obj_f.c_short
+               && this.a_byteArr[0 + this.v_int] + this.n_byte < this.resources.c_short
                && this.a_byteArr[101 + this.v_int] + this.n_byte >= 0
-               && this.a_byteArr[101 + this.v_int] + this.n_byte < this.a_obj_f.d_short) {
+               && this.a_byteArr[101 + this.v_int] + this.n_byte < this.resources.d_short) {
                this.p_byte = this.b_byteArr2[this.a_byteArr[101 + this.v_int] + this.o_byte][this.a_byteArr[0 + this.v_int] + this.n_byte];
                if (this.p_byte > 0 && this.p_byte <= 100 && (this.a_byteArr[7979 + this.p_byte] & 4) == 0 && this.a_byteArr[1414 + this.p_byte] >= 12
                   )
@@ -5643,9 +5606,9 @@ public final class GameEngine {
 
    // $VF: renamed from: Z () void
    private void Z() {
-      if (this.a_obj_f.q_byte != 3) {
+      if (this.resources.q_byte != 3) {
          if (this.u_int == 1) {
-            if (this.a_shortArr2[1][11] >= this.b_byteArr[this.a_shortArr[275 + this.a_obj_f.b_byte] + this.a_obj_f.q_byte]) {
+            if (this.a_shortArr2[1][11] >= this.b_byteArr[this.a_shortArr[275 + this.resources.b_byte] + this.resources.q_byte]) {
                this.a_shortArr2[1][18] = 0;
             }
 
@@ -5667,10 +5630,10 @@ public final class GameEngine {
                      continue;
                   }
                } else {
-                  if (this.a_byteArr[8383 + this.aH] >= this.a_obj_f.I_byte - 1
-                     && this.a_byteArr[8444 + this.aH] >= this.a_obj_f.K_byte - 1
-                     && this.a_byteArr[8383 + this.aH] <= this.a_obj_f.I_byte + this.a_obj_f.O_byte
-                     && this.a_byteArr[8444 + this.aH] <= this.a_obj_f.K_byte + this.a_obj_f.P_byte) {
+                  if (this.a_byteArr[8383 + this.aH] >= this.resources.I_byte - 1
+                     && this.a_byteArr[8444 + this.aH] >= this.resources.K_byte - 1
+                     && this.a_byteArr[8383 + this.aH] <= this.resources.I_byte + this.resources.O_byte
+                     && this.a_byteArr[8444 + this.aH] <= this.resources.K_byte + this.resources.P_byte) {
                      continue;
                   }
 
@@ -5693,13 +5656,13 @@ public final class GameEngine {
                }
 
                this.a_byteArr[9237 + this.aH] = 0;
-               this.v_int = this.a_obj_f
+               this.v_int = this.resources
                   .a_byte3(
                      (byte)this.u_int,
                      this.a_byteArr[8383 + this.aH],
                      this.a_byteArr[8444 + this.aH],
                      (byte)2,
-                     (byte)(this.u_int == 0 ? 0 : this.b_byteArr[this.a_shortArr[212 + this.a_obj_f.b_byte] + this.a_obj_f.q_byte] / 4)
+                     (byte)(this.u_int == 0 ? 0 : this.b_byteArr[this.a_shortArr[212 + this.resources.b_byte] + this.resources.q_byte] / 4)
                   );
                if (this.v_int < 1) {
                   return;
@@ -5724,7 +5687,7 @@ public final class GameEngine {
 
    // $VF: renamed from: g () void
    final void g_void2() {
-      if (this.a_obj_f.c_int % 10 == 0) {
+      if (this.resources.c_int % 10 == 0) {
          this.n_void2();
       }
 
@@ -5735,7 +5698,7 @@ public final class GameEngine {
             for (this.v_int = this.u_int * 30 + 1; this.v_int <= (this.u_int + 1) * 30; this.v_int++) {
                if (this.a_byteArr[8505 + this.v_int] != 0) {
                   this.z_int = this.a_byteArr[8749 + this.v_int];
-                  if ((this.a_obj_f.c_int & 15) == 0) {
+                  if ((this.resources.c_int & 15) == 0) {
                      this.a_byteArr[9054 + this.v_int] = (byte)(this.a_byteArr[9054 + this.v_int] & 127);
                   }
 
@@ -5763,7 +5726,7 @@ public final class GameEngine {
                            && (this.a_byteArr[9054 + this.v_int] & 1) == 0) {
                         this.C_int = 0;
                         this.aa();
-                        if ((this.a_obj_f.c_int & 0xFF) == this.v_int) {
+                        if ((this.resources.c_int & 0xFF) == this.v_int) {
                            this.ac();
                         }
 
@@ -5780,7 +5743,7 @@ public final class GameEngine {
                         if (this.z_int >= 12
                            && this.a_byteArr[8505 + this.v_int] >= this.b_byteArr[this.a_shortArr[138] + 182 + this.a_byteArr[9237 + this.v_int]]
                            && this.a_byteArr[8932 + this.v_int] == 0) {
-                           this.a_obj_f
+                           this.resources
                               .a_byte4(
                                  (byte)this.u_int,
                                  this.a_byteArr[9237 + this.v_int],
@@ -5790,23 +5753,23 @@ public final class GameEngine {
                                  true,
                                  this.v_int
                               );
-                           this.a_obj_f.a_void6(this.v_int, 0);
+                           this.resources.a_void6(this.v_int, 0);
                            this.a_byteArr[9237 + this.v_int] = 0;
                            this.f_byteArr2[0][this.x_int] = 0;
                         }
 
-                        if ((this.z_int >= 12 || this.a_byteArr[8627 + this.v_int] != 0) && (this.a_obj_f.c_int & 15) == (this.v_int & 15)) {
+                        if ((this.z_int >= 12 || this.a_byteArr[8627 + this.v_int] != 0) && (this.resources.c_int & 15) == (this.v_int & 15)) {
                            this.ae();
                         }
                      } else {
-                        this.a_obj_f.a_void13(this.v_int, true);
+                        this.resources.a_void13(this.v_int, true);
                         this.ad();
                      }
                   }
                }
             }
          }
-      } catch (Exception var2) {
+      } catch (Exception ignoredException1) {
       }
    }
 
@@ -5836,14 +5799,14 @@ public final class GameEngine {
             && this.a_byteArr[1313 + this.w_int] != -3
             && (
                this.a_byteArr[1313 + this.w_int] != -2
-                  || this.a_byteArr[3030 + this.w_int] >= this.a_obj_f.j_byteArr2[4][this.a_byteArr[2929 + this.w_int] & 255] - 1
+                  || this.a_byteArr[3030 + this.w_int] >= this.resources.j_byteArr2[4][this.a_byteArr[2929 + this.w_int] & 255] - 1
                      && this.b_byteArr[this.a_shortArr[42] + this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.w_int]]]
                         == this.b_byteArr[this.a_shortArr[42] + this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[2828 + this.w_int]]]
                      && this.a_byteArr[3636 + this.w_int] <= 0
             )
             && (
                this.a_byteArr[2929 + this.w_int] != -109 && this.a_byteArr[2929 + this.w_int] != -102
-                  || this.a_byteArr[3030 + this.w_int] >= this.a_obj_f.j_byteArr2[4][this.a_byteArr[2929 + this.w_int] & 255] - 1
+                  || this.a_byteArr[3030 + this.w_int] >= this.resources.j_byteArr2[4][this.a_byteArr[2929 + this.w_int] & 255] - 1
             )
             && (
                this.a_byteArr[8627 + this.v_int] == 0
@@ -5956,12 +5919,12 @@ public final class GameEngine {
 
    // $VF: renamed from: ac () void
    private void ac() {
-      for (int var1 = this.u_int * 50 + 1; var1 <= (this.u_int + 1) * 50; var1++) {
-         if (this.a_byteArr[1919 + var1] > 0
-            && this.a_byteArr[4444 + var1] == this.v_int
-            && this.a_byteArr[4646 + var1] < 0
-            && this.a_byteArr[1313 + var1] == -1
-            && (var1 != this.a_byteArr[8810 + this.v_int] || this.a_byteArr[8749 + this.v_int] == 2 && this.a_byteArr[8627 + this.v_int] == 0)) {
+      for (int loopIndex1 = this.u_int * 50 + 1; loopIndex1 <= (this.u_int + 1) * 50; loopIndex1++) {
+         if (this.a_byteArr[1919 + loopIndex1] > 0
+            && this.a_byteArr[4444 + loopIndex1] == this.v_int
+            && this.a_byteArr[4646 + loopIndex1] < 0
+            && this.a_byteArr[1313 + loopIndex1] == -1
+            && (loopIndex1 != this.a_byteArr[8810 + this.v_int] || this.a_byteArr[8749 + this.v_int] == 2 && this.a_byteArr[8627 + this.v_int] == 0)) {
             this.C_int++;
          }
       }
@@ -5972,7 +5935,7 @@ public final class GameEngine {
    // $VF: renamed from: ad () void
    private void ad() {
       if ((this.a_byteArr[9054 + this.v_int] & 1) == 0) {
-         this.a_obj_f.a_void6(this.v_int, 0);
+         this.resources.a_void6(this.v_int, 0);
          if (this.a_byteArr[8627 + this.v_int] == 1) {
             this.a_byteArr[9115 + this.v_int]++;
          }
@@ -5983,16 +5946,16 @@ public final class GameEngine {
       this.a_byteArr[8810 + this.v_int] = this.a_byteArr[9237 + this.v_int];
       this.a_byteArr[9237 + this.v_int] = 0;
       this.g_byteArr2[0][this.x_int] = 0;
-      this.a_obj_f.d_void5(this.v_int);
+      this.resources.d_void5(this.v_int);
    }
 
    // $VF: renamed from: a (byte) boolean
-   final boolean a_bool12(byte var1) {
+   final boolean a_bool12(byte byteValue1) {
       for (this.aK = 0; this.aK < 10; this.aK++) {
          if (this.f_byteArr2[0][this.aK] < 1) {
-            this.f_byteArr2[0][this.aK] = var1;
+            this.f_byteArr2[0][this.aK] = byteValue1;
             this.f_byteArr2[1][this.aK] = 0;
-            this.a_byteArr[9298 + var1] = 0;
+            this.a_byteArr[9298 + byteValue1] = 0;
             return true;
          }
       }
@@ -6001,17 +5964,17 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: b (byte) boolean
-   final boolean b_bool6(byte var1) {
+   final boolean b_bool6(byte byteValue1) {
       for (this.aK = 0; this.aK < 20; this.aK++) {
          if (this.g_byteArr2[0][this.aK] < 1) {
-            this.g_byteArr2[0][this.aK] = var1;
+            this.g_byteArr2[0][this.aK] = byteValue1;
             this.g_byteArr2[1][this.aK] = 0;
             this.g_byteArr2[2][this.aK] = 0;
-            this.a_byteArr[9237 + var1] = this.a_byteArr[8810 + var1];
-            this.a_byteArr[8810 + var1] = 0;
-            this.a_byteArr[9298 + var1] = 0;
-            if (this.a_byteArr[8749 + var1] == 2) {
-               this.a_void10(var1);
+            this.a_byteArr[9237 + byteValue1] = this.a_byteArr[8810 + byteValue1];
+            this.a_byteArr[8810 + byteValue1] = 0;
+            this.a_byteArr[9298 + byteValue1] = 0;
+            if (this.a_byteArr[8749 + byteValue1] == 2) {
+               this.a_void10(byteValue1);
             }
 
             return true;
@@ -6023,7 +5986,7 @@ public final class GameEngine {
 
    // $VF: renamed from: ae () void
    private void ae() {
-      if ((this.u_int != 0 || !this.a_obj_f.N_bool) && (this.u_int != 1 || this.Q_byte <= 0)) {
+      if ((this.u_int != 0 || !this.resources.N_bool) && (this.u_int != 1 || this.Q_byte <= 0)) {
          this.aK = this.a_byteArr[8627 + this.v_int] == 0
             ? this.b_byteArr[this.a_shortArr[138] + (this.a_byteArr[9115 + this.v_int] - 1) * 26 + this.a_byteArr[8749 + this.v_int]]
             : this.b_byteArr[this.a_shortArr[138] + 494 + this.a_byteArr[8749 + this.v_int]];
@@ -6036,7 +5999,7 @@ public final class GameEngine {
                this.aL <= (this.u_int + 1) * 50 && this.a_byteArr[9298 + this.v_int] < this.aK;
                this.aL++
             ) {
-               int var1;
+               int intValue1;
                if ((
                      this.u_int == 0
                            && (
@@ -6046,14 +6009,14 @@ public final class GameEngine {
                            && this.a_byteArr[6161 + this.aL] == 0
                            && this.b_byteArr[this.a_shortArr[42] + this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.aL]]] == 2
                         || this.u_int == 1
-                           && this.j_byteArr[this.aL - this.u_int * 50 - 1] < this.b_byteArr[this.a_shortArr[242] + this.a_obj_f.q_byte]
+                           && this.j_byteArr[this.aL - this.u_int * 50 - 1] < this.b_byteArr[this.a_shortArr[242] + this.resources.q_byte]
                            && this.b_byteArr[this.a_shortArr[42] + this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.aL]]] != 2
                   )
                   && (
                      this.u_int != 0
-                        || (var1 = -this.b_byteArr2[this.a_byteArr[6363 + this.aL]][this.a_byteArr[6262 + this.aL]]) <= this.u_int * 30
-                        || var1 > (this.u_int + 1) * 30
-                        || this.a_byteArr[8749 + var1] < 12 && this.a_byteArr[8627 + var1] == 0
+                        || (intValue1 = -this.b_byteArr2[this.a_byteArr[6363 + this.aL]][this.a_byteArr[6262 + this.aL]]) <= this.u_int * 30
+                        || intValue1 > (this.u_int + 1) * 30
+                        || this.a_byteArr[8749 + intValue1] < 12 && this.a_byteArr[8627 + intValue1] == 0
                   )) {
                   this.a_byteArr[6262 + this.aL] = this.a_byteArr[3131 + this.aL] = this.a_byteArr[8383 + this.v_int];
                   this.a_byteArr[6363 + this.aL] = this.a_byteArr[3232 + this.aL] = this.a_byteArr[8444 + this.v_int];
@@ -6070,17 +6033,17 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: c (int) void
-   final void c_void6(int var1) {
+   final void c_void6(int intValue1) {
       for (this.aK = 0; this.aK < 10; this.aK++) {
-         if (this.f_byteArr2[0][this.aK] == var1) {
+         if (this.f_byteArr2[0][this.aK] == intValue1) {
             this.f_byteArr2[0][this.aK] = 0;
          }
       }
    }
 
    // $VF: renamed from: d (boolean) void
-   private void d_void4(boolean var1) {
-      if (var1) {
+   private void d_void4(boolean flag1) {
+      if (flag1) {
          this.a_void7(this.w_int, (byte)78);
          if (this.a_byteArr[2929 + this.w_int] != 115 && this.a_byteArr[2929 + this.w_int] != 113) {
             this.a_byteArr[2929 + this.w_int] = 115;
@@ -6089,7 +6052,7 @@ public final class GameEngine {
             return;
          }
 
-         if (this.a_byteArr[3030 + this.w_int] == this.a_obj_f.j_byteArr2[4][this.a_byteArr[2929 + this.w_int] & 255] - 1) {
+         if (this.a_byteArr[3030 + this.w_int] == this.resources.j_byteArr2[4][this.a_byteArr[2929 + this.w_int] & 255] - 1) {
             this.a_byteArr[2929 + this.w_int] = 113;
             return;
          }
@@ -6100,7 +6063,7 @@ public final class GameEngine {
             return;
          }
 
-         if (this.a_byteArr[3030 + this.w_int] == this.a_obj_f.j_byteArr2[4][this.a_byteArr[2929 + this.w_int] & 255] - 1) {
+         if (this.a_byteArr[3030 + this.w_int] == this.resources.j_byteArr2[4][this.a_byteArr[2929 + this.w_int] & 255] - 1) {
             this.a_void7(this.w_int, (byte)56);
          }
       }
@@ -6109,30 +6072,30 @@ public final class GameEngine {
    // $VF: renamed from: h () void
    final void h_void2() {
       try {
-         if (this.b_byteArr[this.a_shortArr[202] + this.a_obj_f.q_byte] > 0
-            && this.a_obj_f.c_int % (this.b_byteArr[this.a_shortArr[204] + this.a_obj_f.q_byte] * 40) == 10
-            && (this.a_obj_f.q_byte != 4 || this.a_obj_f.c_int > 5000)) {
-            if (this.a_obj_f.t_byteArr[this.u_int = this.a_obj_f.a_int2(16777215, this.b_byteArr[this.a_shortArr[202] + this.a_obj_f.q_byte])]
-               >= this.b_byteArr[this.a_shortArr[205] + this.a_obj_f.q_byte]) {
+         if (this.b_byteArr[this.a_shortArr[202] + this.resources.q_byte] > 0
+            && this.resources.c_int % (this.b_byteArr[this.a_shortArr[204] + this.resources.q_byte] * 40) == 10
+            && (this.resources.q_byte != 4 || this.resources.c_int > 5000)) {
+            if (this.resources.t_byteArr[this.u_int = this.resources.a_int2(16777215, this.b_byteArr[this.a_shortArr[202] + this.resources.q_byte])]
+               >= this.b_byteArr[this.a_shortArr[205] + this.resources.q_byte]) {
                this.u_int = 0;
 
                while (
-                  this.u_int < this.b_byteArr[this.a_shortArr[202] + this.a_obj_f.q_byte]
-                     && this.a_obj_f.t_byteArr[this.u_int] >= this.b_byteArr[this.a_shortArr[205] + this.a_obj_f.q_byte]
+                  this.u_int < this.b_byteArr[this.a_shortArr[202] + this.resources.q_byte]
+                     && this.resources.t_byteArr[this.u_int] >= this.b_byteArr[this.a_shortArr[205] + this.resources.q_byte]
                ) {
                   this.u_int++;
                }
             }
 
-            if (this.u_int < this.b_byteArr[this.a_shortArr[202] + this.a_obj_f.q_byte]) {
-               this.v_int = this.a_obj_f.a_int2(16777215, 100);
+            if (this.u_int < this.b_byteArr[this.a_shortArr[202] + this.resources.q_byte]) {
+               this.v_int = this.resources.a_int2(16777215, 100);
                this.w_int = 0;
 
                while (
                   this.w_int < 3
                      && this.v_int
                         >= this.b_byteArr[this.a_shortArr[185]
-                           + (this.b_byteArr[this.a_shortArr[201] + this.a_obj_f.q_byte] + this.u_int) * 3
+                           + (this.b_byteArr[this.a_shortArr[201] + this.resources.q_byte] + this.u_int) * 3
                            + this.w_int]
                ) {
                   this.w_int++;
@@ -6142,18 +6105,18 @@ public final class GameEngine {
                this.a_bool4(
                   1,
                   10,
-                  this.b_byteArr[this.a_shortArr[199] + this.b_byteArr[this.a_shortArr[201] + this.a_obj_f.q_byte] + this.u_int],
-                  this.b_byteArr[this.a_shortArr[200] + this.b_byteArr[this.a_shortArr[201] + this.a_obj_f.q_byte] + this.u_int]
+                  this.b_byteArr[this.a_shortArr[199] + this.b_byteArr[this.a_shortArr[201] + this.resources.q_byte] + this.u_int],
+                  this.b_byteArr[this.a_shortArr[200] + this.b_byteArr[this.a_shortArr[201] + this.resources.q_byte] + this.u_int]
                );
-               this.a_obj_f.b_void7(this.w_int, this.a_byteArr[3131], this.a_byteArr[3232], this.u_int);
-               if (this.a_obj_f.q_byte == 4 && this.a_obj_f.t_byteArr[0] > 1 && this.a_obj_f.a_int2(16777215, 10) < this.a_obj_f.t_byteArr[0]) {
+               this.resources.b_void7(this.w_int, this.a_byteArr[3131], this.a_byteArr[3232], this.u_int);
+               if (this.resources.q_byte == 4 && this.resources.t_byteArr[0] > 1 && this.resources.a_int2(16777215, 10) < this.resources.t_byteArr[0]) {
                   for (this.v_int = 0; this.v_int < 22; this.v_int++) {
                      if (this.a_byteArr[9469 + this.v_int] == 0) {
                         this.a_byteArr[9469 + this.v_int] = 2;
                      }
                   }
 
-                  this.a_obj_f.t_byteArr[0] = 0;
+                  this.resources.t_byteArr[0] = 0;
                }
             }
          }
@@ -6164,14 +6127,14 @@ public final class GameEngine {
                this.ah();
             }
          }
-      } catch (Exception var2) {
+      } catch (Exception ignoredException1) {
       }
    }
 
    // $VF: renamed from: af () void
    private void af() {
       this.a_byteArr[9579 + this.v_int]++;
-      if (this.a_byteArr[9579 + this.v_int] >= this.a_obj_f.j_byteArr2[4][this.a_byteArr[9557 + this.v_int] & 255]) {
+      if (this.a_byteArr[9579 + this.v_int] >= this.resources.j_byteArr2[4][this.a_byteArr[9557 + this.v_int] & 255]) {
          this.a_byteArr[9579 + this.v_int] = 0;
          if (this.a_byteArr[9557 + this.v_int] == 37 + this.a_byteArr[9535 + this.v_int]) {
             this.a_bool11(
@@ -6181,7 +6144,7 @@ public final class GameEngine {
                this.a_byteArr[9601 + this.v_int] > 0 ? 1 : 2,
                this.a_byteArr[9601 + this.v_int] > 0 ? this.a_byteArr[9601 + this.v_int] : -this.a_byteArr[9601 + this.v_int],
                0,
-               this.b_byteArr[this.a_shortArr[182] + this.a_byteArr[9535 + this.v_int]] * (2 + this.a_obj_f.a_int2(255, 3)) / 4,
+               this.b_byteArr[this.a_shortArr[182] + this.a_byteArr[9535 + this.v_int]] * (2 + this.resources.a_int2(255, 3)) / 4,
                0
             );
          }
@@ -6206,10 +6169,10 @@ public final class GameEngine {
 
             this.a_byteArr[9447 + this.v_int] = 0;
          } else if ((
-               this.a_obj_f.c_int % this.b_byteArr[this.a_shortArr[179] + this.a_byteArr[9535 + this.v_int]] == 0
+               this.resources.c_int % this.b_byteArr[this.a_shortArr[179] + this.a_byteArr[9535 + this.v_int]] == 0
                   || (this.a_byteArr[9557 + this.v_int] & 255) <= 7
             )
-            && (this.a_obj_f.q_byte != 3 || this.f_byte < 5)) {
+            && (this.resources.q_byte != 3 || this.f_byte < 5)) {
             this.a_bool4(6, 6, this.a_byteArr[9359 + this.v_int], this.a_byteArr[9381 + this.v_int]);
             if (this.a_byteArr[9601 + this.v_int] != 0) {
                if (this.a_byteArr[9601 + this.v_int] > 0) {
@@ -6220,7 +6183,7 @@ public final class GameEngine {
                      this.a_byteArr[9667 + this.v_int] = this.a_byteArr[101 + this.a_byteArr[9601 + this.v_int]];
                      this.a_byteArr[9689 + this.v_int] = 0;
                      if (this.a_int2(this.a_byteArr[9359 + this.v_int], this.a_byteArr[9381 + this.v_int], 101) > 59
-                        && (this.a_obj_f.q_byte != 3 || this.f_byte != 4)) {
+                        && (this.resources.q_byte != 3 || this.f_byte != 4)) {
                         this.a_byteArr[9601 + this.v_int] = 0;
                         this.a_byteArr[9645 + this.v_int] = this.a_byteArr[9359 + this.v_int];
                         this.a_byteArr[9667 + this.v_int] = this.a_byteArr[9381 + this.v_int];
@@ -6245,7 +6208,7 @@ public final class GameEngine {
    private void ag() {
       if (this.z_int / 10 - (this.a_byteArr[9601 + this.v_int] != 0 ? 1 : 0) > 0) {
          if (this.a_byteArr[9711 + this.v_int] >= this.a_byteArr[9689 + this.v_int]) {
-            if (this.a_obj_f.c_int % this.b_byteArr[this.a_shortArr[179] + this.a_byteArr[9535 + this.v_int]] == 0
+            if (this.resources.c_int % this.b_byteArr[this.a_shortArr[179] + this.a_byteArr[9535 + this.v_int]] == 0
                || this.a_byteArr[9601 + this.v_int] != 0) {
                this.a_byteArr[9689 + this.v_int] = this.a_byteArr[9711 + this.v_int] = 0;
                this.a_byteArr[9689 + this.v_int] = this.a_byte2(
@@ -6357,47 +6320,47 @@ public final class GameEngine {
    // $VF: renamed from: ai () void
    private void ai() {
       if (this.a_byteArr[9601 + this.v_int] == 0) {
-         this.x_int = this.a_obj_f.a_int2(16777215, 100);
+         this.x_int = this.resources.a_int2(16777215, 100);
          this.a_byteArr[9557 + this.v_int] = this.b_byteArr[this.a_shortArr[184] + this.x_int / 50 * 3 + this.a_byteArr[9535 + this.v_int]];
       } else {
          this.a_byteArr[9557 + this.v_int] = (byte)(37 + this.a_byteArr[9535 + this.v_int]);
       }
 
-      if (this.a_obj_f.q_byte == 4 && this.a_byteArr[9469 + this.v_int] == 2) {
+      if (this.resources.q_byte == 4 && this.a_byteArr[9469 + this.v_int] == 2) {
          this.a_byteArr[9469 + this.v_int] = 3;
       }
    }
 
    // $VF: renamed from: e (boolean) void
-   private void e_void3(boolean var1) {
-      boolean var2 = this.a_obj_f.q_byte != 3
+   private void e_void3(boolean flag1) {
+      boolean flag2 = this.resources.q_byte != 3
          || this.a_byteArr[9469 + this.v_int] != 0
          || this.a_byteArr[9359 + this.v_int] > 27
          || this.a_byteArr[9359 + this.v_int] < 20
          || this.a_byteArr[9381 + this.v_int] > 6;
       this.a_byteArr[9689 + this.v_int] = 0;
-      this.x_int = this.a_obj_f.a_int2(16777215, 63);
-      this.w_int = this.b_byteArr[this.a_shortArr[201] + this.a_obj_f.q_byte] + this.a_byteArr[9469 + this.v_int];
-      this.B_int = this.b_byteArr[this.a_shortArr[203] + this.a_obj_f.q_byte];
+      this.x_int = this.resources.a_int2(16777215, 63);
+      this.w_int = this.b_byteArr[this.a_shortArr[201] + this.resources.q_byte] + this.a_byteArr[9469 + this.v_int];
+      this.B_int = this.b_byteArr[this.a_shortArr[203] + this.resources.q_byte];
       this.a_byteArr[9645 + this.v_int] = (byte)(
-         !var2
+         !flag2
             ? this.a_byteArr[9359 + this.v_int]
             : b_int2(
-               this.a_byteArr[9359 + this.v_int] + (var1 ? this.b_byteArr[this.a_shortArr[1] + this.E_byte] : (this.x_int & 7) - 4),
-               var1 ? 0 : this.b_byteArr[this.a_shortArr[199] + this.w_int] - this.B_int,
-               var1 ? this.a_obj_f.c_short - 1 : this.b_byteArr[this.a_shortArr[199] + this.w_int] + this.B_int
+               this.a_byteArr[9359 + this.v_int] + (flag1 ? this.b_byteArr[this.a_shortArr[1] + this.E_byte] : (this.x_int & 7) - 4),
+               flag1 ? 0 : this.b_byteArr[this.a_shortArr[199] + this.w_int] - this.B_int,
+               flag1 ? this.resources.c_short - 1 : this.b_byteArr[this.a_shortArr[199] + this.w_int] + this.B_int
             )
       );
       this.a_byteArr[9667 + this.v_int] = (byte)(
-         !var2
+         !flag2
             ? this.a_byteArr[9381 + this.v_int]
             : b_int2(
-               this.a_byteArr[9381 + this.v_int] + (var1 ? this.b_byteArr[this.a_shortArr[1] + 8 + this.E_byte] : (this.x_int >> 3 & 7) - 4),
-               var1 ? 0 : this.b_byteArr[this.a_shortArr[200] + this.w_int] - this.B_int,
-               var1 ? this.a_obj_f.d_short - 1 : this.b_byteArr[this.a_shortArr[200] + this.w_int] + this.B_int
+               this.a_byteArr[9381 + this.v_int] + (flag1 ? this.b_byteArr[this.a_shortArr[1] + 8 + this.E_byte] : (this.x_int >> 3 & 7) - 4),
+               flag1 ? 0 : this.b_byteArr[this.a_shortArr[200] + this.w_int] - this.B_int,
+               flag1 ? this.resources.d_short - 1 : this.b_byteArr[this.a_shortArr[200] + this.w_int] + this.B_int
             )
       );
-      if (this.b_byteArr2[this.a_byteArr[9667 + this.v_int]][this.a_byteArr[9645 + this.v_int]] != 0 && var2) {
+      if (this.b_byteArr2[this.a_byteArr[9667 + this.v_int]][this.a_byteArr[9645 + this.v_int]] != 0 && flag2) {
          this.a_bool4(2, 127, this.a_byteArr[9645 + this.v_int], this.a_byteArr[9667 + this.v_int]);
       }
    }
@@ -6406,17 +6369,17 @@ public final class GameEngine {
    final void i_void2() {
       for (this.aM = 0; this.aM < 50; this.aM++) {
          if (this.a_byteArr[9833 + this.aM] != 0) {
-            if ((this.a_obj_f.c_int & 127) == 1 && this.a_byteArr[9833 + this.aM] == 6) {
+            if ((this.resources.c_int & 127) == 1 && this.a_byteArr[9833 + this.aM] == 6) {
                if (this.a_byteArr[9883 + this.aM] > 0) {
                   this.a_byteArr[9883 + this.aM]--;
                }
-            } else if ((this.a_obj_f.c_int & 511) == 1
+            } else if ((this.resources.c_int & 511) == 1
                && this.a_byteArr[9833 + this.aM] != 7
                && this.a_byteArr[9883 + this.aM] < this.b_byteArr[this.a_shortArr[110] + this.a_byteArr[9833 + this.aM]]) {
                this.a_byteArr[9883 + this.aM]++;
             }
 
-            if ((this.a_obj_f.c_int & 7) == (this.aM & 7)) {
+            if ((this.resources.c_int & 7) == (this.aM & 7)) {
                this.aj();
             }
 
@@ -6424,7 +6387,7 @@ public final class GameEngine {
                if (this.a_byteArr[9883 + this.aM]
                   <= this.b_byteArr[this.a_shortArr[110] + this.a_byteArr[9833 + this.aM]] * this.b_byteArr[this.a_shortArr[85] + this.w_int] / 10) {
                   if (this.a_byteArr[9933 + this.aM] != this.w_int) {
-                     this.a_obj_f.c_void7(this.a_byteArr[9733 + this.aM], this.a_byteArr[9783 + this.aM], 1, 1);
+                     this.resources.c_void7(this.a_byteArr[9733 + this.aM], this.a_byteArr[9783 + this.aM], 1, 1);
                   }
 
                   this.a_byteArr[9933 + this.aM] = (byte)this.w_int;
@@ -6435,7 +6398,7 @@ public final class GameEngine {
       }
 
       if (!this.t_bool()) {
-         if (this.a_obj_f.q_byte == 4) {
+         if (this.resources.q_byte == 4) {
             if (this.u_bool()) {
                return;
             }
@@ -6445,15 +6408,15 @@ public final class GameEngine {
 
          this.ak();
          this.al();
-         if (this.a_obj_f.q_byte <= 4) {
-            this.v_int = this.b_byteArr[this.a_shortArr[302] + this.a_obj_f.q_byte] + this.L_byte;
+         if (this.resources.q_byte <= 4) {
+            this.v_int = this.b_byteArr[this.a_shortArr[302] + this.resources.q_byte] + this.L_byte;
             if (this.K_byte >= 50
-               && this.v_int < this.b_byteArr[this.a_shortArr[302] + this.a_obj_f.q_byte + 1]
-               && this.a_obj_f.c_int >= this.b_byteArr[this.a_shortArr[299] + this.v_int] * 100) {
-               this.L_byte = (byte)(this.L_byte + (this.a_obj_f.c_int >= this.b_byteArr[this.a_shortArr[299] + this.v_int + 1] * 100 ? 2 : 1));
+               && this.v_int < this.b_byteArr[this.a_shortArr[302] + this.resources.q_byte + 1]
+               && this.resources.c_int >= this.b_byteArr[this.a_shortArr[299] + this.v_int] * 100) {
+               this.L_byte = (byte)(this.L_byte + (this.resources.c_int >= this.b_byteArr[this.a_shortArr[299] + this.v_int + 1] * 100 ? 2 : 1));
                this.j_void2();
                this.b_void6(0, 0, 3);
-               this.a_obj_f.b_void3(this.b_byteArr[this.a_shortArr[301] + this.v_int]);
+               this.resources.b_void3(this.b_byteArr[this.a_shortArr[301] + this.v_int]);
             }
          }
       }
@@ -6465,13 +6428,13 @@ public final class GameEngine {
          if (this.a_byteArr[9833 + this.aM] == 7) {
             this.a_byteArr[9833 + this.aM] = 0;
             this.b_byteArr2[this.a_byteArr[9783 + this.aM]][this.a_byteArr[9733 + this.aM]] = 0;
-            this.a_obj_f.c_void7(this.a_byteArr[9733 + this.aM], this.a_byteArr[9783 + this.aM], 1, 1);
+            this.resources.c_void7(this.a_byteArr[9733 + this.aM], this.a_byteArr[9783 + this.aM], 1, 1);
          }
 
          if (this.a_byteArr[9833 + this.aM] == 6) {
             this.a_byteArr[9833 + this.aM] = 7;
             this.a_byteArr[9883 + this.aM] = this.b_byteArr[this.a_shortArr[110] + 7];
-            this.a_obj_f.c_void7(this.a_byteArr[9733 + this.aM], this.a_byteArr[9783 + this.aM], 1, 1);
+            this.resources.c_void7(this.a_byteArr[9733 + this.aM], this.a_byteArr[9783 + this.aM], 1, 1);
          }
 
          this.am();
@@ -6481,19 +6444,19 @@ public final class GameEngine {
    // $VF: renamed from: t () boolean
    private boolean t_bool() {
       for (this.aM = 0; this.aM < 2; this.aM++) {
-         for (this.w_int = 0; this.w_int < 5 && this.a_obj_f.c_byteArr3[this.aM][this.w_int][2] >= 0; this.w_int++) {
-            if ((this.a_obj_f.c_int & 7) == 0) {
-               this.a_obj_f.c_byteArr3[this.aM][this.w_int][2]++;
+         for (this.w_int = 0; this.w_int < 5 && this.resources.c_byteArr3[this.aM][this.w_int][2] >= 0; this.w_int++) {
+            if ((this.resources.c_int & 7) == 0) {
+               this.resources.c_byteArr3[this.aM][this.w_int][2]++;
             }
 
-            if (this.a_obj_f.c_byteArr3[this.aM][this.w_int][2] >= 100) {
-               this.a_obj_f.c_byteArr3[this.aM][this.w_int][2] = -1;
+            if (this.resources.c_byteArr3[this.aM][this.w_int][2] >= 100) {
+               this.resources.c_byteArr3[this.aM][this.w_int][2] = -1;
             } else {
                for (this.u_int = -1; this.u_int < 2; this.u_int++) {
                   for (this.v_int = -1; this.v_int < 2; this.v_int++) {
-                     this.C_int = this.a_obj_f.c_byteArr3[this.aM][this.w_int][0] + this.u_int;
-                     this.D_int = this.a_obj_f.c_byteArr3[this.aM][this.w_int][1] + this.v_int;
-                     if (this.C_int >= 0 && this.C_int < this.a_obj_f.c_short && this.D_int >= 0 && this.D_int < this.a_obj_f.d_short) {
+                     this.C_int = this.resources.c_byteArr3[this.aM][this.w_int][0] + this.u_int;
+                     this.D_int = this.resources.c_byteArr3[this.aM][this.w_int][1] + this.v_int;
+                     if (this.C_int >= 0 && this.C_int < this.resources.c_short && this.D_int >= 0 && this.D_int < this.resources.d_short) {
                         this.A_int = this.b_byteArr2[this.D_int][this.C_int];
                         if (this.A_int >= 1 && this.A_int <= 100 && this.a_byteArr[1414 + this.A_int] >= 12) {
                            this.a_byteArr[7979 + this.A_int] = (byte)(this.a_byteArr[7979 + this.A_int] | 4);
@@ -6505,18 +6468,18 @@ public final class GameEngine {
          }
       }
 
-      if (this.a_obj_f.q_byte != 3
-         && (this.a_obj_f.q_byte != 2 || this.f_byte <= 2)
+      if (this.resources.q_byte != 3
+         && (this.resources.q_byte != 2 || this.f_byte <= 2)
          && (this.a_byteArr[1919 + this.a_shortArr2[0][17]] == 0 || this.a_byteArr[1414 + this.a_shortArr2[0][17]] < 12)
-         && !this.a_obj_f.K_bool
+         && !this.resources.K_bool
          && this.a_shortArr2[0][11] > 0
          && this.f_byte < 50
-         && this.a_obj_f.u_byte == 0
+         && this.resources.u_byte == 0
          && this.K_byte >= 50) {
          for (this.v_int = 1; this.v_int <= 50; this.v_int++) {
             if (this.a_byteArr[1919 + this.v_int] > 0 && this.a_byteArr[1414 + this.v_int] >= 12) {
-               this.a_obj_f.K_bool = true;
-               this.a_obj_f.a_void11((byte)18, (byte)this.v_int, (byte)this.v_int);
+               this.resources.K_bool = true;
+               this.resources.a_void11((byte)18, (byte)this.v_int, (byte)this.v_int);
                return true;
             }
          }
@@ -6528,21 +6491,21 @@ public final class GameEngine {
    // $VF: renamed from: u () boolean
    private boolean u_bool() {
       if (this.a_byteArr[1919 + this.a_shortArr2[0][17]] > 0 && this.a_byteArr[1414 + this.a_shortArr2[0][17]] >= 12) {
-         if ((this.a_obj_f.a_intArr3[1][0][67] & 256) != 0 && (this.R_byte & 64) == 0 && this.K_byte >= 50) {
+         if ((this.resources.a_intArr3[1][0][67] & 256) != 0 && (this.R_byte & 64) == 0 && this.K_byte >= 50) {
             this.b_void6(this.a_shortArr2[0][17], 0, 1);
-            this.a_obj_f.b_void3(51);
+            this.resources.b_void3(51);
             this.R_byte = (byte)(this.R_byte | 64);
             return true;
          }
 
-         if (this.f_byte > 0 && this.f_byte < 3 && this.a_obj_f.c_int >= 3000 + this.f_byte * 7000 && this.K_byte >= 50) {
+         if (this.f_byte > 0 && this.f_byte < 3 && this.resources.c_int >= 3000 + this.f_byte * 7000 && this.K_byte >= 50) {
             this.c_void2(false);
 
             for (this.N_int = 0; this.N_int < 4; this.N_int++) {
-               this.a_obj_f.p_byteArr[this.N_int + 1] = this.e_byteArr2[this.N_int][0] != 0 ? this.e_byteArr2[this.N_int][0] : this.e_byteArr2[0][0];
+               this.resources.p_byteArr[this.N_int + 1] = this.e_byteArr2[this.N_int][0] != 0 ? this.e_byteArr2[this.N_int][0] : this.e_byteArr2[0][0];
             }
 
-            this.a_obj_f.b_void3(this.f_byte == 1 ? 53 : 54);
+            this.resources.b_void3(this.f_byte == 1 ? 53 : 54);
             this.f_byte = (byte)(this.f_byte + 50);
             return true;
          }
@@ -6553,16 +6516,16 @@ public final class GameEngine {
 
    // $VF: renamed from: v () boolean
    private boolean v_bool() {
-      if (this.f_byte < this.b_byteArr[this.a_shortArr[291] + this.a_obj_f.q_byte]
-         && (this.a_obj_f.q_byte == 3 || this.a_byteArr[1919 + this.a_shortArr2[0][17]] > 0 && this.a_byteArr[1414 + this.a_shortArr2[0][17]] >= 12)) {
-         this.N_int = this.b_byteArr[this.a_shortArr[287] + this.b_byteArr[this.a_shortArr[288] + this.a_obj_f.q_byte] + this.f_byte];
+      if (this.f_byte < this.b_byteArr[this.a_shortArr[291] + this.resources.q_byte]
+         && (this.resources.q_byte == 3 || this.a_byteArr[1919 + this.a_shortArr2[0][17]] > 0 && this.a_byteArr[1414 + this.a_shortArr2[0][17]] >= 12)) {
+         this.N_int = this.b_byteArr[this.a_shortArr[287] + this.b_byteArr[this.a_shortArr[288] + this.resources.q_byte] + this.f_byte];
          if (this.a_shortArr2[1][11] <= 0 && this.N_int == 3 && this.F_int == 1000000) {
-            this.F_int = this.a_obj_f.c_int;
+            this.F_int = this.resources.c_int;
          }
 
          if (this.N_int >= 3 && this.N_int <= 9) {
             if (this.N_int == 7) {
-               if (this.a_obj_f.q_byte != 3 || this.f_byte != 2 || this.K_byte >= 50) {
+               if (this.resources.q_byte != 3 || this.f_byte != 2 || this.K_byte >= 50) {
                   for (this.aM = 1; this.aM <= 50; this.aM++) {
                      if (this.a_byteArr[1919 + this.aM] > 0
                         && this.a_byteArr[1414 + this.aM] >= 12
@@ -6570,10 +6533,10 @@ public final class GameEngine {
                         && this.a_byteArr[303 + this.aM] == 0) {
                         this.b_void5(this.aM, 0, this.a_byteArr[0 + this.aM], this.a_byteArr[101 + this.aM]);
                         if (this.f_byte >= 50) {
-                           if (this.a_obj_f.q_byte == 3) {
+                           if (this.resources.q_byte == 3) {
                               for (this.aM = 0; this.aM < 5; this.aM++) {
-                                 if (this.a_obj_f.p_byteArr[this.aM] != 0) {
-                                    this.a_void15(this.a_obj_f.p_byteArr[this.aM], true);
+                                 if (this.resources.p_byteArr[this.aM] != 0) {
+                                    this.a_void15(this.resources.p_byteArr[this.aM], true);
                                  }
                               }
                            }
@@ -6583,39 +6546,39 @@ public final class GameEngine {
                      }
                   }
                }
-            } else if (this.N_int == 3 && this.a_obj_f.c_int - this.F_int > 40
+            } else if (this.N_int == 3 && this.resources.c_int - this.F_int > 40
                || this.F_int > 2 && this.N_int == 4
-               || this.a_obj_f.c_int - this.F_int > (this.a_obj_f.q_byte < 2 ? 30 : 120) && this.N_int == 5
+               || this.resources.c_int - this.F_int > (this.resources.q_byte < 2 ? 30 : 120) && this.N_int == 5
                || this.N_int == 6 && this.a_shortArr2[1][14] < 5
                || this.N_int == 8 && this.a_byteArr[8536] == 0) {
-               if (this.a_obj_f.q_byte < 2) {
+               if (this.resources.q_byte < 2) {
                   this.I_byte = (byte)(this.N_int == 4 ? 3 : 0);
                }
 
                if (this.N_int == 8) {
-                  this.a_obj_f.b_void5(58, 30);
-                  this.a_obj_f.aw_byte = 1;
+                  this.resources.b_void5(58, 30);
+                  this.resources.aw_byte = 1;
                   this.a_void16(3, 57, 30, (byte)0, (byte)9);
-                  this.a_obj_f.aw_byte = 2;
+                  this.resources.aw_byte = 2;
 
                   for (this.N_int = 1; this.N_int < 9; this.N_int++) {
                      if (this.a_byteArr[1919 + this.N_int] > 0) {
                         if (this.a_byteArr[1515 + this.N_int] == 0) {
-                           if (this.a_obj_f.p_byteArr[4] < 1) {
-                              this.a_obj_f.p_byteArr[4] = (byte)this.N_int;
+                           if (this.resources.p_byteArr[4] < 1) {
+                              this.resources.p_byteArr[4] = (byte)this.N_int;
                            }
-                        } else if (this.a_obj_f.p_byteArr[2] < 1) {
-                           this.a_obj_f.p_byteArr[2] = (byte)this.N_int;
-                        } else if (this.a_obj_f.p_byteArr[3] < 1) {
-                           this.a_obj_f.p_byteArr[3] = (byte)this.N_int;
+                        } else if (this.resources.p_byteArr[2] < 1) {
+                           this.resources.p_byteArr[2] = (byte)this.N_int;
+                        } else if (this.resources.p_byteArr[3] < 1) {
+                           this.resources.p_byteArr[3] = (byte)this.N_int;
                         }
 
                         this.a_byteArr[606 + this.N_int] = (byte)(3 + (this.a_byteArr[1515 + this.N_int] << 2));
                      }
                   }
 
-                  this.a_obj_f.a_byte3((byte)0, (byte)56, (byte)30, (byte)2, (byte)0);
-                  this.a_obj_f.a_byte3((byte)0, (byte)55, (byte)31, (byte)2, (byte)0);
+                  this.resources.a_byte3((byte)0, (byte)56, (byte)30, (byte)2, (byte)0);
+                  this.resources.a_byte3((byte)0, (byte)55, (byte)31, (byte)2, (byte)0);
                   this.a_shortArr2[0][19] = (short)(this.a_shortArr2[0][19] - 5);
                } else if (this.N_int == 6) {
                   this.a_void16(8, 21, 72, (byte)1, (byte)3);
@@ -6629,19 +6592,19 @@ public final class GameEngine {
                         this.a_byteArr[3232 + this.N_int] = this.a_byteArr[8445];
                      }
                   }
-               } else if (this.a_obj_f.q_byte == 5) {
+               } else if (this.resources.q_byte == 5) {
                   this.b_void6(0, 0, 1);
                } else {
-                  this.c_void2(this.a_obj_f.q_byte == 2);
+                  this.c_void2(this.resources.q_byte == 2);
 
                   for (this.N_int = 0; this.N_int < 4; this.N_int++) {
-                     this.a_obj_f.p_byteArr[this.N_int + 1] = this.e_byteArr2[this.N_int][0] != 0
+                     this.resources.p_byteArr[this.N_int + 1] = this.e_byteArr2[this.N_int][0] != 0
                         ? this.e_byteArr2[this.N_int][0]
                         : this.e_byteArr2[0][0];
                   }
                }
 
-               this.a_obj_f.b_void3(this.b_byteArr[this.a_shortArr[286] + this.b_byteArr[this.a_shortArr[288] + this.a_obj_f.q_byte] + this.f_byte]);
+               this.resources.b_void3(this.b_byteArr[this.a_shortArr[286] + this.b_byteArr[this.a_shortArr[288] + this.resources.q_byte] + this.f_byte]);
                this.f_byte = (byte)(this.f_byte + 50);
                return true;
             }
@@ -6653,31 +6616,31 @@ public final class GameEngine {
 
    // $VF: renamed from: ak () void
    private void ak() {
-      if (this.a_shortArr2[1][14] <= 0 && (this.b_byteArr[this.a_shortArr[279] + this.a_obj_f.q_byte] & 1) != 0) {
-         if (this.a_obj_f.u_byte == 0) {
-            this.a_obj_f.u_byte = 1;
+      if (this.a_shortArr2[1][14] <= 0 && (this.b_byteArr[this.a_shortArr[279] + this.resources.q_byte] & 1) != 0) {
+         if (this.resources.u_byte == 0) {
+            this.resources.u_byte = 1;
          }
-      } else if ((this.a_shortArr2[0][11] <= 0 || this.a_byteArr[8506] <= 0 && (this.b_byteArr[this.a_shortArr[279] + this.a_obj_f.q_byte] & 2) != 0)
-         && this.a_obj_f.u_byte == 0) {
-         this.a_obj_f.u_byte = 50;
+      } else if ((this.a_shortArr2[0][11] <= 0 || this.a_byteArr[8506] <= 0 && (this.b_byteArr[this.a_shortArr[279] + this.resources.q_byte] & 2) != 0)
+         && this.resources.u_byte == 0) {
+         this.resources.u_byte = 50;
       }
 
       if (this.a_shortArr2[1][14] <= 4 && this.a_shortArr2[1][11] <= 0) {
-         switch (this.a_obj_f.q_byte) {
+         switch (this.resources.q_byte) {
             case 2:
                if (this.f_byte < 2) {
                   this.f_byte = 2;
                }
                break;
             case 5:
-               if (this.a_obj_f.u_byte == 0) {
-                  this.a_obj_f.u_byte = 1;
+               if (this.resources.u_byte == 0) {
+                  this.resources.u_byte = 1;
                   return;
                }
 
-               if (this.a_obj_f.u_byte == 20) {
-                  this.a_obj_f.u_byte = 0;
-                  this.a_obj_f.c_void4();
+               if (this.resources.u_byte == 20) {
+                  this.resources.u_byte = 0;
+                  this.resources.c_void4();
                   return;
                }
          }
@@ -6686,15 +6649,15 @@ public final class GameEngine {
 
    // $VF: renamed from: al () void
    private void al() {
-      if ((this.a_obj_f.p_byte & 1) == 1
-         && this.a_obj_f.q_byte < 2
+      if ((this.resources.p_byte & 1) == 1
+         && this.resources.q_byte < 2
          && this.g_byte < this.b_byteArr[this.a_shortArr[294] + this.f_byte]
-         && !this.a_obj_f.K_bool) {
+         && !this.resources.K_bool) {
          if (this.J_byte < 120 - this.b_byteArr[this.a_shortArr[298] + this.g_byte]) {
             switch (this.b_byteArr[this.a_shortArr[296] + this.g_byte]) {
                case 1:
                   for (this.v_int = 1; this.v_int <= 30; this.v_int++) {
-                     if (!this.a_obj_f.F_bool
+                     if (!this.resources.F_bool
                         && this.a_byteArr[8505 + this.v_int] > 0
                         && this.a_byteArr[8749 + this.v_int] == this.b_byteArr[this.a_shortArr[297] + this.g_byte]) {
                         this.J_byte = (byte)(120 - this.b_byteArr[this.a_shortArr[298] + this.g_byte]);
@@ -6718,85 +6681,85 @@ public final class GameEngine {
                default:
                   break;
                case 4:
-                  if (this.a_shortArr2[1][11] == 0 && this.a_obj_f.N_bool) {
+                  if (this.a_shortArr2[1][11] == 0 && this.resources.N_bool) {
                      this.J_byte = (byte)(120 - this.b_byteArr[this.a_shortArr[298] + this.g_byte]);
                   }
             }
          }
 
-         if ((this.a_obj_f.c_int & 7) == 0) {
+         if ((this.resources.c_int & 7) == 0) {
             this.J_byte++;
          }
 
          if (this.J_byte >= (this.b_byteArr[this.a_shortArr[296] + this.g_byte] == 0 ? this.b_byteArr[this.a_shortArr[298] + this.g_byte] : 120)) {
             this.J_byte = 0;
             this.b_void6(0, 0, 3);
-            this.a_obj_f.b_void3(this.b_byteArr[this.a_shortArr[295] + this.g_byte]);
+            this.resources.b_void3(this.b_byteArr[this.a_shortArr[295] + this.g_byte]);
             this.g_byte++;
             if (this.g_byte == 11) {
-               this.aQ = this.a_obj_f.c_int + 500;
+               this.aQ = this.resources.c_int + 500;
             }
          }
       }
    }
 
    // $VF: renamed from: a (int, boolean) void
-   private void a_void15(int var1, boolean var2) {
-      this.a_byteArr[3131 + var1] = this.a_byteArr[0 + var1];
-      this.a_byteArr[3232 + var1] = this.a_byteArr[101 + var1];
-      if ((this.a_byteArr[2929 + var1] & 255) <= 7
-         && (this.a_byteArr[1111 + var1] & 15)
-            < (this.b_byteArr[this.a_shortArr[15] + (this.a_byteArr[606 + var1] & 1) * 9 + this.a_byteArr[1010 + var1] - this.a_byteArr[7777 + var1]] + 1) / 2
-         && this.a_byteArr[1313 + var1] >= 0
-         && this.a_byteArr[808 + var1] > 0) {
-         this.a_byteArr[3131 + var1] = (byte)(this.a_byteArr[3131 + var1] + this.b_byteArr[this.a_shortArr[1] + this.a_byteArr[606 + var1]]);
-         this.a_byteArr[3232 + var1] = (byte)(this.a_byteArr[3232 + var1] + this.b_byteArr[this.a_shortArr[1] + 8 + this.a_byteArr[606 + var1]]);
+   private void a_void15(int intValue1, boolean flag1) {
+      this.a_byteArr[3131 + intValue1] = this.a_byteArr[0 + intValue1];
+      this.a_byteArr[3232 + intValue1] = this.a_byteArr[101 + intValue1];
+      if ((this.a_byteArr[2929 + intValue1] & 255) <= 7
+         && (this.a_byteArr[1111 + intValue1] & 15)
+            < (this.b_byteArr[this.a_shortArr[15] + (this.a_byteArr[606 + intValue1] & 1) * 9 + this.a_byteArr[1010 + intValue1] - this.a_byteArr[7777 + intValue1]] + 1) / 2
+         && this.a_byteArr[1313 + intValue1] >= 0
+         && this.a_byteArr[808 + intValue1] > 0) {
+         this.a_byteArr[3131 + intValue1] = (byte)(this.a_byteArr[3131 + intValue1] + this.b_byteArr[this.a_shortArr[1] + this.a_byteArr[606 + intValue1]]);
+         this.a_byteArr[3232 + intValue1] = (byte)(this.a_byteArr[3232 + intValue1] + this.b_byteArr[this.a_shortArr[1] + 8 + this.a_byteArr[606 + intValue1]]);
       }
 
-      this.a_byteArr[808 + var1] = 0;
-      if (var2) {
-         this.a_byteArr[6262 + var1] = this.a_byteArr[3131 + var1];
-         this.a_byteArr[6363 + var1] = this.a_byteArr[3232 + var1];
-         this.a_void7(var1, (byte)69);
+      this.a_byteArr[808 + intValue1] = 0;
+      if (flag1) {
+         this.a_byteArr[6262 + intValue1] = this.a_byteArr[3131 + intValue1];
+         this.a_byteArr[6363 + intValue1] = this.a_byteArr[3232 + intValue1];
+         this.a_void7(intValue1, (byte)69);
       }
    }
 
    // $VF: renamed from: j () void
    final void j_void2() {
       for (this.w_int = 0; this.w_int < 12; this.w_int++) {
-         this.a_obj_f.f_byteArr[this.w_int] = this.b_byteArr[this.a_shortArr[113]
-            + (this.a_obj_f.q_byte < 4 ? 0 : (this.a_obj_f.q_byte == 4 ? 12 : 24))
+         this.resources.f_byteArr[this.w_int] = this.b_byteArr[this.a_shortArr[113]
+            + (this.resources.q_byte < 4 ? 0 : (this.resources.q_byte == 4 ? 12 : 24))
             + this.w_int];
       }
 
-      if (this.a_obj_f.q_byte <= 4) {
-         for (this.w_int = this.b_byteArr[this.a_shortArr[302] + this.a_obj_f.q_byte];
-            this.w_int < this.b_byteArr[this.a_shortArr[302] + this.a_obj_f.q_byte + 1];
+      if (this.resources.q_byte <= 4) {
+         for (this.w_int = this.b_byteArr[this.a_shortArr[302] + this.resources.q_byte];
+            this.w_int < this.b_byteArr[this.a_shortArr[302] + this.resources.q_byte + 1];
             this.w_int++
          ) {
-            if (this.a_obj_f.c_int < this.b_byteArr[this.a_shortArr[299] + this.w_int] * 100) {
+            if (this.resources.c_int < this.b_byteArr[this.a_shortArr[299] + this.w_int] * 100) {
                return;
             }
 
-            this.a_obj_f.f_byteArr[this.b_byteArr[this.a_shortArr[300] + this.w_int]]++;
+            this.resources.f_byteArr[this.b_byteArr[this.a_shortArr[300] + this.w_int]]++;
          }
       }
    }
 
    // $VF: renamed from: k () void
    final void k_void2() {
-      if (this.a_obj_f.v_byte == 1 && this.K_byte < 50) {
-         this.a_obj_f.h_byte = 2;
+      if (this.resources.v_byte == 1 && this.K_byte < 50) {
+         this.resources.h_byte = 2;
       } else if ((
-            this.a_obj_f.N_bool
-               || this.a_obj_f.L_bool
+            this.resources.N_bool
+               || this.resources.L_bool
                || this.O_byte >= 0
-                  && this.O_byte == this.b_byteArr[this.a_shortArr[236] + this.b_byteArr[this.a_shortArr[238] + this.a_obj_f.q_byte] + this.N_byte] - 1
+                  && this.O_byte == this.b_byteArr[this.a_shortArr[236] + this.b_byteArr[this.a_shortArr[238] + this.resources.q_byte] + this.N_byte] - 1
          )
-         && this.a_obj_f.v_byte == 1) {
-         this.a_obj_f.h_byte = 1;
+         && this.resources.v_byte == 1) {
+         this.resources.h_byte = 1;
       } else {
-         this.a_obj_f.h_byte = 0;
+         this.resources.h_byte = 0;
       }
    }
 
@@ -6853,41 +6816,41 @@ public final class GameEngine {
          this.a_bool4(
             0,
             19,
-            b_int2(this.a_byteArr[0 + this.v_int] - 3 + this.a_obj_f.a_int2(255, 6), 0, this.a_obj_f.c_short - 1),
-            b_int2(this.a_byteArr[101 + this.v_int] - 3 + this.a_obj_f.a_int2(255, 6), 0, this.a_obj_f.d_short - 1)
+            b_int2(this.a_byteArr[0 + this.v_int] - 3 + this.resources.a_int2(255, 6), 0, this.resources.c_short - 1),
+            b_int2(this.a_byteArr[101 + this.v_int] - 3 + this.resources.a_int2(255, 6), 0, this.resources.d_short - 1)
          );
       }
    }
 
    // $VF: renamed from: b (boolean) boolean
-   private boolean b_bool7(boolean var1) {
-      byte var2 = 0;
-      byte var3 = 0;
+   private boolean b_bool7(boolean flag1) {
+      byte byteValue1 = 0;
+      byte byteValue2 = 0;
       this.E_byte = 12;
 
       for (this.aM = 0; this.aM < 50; this.aM++) {
          if (this.a_byteArr[9833 + this.aM] != 0) {
-            this.z_byte = (byte)(this.a_byteArr[9733 + this.aM] - this.a_byteArr[this.b_shortArr[var1 ? 0 : 62] + this.v_int]);
-            this.A_byte = (byte)(this.a_byteArr[9783 + this.aM] - this.a_byteArr[this.b_shortArr[var1 ? 1 : 63] + this.v_int]);
+            this.z_byte = (byte)(this.a_byteArr[9733 + this.aM] - this.a_byteArr[this.b_shortArr[flag1 ? 0 : 62] + this.v_int]);
+            this.A_byte = (byte)(this.a_byteArr[9783 + this.aM] - this.a_byteArr[this.b_shortArr[flag1 ? 1 : 63] + this.v_int]);
             this.C_byte = (byte)(
                this.b_byteArr[this.a_shortArr[53]
                      + (this.A_byte > -12 && this.A_byte < 12 ? 12 + this.A_byte : 0) * 25
                      + (this.z_byte > -12 && this.z_byte < 12 ? 12 + this.z_byte : 0)]
                   / 10
             );
-            if (this.C_byte <= (var1 ? this.a_byteArr[4949 + this.v_int] : 9)
+            if (this.C_byte <= (flag1 ? this.a_byteArr[4949 + this.v_int] : 9)
                && this.C_byte < this.E_byte
                && this.c_bool4((byte)(-this.aM - 61))) {
-               var2 = this.a_byteArr[9733 + this.aM];
-               var3 = this.a_byteArr[9783 + this.aM];
+               byteValue1 = this.a_byteArr[9733 + this.aM];
+               byteValue2 = this.a_byteArr[9783 + this.aM];
                this.E_byte = this.C_byte;
             }
          }
       }
 
       if (this.E_byte < 12) {
-         this.a_byteArr[3131 + this.v_int] = var2;
-         this.a_byteArr[3232 + this.v_int] = var3;
+         this.a_byteArr[3131 + this.v_int] = byteValue1;
+         this.a_byteArr[3232 + this.v_int] = byteValue2;
          this.g_void(2);
          return true;
       } else {
@@ -6896,14 +6859,14 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (int) int
-   private int a_int3(int var1) {
+   private int a_int3(int intValue1) {
       for (this.aN = 0; this.aN < 10; this.aN++) {
-         if (this.a_obj_f.a_byteArr3[this.u_int][this.aN][11] > 0) {
-            this.v_int = this.a_byteArr[8810 + this.a_obj_f.a_byteArr3[this.u_int][this.aN][11]];
+         if (this.resources.a_byteArr3[this.u_int][this.aN][11] > 0) {
+            this.v_int = this.a_byteArr[8810 + this.resources.a_byteArr3[this.u_int][this.aN][11]];
             if (this.v_int > 0 && this.a_byteArr[2828 + this.v_int] == 58 && this.a_byteArr[1313 + this.v_int] >= 0) {
                this.aO = 0;
 
-               while (this.aO < 10 && this.a_obj_f.a_byteArr3[this.u_int][this.aN][this.aO] <= 0) {
+               while (this.aO < 10 && this.resources.a_byteArr3[this.u_int][this.aN][this.aO] <= 0) {
                   this.aO++;
                }
 
@@ -6915,7 +6878,7 @@ public final class GameEngine {
                      this.a_byteArr[6161 + this.v_int] = 3;
                   }
 
-                  this.a_obj_f.a_byteArr3[this.u_int][this.aN][10] = (byte)this.aO;
+                  this.resources.a_byteArr3[this.u_int][this.aN][10] = (byte)this.aO;
                }
             }
          }
@@ -6935,15 +6898,15 @@ public final class GameEngine {
 
                while (
                   this.aO < 30
-                     && this.a_obj_f.b_byteArr3[this.u_int][0][this.aO] != this.aN
-                     && this.a_obj_f.b_byteArr3[this.u_int][0][this.aO] != 0
+                     && this.resources.b_byteArr3[this.u_int][0][this.aO] != this.aN
+                     && this.resources.b_byteArr3[this.u_int][0][this.aO] != 0
                ) {
                   this.aO++;
                }
 
-               if (this.aO < 30 && this.a_obj_f.b_byteArr3[this.u_int][0][this.aO] != 0) {
-                  if (this.a_obj_f.b_byteArr3[this.u_int][2][this.aO] >= 0) {
-                     this.a_void7(this.v_int, this.b_byteArr[this.a_shortArr[87] + this.a_obj_f.b_byteArr3[this.u_int][1][this.aO]]);
+               if (this.aO < 30 && this.resources.b_byteArr3[this.u_int][0][this.aO] != 0) {
+                  if (this.resources.b_byteArr3[this.u_int][2][this.aO] >= 0) {
+                     this.a_void7(this.v_int, this.b_byteArr[this.a_shortArr[87] + this.resources.b_byteArr3[this.u_int][1][this.aO]]);
                      this.a_byteArr[4040 + this.v_int] = (byte)this.aN;
                      this.a_byteArr[7979 + this.v_int] = (byte)(this.a_byteArr[7979 + this.v_int] & 239);
                      if (this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] == this.v_int) {
@@ -6956,14 +6919,14 @@ public final class GameEngine {
                   } else {
                      while (this.aO < 29) {
                         for (this.aP = 0; this.aP < 5; this.aP++) {
-                           this.a_obj_f.b_byteArr3[this.u_int][this.aP][this.aO] = this.a_obj_f.b_byteArr3[this.u_int][this.aP][this.aO
+                           this.resources.b_byteArr3[this.u_int][this.aP][this.aO] = this.resources.b_byteArr3[this.u_int][this.aP][this.aO
                               + 1];
                         }
 
                         this.aO++;
                      }
 
-                     this.a_obj_f.b_byteArr3[this.u_int][0][29] = 0;
+                     this.resources.b_byteArr3[this.u_int][0][29] = 0;
                      this.aN--;
                   }
                }
@@ -6971,16 +6934,16 @@ public final class GameEngine {
          }
       }
 
-      return var1;
+      return intValue1;
    }
 
    // $VF: renamed from: f (boolean) void
-   private void f_void3(boolean var1) {
+   private void f_void3(boolean flag1) {
       for (this.aN = 0; this.aN < 10; this.aN++) {
-         if (this.a_obj_f.a_byteArr3[this.u_int][this.aN][11] > 0
-            && this.v_int == this.a_byteArr[8810 + this.a_obj_f.a_byteArr3[this.u_int][this.aN][11]]) {
-            this.aO = this.a_obj_f.a_byteArr3[this.u_int][this.aN][10];
-            if (!var1) {
+         if (this.resources.a_byteArr3[this.u_int][this.aN][11] > 0
+            && this.v_int == this.a_byteArr[8810 + this.resources.a_byteArr3[this.u_int][this.aN][11]]) {
+            this.aO = this.resources.a_byteArr3[this.u_int][this.aN][10];
+            if (!flag1) {
                this.a_byteArr[3535 + this.v_int] = (byte)(this.b_byteArr[this.a_shortArr[88] + this.aO] - 5 + 8);
                this.a_byteArr[3636 + this.v_int] = 1;
                return;
@@ -6988,16 +6951,16 @@ public final class GameEngine {
 
             if (this.a_byteArr[2828 + this.v_int] == 26) {
                this.a_shortArr2[this.u_int][this.b_byteArr[this.a_shortArr[88] + this.aO]]++;
-               this.a_obj_f.d_void5(this.a_byteArr[4444 + this.v_int]);
+               this.resources.d_void5(this.a_byteArr[4444 + this.v_int]);
             } else {
                this.aP = 0;
 
                while (
                   this.aP < 30
                      && (
-                        this.a_obj_f.f_byteArr2[0][this.aP] != this.a_obj_f.a_byteArr3[this.u_int][this.aN][11]
-                           || this.a_obj_f.f_byteArr2[2][this.aP] != this.a_byteArr[3131 + this.v_int]
-                           || this.a_obj_f.f_byteArr2[3][this.aP] != this.a_byteArr[3232 + this.v_int]
+                        this.resources.f_byteArr2[0][this.aP] != this.resources.a_byteArr3[this.u_int][this.aN][11]
+                           || this.resources.f_byteArr2[2][this.aP] != this.a_byteArr[3131 + this.v_int]
+                           || this.resources.f_byteArr2[3][this.aP] != this.a_byteArr[3232 + this.v_int]
                      )
                ) {
                   this.aP++;
@@ -7006,18 +6969,18 @@ public final class GameEngine {
                this.b_byteArr2[this.a_byteArr[3232 + this.v_int]][this.a_byteArr[3131 + this.v_int]] = (byte)(
                   -111 - this.u_int * 3 * 2 - this.aO + 6
                );
-               this.a_obj_f.c_void7(this.a_byteArr[3131 + this.v_int], this.a_byteArr[3232 + this.v_int], 1, 1);
-               this.a_obj_f.f_byteArr2[0][this.aP] = 0;
+               this.resources.c_void7(this.a_byteArr[3131 + this.v_int], this.a_byteArr[3232 + this.v_int], 1, 1);
+               this.resources.f_byteArr2[0][this.aP] = 0;
                if (this.u_int == 1) {
                   this.R_byte++;
                }
             }
 
-            if (this.a_obj_f.a_byteArr3[this.u_int][this.aN][this.aO] > 0) {
-               this.a_obj_f.a_byteArr3[this.u_int][this.aN][this.aO]--;
+            if (this.resources.a_byteArr3[this.u_int][this.aN][this.aO] > 0) {
+               this.resources.a_byteArr3[this.u_int][this.aN][this.aO]--;
             }
 
-            this.a_obj_f.d_void5(this.a_obj_f.a_byteArr3[this.u_int][this.aN][11]);
+            this.resources.d_void5(this.resources.a_byteArr3[this.u_int][this.aN][11]);
             return;
          }
       }
@@ -7029,20 +6992,20 @@ public final class GameEngine {
          if (this.a_byteArr[8505 + this.aN] > 0 && this.a_byteArr[8749 + this.aN] == 8 && this.a_byteArr[8810 + this.aN] == this.v_int) {
             this.aO = 0;
 
-            while (this.aO < 30 && this.a_obj_f.b_byteArr3[this.u_int][0][this.aO] != this.aN) {
+            while (this.aO < 30 && this.resources.b_byteArr3[this.u_int][0][this.aO] != this.aN) {
                this.aO++;
             }
 
             while (this.aO < 29) {
                for (this.aP = 0; this.aP < 5; this.aP++) {
-                  this.a_obj_f.b_byteArr3[this.u_int][this.aP][this.aO] = this.a_obj_f.b_byteArr3[this.u_int][this.aP][this.aO
+                  this.resources.b_byteArr3[this.u_int][this.aP][this.aO] = this.resources.b_byteArr3[this.u_int][this.aP][this.aO
                      + 1];
                }
 
                this.aO++;
             }
 
-            this.a_obj_f.b_byteArr3[this.u_int][0][29] = 0;
+            this.resources.b_byteArr3[this.u_int][0][29] = 0;
             this.a_byteArr[9237 + this.aN] = 0;
             return;
          }
@@ -7060,10 +7023,10 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: e (int, int) void
-   private void e_void4(int var1, int var2) {
-      for (byte var3 = 0; var3 < 30 && this.a_obj_f.b_byteArr3[var1][0][var3] != 0; var3++) {
-         if (this.a_obj_f.b_byteArr3[var1][2][var3] == var2 && this.a_obj_f.b_byteArr3[var1][1][var3] != 3) {
-            this.a_obj_f.b_byteArr3[var1][2][var3] = -2;
+   private void e_void4(int intValue1, int intValue2) {
+      for (byte byteIndex1 = 0; byteIndex1 < 30 && this.resources.b_byteArr3[intValue1][0][byteIndex1] != 0; byteIndex1++) {
+         if (this.resources.b_byteArr3[intValue1][2][byteIndex1] == intValue2 && this.resources.b_byteArr3[intValue1][1][byteIndex1] != 3) {
+            this.resources.b_byteArr3[intValue1][2][byteIndex1] = -2;
          }
       }
    }
@@ -7071,19 +7034,19 @@ public final class GameEngine {
    // $VF: renamed from: aq () void
    private void aq() {
       if (this.f_byte < 50) {
-         this.M_byte = this.b_byteArr[this.a_shortArr[220] + this.a_obj_f.q_byte];
-         this.A_int = this.b_byteArr[this.a_shortArr[216] + this.a_obj_f.q_byte] * 500;
+         this.M_byte = this.b_byteArr[this.a_shortArr[220] + this.resources.q_byte];
+         this.A_int = this.b_byteArr[this.a_shortArr[216] + this.resources.q_byte] * 500;
          if (this.a_shortArr2[this.u_int][11] > 0 && this.Q_byte < 1) {
             this.ar();
          }
 
          this.as();
-         if (this.a_obj_f.c_int % (this.b_byteArr[this.a_shortArr[264] + this.a_obj_f.q_byte] * 50) == 50) {
+         if (this.resources.c_int % (this.b_byteArr[this.a_shortArr[264] + this.resources.q_byte] * 50) == 50) {
             for (this.aN = 0; this.aN < 10; this.aN++) {
-               if ((this.aP = this.a_obj_f.a_byteArr3[this.u_int][this.aN][11]) > 0) {
+               if ((this.aP = this.resources.a_byteArr3[this.u_int][this.aN][11]) > 0) {
                   this.aO = 0;
 
-                  while (this.aO < 9 && this.a_obj_f.a_byteArr3[this.u_int][this.aN][this.aO] == 0) {
+                  while (this.aO < 9 && this.resources.a_byteArr3[this.u_int][this.aN][this.aO] == 0) {
                      this.aO++;
                   }
 
@@ -7091,35 +7054,35 @@ public final class GameEngine {
                      for (this.aO = 0; this.aO < 2; this.aO++) {
                         for (this.v_int = this.aO * 3; this.v_int < 5; this.v_int++) {
                            if (this.a_shortArr2[this.u_int][5 + this.b_byteArr[this.a_shortArr[109] + this.v_int]] != 0) {
-                              this.a_obj_f.a_byteArr3[this.u_int][this.aN][this.b_byteArr[this.a_shortArr[109] + this.v_int]] = this.b_byteArr[this.a_shortArr[265]
-                                 + this.a_obj_f.q_byte * 5
+                              this.resources.a_byteArr3[this.u_int][this.aN][this.b_byteArr[this.a_shortArr[109] + this.v_int]] = this.b_byteArr[this.a_shortArr[265]
+                                 + this.resources.q_byte * 5
                                  + this.aO];
                               break;
                            }
                         }
                      }
 
-                     if (this.a_obj_f.c_int > this.A_int / 3 && (this.R_byte & 63) < this.b_byteArr[this.a_shortArr[268] + this.a_obj_f.q_byte]) {
+                     if (this.resources.c_int > this.A_int / 3 && (this.R_byte & 63) < this.b_byteArr[this.a_shortArr[268] + this.resources.q_byte]) {
                         for (this.aO = 2; this.aO < 5; this.aO++) {
-                           this.a_obj_f.a_byteArr3[this.u_int][this.aN][this.aO + 4] = this.b_byteArr[this.a_shortArr[265]
-                              + this.a_obj_f.q_byte * 5
+                           this.resources.a_byteArr3[this.u_int][this.aN][this.aO + 4] = this.b_byteArr[this.a_shortArr[265]
+                              + this.resources.q_byte * 5
                               + this.aO];
 
                            for (this.aS = 0;
-                              this.aS < this.a_obj_f.a_byteArr3[this.u_int][this.aN][this.aO + 4];
+                              this.aS < this.resources.a_byteArr3[this.u_int][this.aN][this.aO + 4];
                               this.aS++
                            ) {
                               this.n_void(266);
                               this.aT = 0;
 
-                              while (this.aT < 29 && this.a_obj_f.f_byteArr2[0][this.aT] != 0) {
+                              while (this.aT < 29 && this.resources.f_byteArr2[0][this.aT] != 0) {
                                  this.aT++;
                               }
 
-                              this.a_obj_f.f_byteArr2[0][this.aT] = (byte)this.aP;
-                              this.a_obj_f.f_byteArr2[2][this.aT] = this.a_byteArr[3131];
-                              this.a_obj_f.f_byteArr2[3][this.aT] = this.a_byteArr[3232];
-                              this.a_obj_f.f_byteArr2[1][this.aT] = (byte)(this.aO + 4 + 14);
+                              this.resources.f_byteArr2[0][this.aT] = (byte)this.aP;
+                              this.resources.f_byteArr2[2][this.aT] = this.a_byteArr[3131];
+                              this.resources.f_byteArr2[3][this.aT] = this.a_byteArr[3232];
+                              this.resources.f_byteArr2[1][this.aT] = (byte)(this.aO + 4 + 14);
                               this.b_byteArr2[this.a_byteArr[3232]][this.a_byteArr[3131]] = -126;
                            }
                         }
@@ -7129,23 +7092,23 @@ public final class GameEngine {
             }
          }
 
-         if (this.a_obj_f.c_int % (this.b_byteArr[this.a_shortArr[269] + this.a_obj_f.q_byte] * 50) == 50 && this.a_obj_f.c_int > this.A_int / 2
+         if (this.resources.c_int % (this.b_byteArr[this.a_shortArr[269] + this.resources.q_byte] * 50) == 50 && this.resources.c_int > this.A_int / 2
             )
           {
             for (this.aN = this.u_int * 30 + 1; this.aN <= (this.u_int + 1) * 30; this.aN++) {
                if (this.a_byteArr[8505 + this.aN] > 0 && this.a_byteArr[8749 + this.aN] == 8) {
-                  for (this.aS = 0; this.aS < this.b_byteArr[this.a_shortArr[270] + this.a_obj_f.q_byte]; this.aS++) {
+                  for (this.aS = 0; this.aS < this.b_byteArr[this.a_shortArr[270] + this.resources.q_byte]; this.aS++) {
                      this.n_void(271);
                      this.aT = 0;
 
-                     while (this.aT < 29 && this.a_obj_f.b_byteArr3[this.u_int][0][this.aT] != 0) {
+                     while (this.aT < 29 && this.resources.b_byteArr3[this.u_int][0][this.aT] != 0) {
                         this.aT++;
                      }
 
-                     this.a_obj_f.b_byteArr3[this.u_int][0][this.aT] = (byte)this.aN;
-                     this.a_obj_f.b_byteArr3[this.u_int][2][this.aT] = this.a_byteArr[3131];
-                     this.a_obj_f.b_byteArr3[this.u_int][3][this.aT] = this.a_byteArr[3232];
-                     this.a_obj_f.b_byteArr3[this.u_int][1][this.aT] = 3;
+                     this.resources.b_byteArr3[this.u_int][0][this.aT] = (byte)this.aN;
+                     this.resources.b_byteArr3[this.u_int][2][this.aT] = this.a_byteArr[3131];
+                     this.resources.b_byteArr3[this.u_int][3][this.aT] = this.a_byteArr[3232];
+                     this.resources.b_byteArr3[this.u_int][1][this.aT] = 3;
                   }
                }
             }
@@ -7154,31 +7117,31 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: n (int) void
-   private void n_void(int var1) {
+   private void n_void(int intValue1) {
       this.v_int = 0;
-      this.w_int = this.a_shortArr[var1]
+      this.w_int = this.a_shortArr[intValue1]
          + (
-               this.b_byteArr[this.a_shortArr[var1 + 1] + this.a_obj_f.q_byte]
-                  + this.a_obj_f
+               this.b_byteArr[this.a_shortArr[intValue1 + 1] + this.resources.q_byte]
+                  + this.resources
                      .a_int2(
                         255,
-                        this.b_byteArr[this.a_shortArr[var1 + 1] + this.a_obj_f.q_byte + 1] - this.b_byteArr[this.a_shortArr[var1 + 1] + this.a_obj_f.q_byte]
+                        this.b_byteArr[this.a_shortArr[intValue1 + 1] + this.resources.q_byte + 1] - this.b_byteArr[this.a_shortArr[intValue1 + 1] + this.resources.q_byte]
                      )
             )
             * 4;
       this.a_bool4(
          1,
          127,
-         this.b_byteArr[this.w_int] + this.a_obj_f.a_int2(65535, this.b_byteArr[this.w_int + 2] - this.b_byteArr[this.w_int] + 1),
-         this.b_byteArr[this.w_int + 1] + this.a_obj_f.a_int2(65535, this.b_byteArr[this.w_int + 3] - this.b_byteArr[this.w_int + 1] + 1)
+         this.b_byteArr[this.w_int] + this.resources.a_int2(65535, this.b_byteArr[this.w_int + 2] - this.b_byteArr[this.w_int] + 1),
+         this.b_byteArr[this.w_int + 1] + this.resources.a_int2(65535, this.b_byteArr[this.w_int + 3] - this.b_byteArr[this.w_int + 1] + 1)
       );
    }
 
    // $VF: renamed from: ar () void
    private void ar() {
-      if ((this.a_obj_f.c_int & 31) == 0 || this.a_obj_f.c_int % (this.b_byteArr[this.a_shortArr[241] + this.a_obj_f.q_byte] * 10) == 0) {
-         for (this.aS = this.b_byteArr[this.a_shortArr[247] + this.a_obj_f.q_byte] & 255;
-            this.aS < (this.b_byteArr[this.a_shortArr[247] + this.a_obj_f.q_byte + 1] & 255);
+      if ((this.resources.c_int & 31) == 0 || this.resources.c_int % (this.b_byteArr[this.a_shortArr[241] + this.resources.q_byte] * 10) == 0) {
+         for (this.aS = this.b_byteArr[this.a_shortArr[247] + this.resources.q_byte] & 255;
+            this.aS < (this.b_byteArr[this.a_shortArr[247] + this.resources.q_byte + 1] & 255);
             this.aS++
          ) {
             this.aT = -this.b_byteArr2[this.b_byteArr[this.a_shortArr[246] + this.aS]][this.b_byteArr[this.a_shortArr[245] + this.aS]];
@@ -7186,22 +7149,22 @@ public final class GameEngine {
                if (this.a_byteArr[8749 + this.aT] == this.b_byteArr[this.a_shortArr[243] + this.aS]
                   && this.a_byteArr[8505 + this.aT] > 0
                   && this.a_byteArr[8627 + this.aT] == 0) {
-                  if ((this.a_obj_f.c_int & 31) == 0) {
+                  if ((this.resources.c_int & 31) == 0) {
                      if (this.a_byteArr[8505 + this.aT] < this.a_byteArr[8566 + this.aT] / 4) {
-                        this.a_obj_f.b_void4(this.aT, false);
+                        this.resources.b_void4(this.aT, false);
                      }
                   } else if (this.a_byteArr[9115 + this.aT] < this.b_byteArr[this.a_shortArr[244] + this.aS]) {
-                     this.a_obj_f.b_void4(this.aT, true);
+                     this.resources.b_void4(this.aT, true);
                   }
                }
-            } else if (this.aT == 0 && (this.a_obj_f.c_int & 31) != 0 && this.P_byte == -1) {
+            } else if (this.aT == 0 && (this.resources.c_int & 31) != 0 && this.P_byte == -1) {
                this.P_byte = (byte)this.aS;
             }
          }
 
          if (this.P_byte != -1) {
             this.v_int = this.b_byteArr[this.a_shortArr[243] + (this.P_byte & 255)];
-            if (this.a_obj_f
+            if (this.resources
                   .a_byte4(
                      (byte)1,
                      this.b_byteArr[this.a_shortArr[138] + 416 + this.b_byteArr[this.a_shortArr[243] + (this.P_byte & 255)]],
@@ -7220,18 +7183,18 @@ public final class GameEngine {
 
    // $VF: renamed from: as () void
    private void as() {
-      if (this.aQ < this.a_obj_f.c_int) {
+      if (this.aQ < this.resources.c_int) {
          this.aQ = (
-               this.b_byteArr[this.a_shortArr[214] + this.a_obj_f.q_byte]
-                  - this.b_byteArr[this.a_shortArr[215] + this.a_obj_f.q_byte] * this.a_obj_f.b_byte
+               this.b_byteArr[this.a_shortArr[214] + this.resources.q_byte]
+                  - this.b_byteArr[this.a_shortArr[215] + this.resources.q_byte] * this.resources.b_byte
             )
             * 100;
-         this.aQ = this.a_obj_f.c_int + this.aQ / 4 + this.a_obj_f.a_int2(16777215, this.aQ * 3 / 2);
+         this.aQ = this.resources.c_int + this.aQ / 4 + this.resources.a_int2(16777215, this.aQ * 3 / 2);
       }
 
-      if (this.f_byte >= this.b_byteArr[this.a_shortArr[217] + this.a_obj_f.q_byte]) {
-         if ((this.a_obj_f.c_int & 63) == 25) {
-            this.aT = this.a_shortArr[218] + this.a_obj_f.q_byte * 4;
+      if (this.f_byte >= this.b_byteArr[this.a_shortArr[217] + this.resources.q_byte]) {
+         if ((this.resources.c_int & 63) == 25) {
+            this.aT = this.a_shortArr[218] + this.resources.q_byte * 4;
             this.Q_byte = -1;
 
             for (this.v_int = 1; this.v_int <= 50; this.v_int++) {
@@ -7271,7 +7234,7 @@ public final class GameEngine {
                } else {
                   this.at();
                }
-            } else if ((this.a_obj_f.c_int & 63) == (this.v_int & 31) && this.j_byteArr[this.aT] < this.M_byte) {
+            } else if ((this.resources.c_int & 63) == (this.v_int & 31) && this.j_byteArr[this.aT] < this.M_byte) {
                for (this.aU = this.u_int * 50 + 1; this.aU <= (this.u_int + 1) * 50; this.aU++) {
                   if (this.j_byteArr[this.aU - this.u_int * 50 - 1] >= this.M_byte
                      && this.a_byteArr[1919 + this.v_int] > 0
@@ -7285,12 +7248,12 @@ public final class GameEngine {
          }
       }
 
-      if (this.Q_byte < 0 && this.a_obj_f.q_byte != 3 && this.a_obj_f.c_int == this.aQ) {
+      if (this.Q_byte < 0 && this.resources.q_byte != 3 && this.resources.c_int == this.aQ) {
          this.aR = this.aQ;
          this.av();
       }
 
-      if (this.O_byte >= 0 && (this.a_obj_f.c_int & 15) == 0) {
+      if (this.O_byte >= 0 && (this.resources.c_int & 15) == 0) {
          this.aw();
       }
 
@@ -7301,10 +7264,10 @@ public final class GameEngine {
    private void at() {
       if (this.Q_byte < 0) {
          if (this.j_byteArr[this.aT] < this.M_byte) {
-            this.x_int = this.b_byteArr[this.a_shortArr[221 + this.a_obj_f.q_byte] + this.M_byte * 3 + this.j_byteArr[this.aT]];
-            this.x_int = this.a_obj_f.q_byte >= 4
-                  && this.a_obj_f.b_byte != 0
-                  && (this.aT >= this.b_byteArr[this.a_shortArr[242] + this.a_obj_f.q_byte] || this.x_int != 2)
+            this.x_int = this.b_byteArr[this.a_shortArr[221 + this.resources.q_byte] + this.M_byte * 3 + this.j_byteArr[this.aT]];
+            this.x_int = this.resources.q_byte >= 4
+                  && this.resources.b_byte != 0
+                  && (this.aT >= this.b_byteArr[this.a_shortArr[242] + this.resources.q_byte] || this.x_int != 2)
                ? (this.x_int == 0 ? 4 : 5)
                : this.x_int;
             if (this.a_byteArr[6565 + this.v_int] != this.x_int) {
@@ -7315,40 +7278,40 @@ public final class GameEngine {
          }
       }
 
-      if ((this.a_obj_f.c_int & 15) == (this.v_int & 15)) {
-         boolean var1;
+      if ((this.resources.c_int & 15) == (this.v_int & 15)) {
+         boolean flag1;
          if ((
-               var1 = this.a_byteArr[0 + this.v_int] < this.b_byteArr[this.G_int]
+               flag1 = this.a_byteArr[0 + this.v_int] < this.b_byteArr[this.G_int]
                   || this.a_byteArr[101 + this.v_int] < this.b_byteArr[this.G_int + 1]
                   || this.a_byteArr[0 + this.v_int] > this.b_byteArr[this.G_int + 2]
                   || this.a_byteArr[101 + this.v_int] > this.b_byteArr[this.G_int + 3]
             )
             && this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[2828 + this.v_int]] == 0
             && this.a_byteArr[6161 + this.v_int] == 0
-            && (this.a_obj_f.q_byte != 5 || this.a_obj_f.c_int > 120)) {
-            this.a_byteArr[3131 + this.v_int] = this.b_byteArr[this.a_shortArr[233] + this.a_obj_f.q_byte];
-            this.a_byteArr[3232 + this.v_int] = this.b_byteArr[this.a_shortArr[234] + this.a_obj_f.q_byte];
+            && (this.resources.q_byte != 5 || this.resources.c_int > 120)) {
+            this.a_byteArr[3131 + this.v_int] = this.b_byteArr[this.a_shortArr[233] + this.resources.q_byte];
+            this.a_byteArr[3232 + this.v_int] = this.b_byteArr[this.a_shortArr[234] + this.resources.q_byte];
             this.a_byteArr[6161 + this.v_int] = 2;
          }
 
-         if (this.Q_byte < 0 && !var1) {
+         if (this.Q_byte < 0 && !flag1) {
             if (this.j_byteArr[this.aT] < this.M_byte) {
                if ((this.a_byteArr[2828 + this.v_int] == 69 || this.a_byteArr[2828 + this.v_int] == 84 && this.a_byteArr[3939 + this.v_int] == 69)
                   && this.b_byteArr[this.a_shortArr[42] + this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[6464 + this.v_int]]] != 2
                   && this.a_byteArr[6161 + this.v_int] == 0
                   && (
                      this.a_byteArr[6262 + this.v_int]
-                           != this.b_byteArr[this.a_shortArr[221 + this.a_obj_f.q_byte] + this.M_byte + this.j_byteArr[this.aT]]
+                           != this.b_byteArr[this.a_shortArr[221 + this.resources.q_byte] + this.M_byte + this.j_byteArr[this.aT]]
                         || this.a_byteArr[6363 + this.v_int]
-                           != this.b_byteArr[this.a_shortArr[221 + this.a_obj_f.q_byte] + this.M_byte * 2 + this.j_byteArr[this.aT]]
+                           != this.b_byteArr[this.a_shortArr[221 + this.resources.q_byte] + this.M_byte * 2 + this.j_byteArr[this.aT]]
                   )) {
-                  this.a_byteArr[6262 + this.v_int] = this.b_byteArr[this.a_shortArr[221 + this.a_obj_f.q_byte]
+                  this.a_byteArr[6262 + this.v_int] = this.b_byteArr[this.a_shortArr[221 + this.resources.q_byte]
                      + this.M_byte
                      + this.j_byteArr[this.aT]];
-                  this.a_byteArr[6363 + this.v_int] = this.b_byteArr[this.a_shortArr[221 + this.a_obj_f.q_byte]
+                  this.a_byteArr[6363 + this.v_int] = this.b_byteArr[this.a_shortArr[221 + this.resources.q_byte]
                      + this.M_byte * 2
                      + this.j_byteArr[this.aT]];
-                  this.a_byteArr[6464 + this.v_int] = this.b_byteArr[this.a_shortArr[221 + this.a_obj_f.q_byte] + this.j_byteArr[this.aT]];
+                  this.a_byteArr[6464 + this.v_int] = this.b_byteArr[this.a_shortArr[221 + this.resources.q_byte] + this.j_byteArr[this.aT]];
                   return;
                }
             } else if (this.a_byteArr[2828 + this.v_int] == 69
@@ -7356,8 +7319,8 @@ public final class GameEngine {
                || this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[2828 + this.v_int]] >= 13
                   && this.b_byteArr[this.a_shortArr[41] + this.a_byteArr[2828 + this.v_int]] <= 15
                   && this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] == this.v_int) {
-               this.w_int = this.b_byteArr[this.a_shortArr[212 + this.a_obj_f.b_byte] + this.a_obj_f.q_byte];
-               this.x_int = (this.v_int & 3) == 0 && this.a_obj_f.q_byte >= 4
+               this.w_int = this.b_byteArr[this.a_shortArr[212 + this.resources.b_byte] + this.resources.q_byte];
+               this.x_int = (this.v_int & 3) == 0 && this.resources.q_byte >= 4
                   ? 2
                   : (this.a_byteArr[1717 + this.v_int] >= this.a_byteArr[1616 + this.v_int] ? 0 : 1);
                if (this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[107] + this.x_int]] + this.v_int] < this.w_int) {
@@ -7382,11 +7345,11 @@ public final class GameEngine {
       if (this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] != this.v_int) {
          this.a_byteArr[6161 + this.v_int] = 2;
       } else {
-         this.C_int = this.a_byteArr[0 + this.v_int] - this.b_byteArr[this.a_shortArr[233] + this.a_obj_f.q_byte];
-         this.D_int = this.a_byteArr[101 + this.v_int] - this.b_byteArr[this.a_shortArr[234] + this.a_obj_f.q_byte];
+         this.C_int = this.a_byteArr[0 + this.v_int] - this.b_byteArr[this.a_shortArr[233] + this.resources.q_byte];
+         this.D_int = this.a_byteArr[101 + this.v_int] - this.b_byteArr[this.a_shortArr[234] + this.resources.q_byte];
          if (this.C_int < -5 || this.C_int > 5 || this.D_int < -5 || this.D_int > 5) {
-            this.a_byteArr[6262 + this.v_int] = this.b_byteArr[this.a_shortArr[233] + this.a_obj_f.q_byte];
-            this.a_byteArr[6363 + this.v_int] = this.b_byteArr[this.a_shortArr[234] + this.a_obj_f.q_byte];
+            this.a_byteArr[6262 + this.v_int] = this.b_byteArr[this.a_shortArr[233] + this.resources.q_byte];
+            this.a_byteArr[6363 + this.v_int] = this.b_byteArr[this.a_shortArr[234] + this.resources.q_byte];
             this.a_void7(this.v_int, (byte)69);
             this.a_byteArr[6464 + this.v_int] = 69;
          }
@@ -7394,14 +7357,14 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: o (int) void
-   private void o_void2(int var1) {
+   private void o_void2(int intValue1) {
       if (this.a_byteArr[2828 + this.v_int] > 9 && (this.a_byteArr[2828 + this.v_int] < 44 || this.a_byteArr[2828 + this.v_int] > 50)) {
          if (this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] != this.v_int) {
             this.a_void7(this.v_int, (byte)59);
             this.a_byteArr[6161 + this.v_int] = 3;
          } else {
             if (this.a_byteArr[202 + this.v_int] == 0 && this.a_byteArr[303 + this.v_int] == 0) {
-               this.a_void7(this.v_int, (byte)(var1 >= 0 ? 44 + var1 : 50));
+               this.a_void7(this.v_int, (byte)(intValue1 >= 0 ? 44 + intValue1 : 50));
                if (this.a_bool8(6)) {
                   this.g_void(2);
                   return;
@@ -7416,24 +7379,24 @@ public final class GameEngine {
    // $VF: renamed from: av () void
    private void av() {
       this.aU = 0;
-      if (this.a_obj_f.q_byte < 7 || this.a_obj_f.c_int >= this.A_int / 7) {
+      if (this.resources.q_byte < 7 || this.resources.c_int >= this.A_int / 7) {
          this.x_int = b_int2(
-            this.b_byteArr[this.a_shortArr[206 + this.a_obj_f.b_byte] + this.a_obj_f.q_byte]
-               + this.a_obj_f.c_int / this.b_byteArr[this.a_shortArr[210 + this.a_obj_f.b_byte] + this.a_obj_f.q_byte] / 1000,
+            this.b_byteArr[this.a_shortArr[206 + this.resources.b_byte] + this.resources.q_byte]
+               + this.resources.c_int / this.b_byteArr[this.a_shortArr[210 + this.resources.b_byte] + this.resources.q_byte] / 1000,
             0,
-            this.b_byteArr[this.a_shortArr[208 + this.a_obj_f.b_byte] + this.a_obj_f.q_byte]
+            this.b_byteArr[this.a_shortArr[208 + this.resources.b_byte] + this.resources.q_byte]
          );
-         this.x_int = this.x_int / 2 + this.a_obj_f.a_int2(16777215, this.x_int + 1);
-         this.y_int = this.b_byteArr[this.a_shortArr[212 + this.a_obj_f.b_byte] + this.a_obj_f.q_byte];
-         if (this.a_obj_f.c_int < this.A_int && (this.a_obj_f.q_byte != 0 || this.g_byte < 11)) {
-            if (this.a_obj_f.q_byte == 0) {
+         this.x_int = this.x_int / 2 + this.resources.a_int2(16777215, this.x_int + 1);
+         this.y_int = this.b_byteArr[this.a_shortArr[212 + this.resources.b_byte] + this.resources.q_byte];
+         if (this.resources.c_int < this.A_int && (this.resources.q_byte != 0 || this.g_byte < 11)) {
+            if (this.resources.q_byte == 0) {
                return;
             }
 
-            this.y_int = this.y_int / (3 - this.a_obj_f.b_byte) + this.y_int * this.a_obj_f.c_int / this.A_int / 2;
+            this.y_int = this.y_int / (3 - this.resources.b_byte) + this.y_int * this.resources.c_int / this.A_int / 2;
          }
 
-         this.z_int = this.a_obj_f.a_int2(65535, 10);
+         this.z_int = this.resources.a_int2(65535, 10);
 
          for (this.v_int = this.u_int * 50 + 1; this.v_int <= (this.u_int + 1) * 50; this.v_int++) {
             if (this.a_byteArr[1919 + this.v_int] > 0
@@ -7451,9 +7414,9 @@ public final class GameEngine {
                this.a_byteArr[7979 + this.v_int] = (byte)(this.a_byteArr[7979 + this.v_int] | 64);
                this.a_byteArr[1717 + this.v_int] = (byte)b_int2(this.a_byteArr[1717 + this.v_int], 0, this.y_int);
                this.a_byteArr[1616 + this.v_int] = (byte)b_int2(this.a_byteArr[1616 + this.v_int], 0, this.y_int);
-               if (this.a_obj_f.c_int < this.A_int) {
+               if (this.resources.c_int < this.A_int) {
                   this.a_byteArr[1919 + this.v_int] = this.a_byteArr[6767 + this.v_int] = (byte)(
-                     this.a_byteArr[6767 + this.v_int] / 2 + this.a_byteArr[6767 + this.v_int] * this.a_obj_f.c_int / this.A_int / 2
+                     this.a_byteArr[6767 + this.v_int] / 2 + this.a_byteArr[6767 + this.v_int] * this.resources.c_int / this.A_int / 2
                   );
                }
 
@@ -7467,74 +7430,74 @@ public final class GameEngine {
          this.R_byte = (byte)(this.R_byte & 127);
          this.a_void16(
             this.x_int - this.aU,
-            this.b_byteArr[this.a_shortArr[233] + this.a_obj_f.q_byte],
-            this.b_byteArr[this.a_shortArr[234] + this.a_obj_f.q_byte],
+            this.b_byteArr[this.a_shortArr[233] + this.resources.q_byte],
+            this.b_byteArr[this.a_shortArr[234] + this.resources.q_byte],
             (byte)this.u_int,
             (byte)0
          );
-         this.N_byte = (byte)this.a_obj_f.a_int2(65535, this.b_byteArr[this.a_shortArr[235] + this.a_obj_f.q_byte]);
+         this.N_byte = (byte)this.resources.a_int2(65535, this.b_byteArr[this.a_shortArr[235] + this.resources.q_byte]);
          this.O_byte = 0;
       }
    }
 
    // $VF: renamed from: aw () void
    private void aw() {
-      boolean var1 = true;
+      boolean flag1 = true;
       this.aU = 0;
 
       for (this.v_int = this.u_int * 50 + 1; this.v_int <= (this.u_int + 1) * 50; this.v_int++) {
          if (this.a_byteArr[1919 + this.v_int] > 0 && this.a_byteArr[1414 + this.v_int] >= 12 && (this.a_byteArr[7979 + this.v_int] & 64) != 0) {
             this.aU++;
             if (this.b_byteArr2[this.a_byteArr[101 + this.v_int]][this.a_byteArr[0 + this.v_int]] != this.v_int) {
-               var1 = false;
+               flag1 = false;
                this.a_byteArr[2828 + this.v_int] = 87;
                this.a_byteArr[6161 + this.v_int] = 3;
             } else {
                if (this.a_byteArr[6161 + this.v_int] == 0) {
                   this.aT = this.a_shortArr[239]
-                     + (this.b_byteArr[this.a_shortArr[240] + this.a_obj_f.q_byte] & 255)
-                     + this.b_byteArr[this.a_shortArr[237] + this.b_byteArr[this.a_shortArr[238] + this.a_obj_f.q_byte] + this.N_byte]
+                     + (this.b_byteArr[this.a_shortArr[240] + this.resources.q_byte] & 255)
+                     + this.b_byteArr[this.a_shortArr[237] + this.b_byteArr[this.a_shortArr[238] + this.resources.q_byte] + this.N_byte]
                      + this.O_byte * 2;
                   this.a_byteArr[6262 + this.v_int] = this.a_byteArr[3131 + this.v_int] = this.b_byteArr[this.aT];
                   this.a_byteArr[6363 + this.v_int] = this.a_byteArr[3232 + this.v_int] = this.b_byteArr[this.aT + 1];
                   this.a_byteArr[6161 + this.v_int] = 3;
                   this.a_byteArr[2828 + this.v_int] = 69;
                } else {
-                  var1 = false;
+                  flag1 = false;
                }
 
-               if (var1 && this.a_int2(this.a_byteArr[0 + this.v_int], this.a_byteArr[101 + this.v_int], 0) > 69) {
-                  var1 = false;
+               if (flag1 && this.a_int2(this.a_byteArr[0 + this.v_int], this.a_byteArr[101 + this.v_int], 0) > 69) {
+                  flag1 = false;
                }
             }
          }
       }
 
-      if (var1 || this.aR + (this.O_byte + 1) * 150 < this.a_obj_f.c_int) {
+      if (flag1 || this.aR + (this.O_byte + 1) * 150 < this.resources.c_int) {
          this.O_byte++;
       }
 
       if (this.aU == 0
-         || this.O_byte >= this.b_byteArr[this.a_shortArr[236] + this.b_byteArr[this.a_shortArr[238] + this.a_obj_f.q_byte] + this.N_byte]) {
+         || this.O_byte >= this.b_byteArr[this.a_shortArr[236] + this.b_byteArr[this.a_shortArr[238] + this.resources.q_byte] + this.N_byte]) {
          this.O_byte = -1;
       }
    }
 
    // $VF: renamed from: a (int, int, int, byte, byte) void
-   final void a_void16(int var1, int var2, int var3, byte var4, byte var5) {
-      for (this.a_int = 0; this.a_int < var1; this.a_int++) {
-         int var6 = var2;
-         int var7 = var3;
-         if (this.b_byteArr2[var3][var2] != 0) {
+   final void a_void16(int intValue1, int intValue2, int intValue3, byte byteValue1, byte byteValue2) {
+      for (this.a_int = 0; this.a_int < intValue1; this.a_int++) {
+         int intValue4 = intValue2;
+         int intValue5 = intValue3;
+         if (this.b_byteArr2[intValue3][intValue2] != 0) {
             this.v_int = 0;
-            this.a_bool4(1, 127, var2, var3);
-            var6 = this.a_byteArr[3131];
-            var7 = this.a_byteArr[3232];
+            this.a_bool4(1, 127, intValue2, intValue3);
+            intValue4 = this.a_byteArr[3131];
+            intValue5 = this.a_byteArr[3232];
          }
 
-         if ((this.b_int = this.a_obj_f.a_byte3(var4, (byte)var6, (byte)var7, (byte)20, (byte)0)) > 0) {
-            this.a_byteArr[6565 + this.b_int] = var5;
-            if (this.aU >= 0 && var4 == 1) {
+         if ((this.b_int = this.resources.a_byte3(byteValue1, (byte)intValue4, (byte)intValue5, (byte)20, (byte)0)) > 0) {
+            this.a_byteArr[6565 + this.b_int] = byteValue2;
+            if (this.aU >= 0 && byteValue1 == 1) {
                this.v_int = this.b_int;
                this.a_byteArr[this.b_shortArr[16 + (this.b_int & 1)] + this.b_int] = (byte)this.y_int;
                this.L();
@@ -7547,12 +7510,12 @@ public final class GameEngine {
    // $VF: renamed from: l () void
    final void l_void2() {
       for (this.a_int = 1; this.a_int <= 60; this.a_int++) {
-         this.a_obj_f.c_void6(this.a_int, false);
+         this.resources.c_void6(this.a_int, false);
       }
 
       for (this.a_int = 1; this.a_int <= 100; this.a_int++) {
          if (this.a_byteArr[1919 + this.a_int] != 0) {
-            this.a_obj_f.a_void14((byte)this.a_int);
+            this.resources.a_void14((byte)this.a_int);
             this.m_void(this.a_int);
          }
       }
@@ -7566,7 +7529,7 @@ public final class GameEngine {
    final void m_void2() {
       for (this.a_int = 51; this.a_int <= 100; this.a_int++) {
          if (this.a_byteArr[1919 + this.a_int] != 0) {
-            this.a_obj_f.a_void14((byte)this.a_int);
+            this.resources.a_void14((byte)this.a_int);
             this.m_void(this.a_int);
          }
       }
@@ -7577,66 +7540,66 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (int, int, int) void
-   final void a_void17(int var1, int var2, int var3) {
-      for (this.aV = 0; this.aV <= var3 << 1; this.aV++) {
-         if (var2 - var3 + this.aV >= 0) {
-            if (var2 - var3 + this.aV >= this.a_obj_f.d_short) {
+   final void a_void17(int intValue1, int intValue2, int intValue3) {
+      for (this.aV = 0; this.aV <= intValue3 << 1; this.aV++) {
+         if (intValue2 - intValue3 + this.aV >= 0) {
+            if (intValue2 - intValue3 + this.aV >= this.resources.d_short) {
                return;
             }
 
-            this.aY = this.b_byteArr[this.a_shortArr[54] + (this.b_byteArr[this.a_shortArr[55] + var3] & 255) + this.aV];
-            this.d_void5(var1 - (this.aY >> 1), var2 - var3 + this.aV, this.aY);
+            this.aY = this.b_byteArr[this.a_shortArr[54] + (this.b_byteArr[this.a_shortArr[55] + intValue3] & 255) + this.aV];
+            this.d_void5(intValue1 - (this.aY >> 1), intValue2 - intValue3 + this.aV, this.aY);
          }
       }
    }
 
    // $VF: renamed from: a (int, int, int, int) void
-   final void a_void18(int var1, int var2, int var3, int var4) {
-      for (this.aV = 0; this.aV < var4; this.aV++) {
-         if (var2 + this.aV >= 0) {
-            if (var2 + this.aV >= this.a_obj_f.d_short) {
+   final void a_void18(int intValue1, int intValue2, int intValue3, int intValue4) {
+      for (this.aV = 0; this.aV < intValue4; this.aV++) {
+         if (intValue2 + this.aV >= 0) {
+            if (intValue2 + this.aV >= this.resources.d_short) {
                return;
             }
 
-            this.d_void5(var1, var2 + this.aV, var3);
+            this.d_void5(intValue1, intValue2 + this.aV, intValue3);
          }
       }
    }
 
    // $VF: renamed from: d (int, int, int) void
-   private void d_void5(int var1, int var2, int var3) {
+   private void d_void5(int intValue1, int intValue2, int intValue3) {
       for (this.aW = 0; this.aW < 3; this.aW++) {
          this.aX = 0;
-         if (var1 >= this.aW << 5) {
-            if (var1 < this.aW + 1 << 5) {
-               this.aX = this.a_intArr[var3] << var1 - (this.aW << 5);
+         if (intValue1 >= this.aW << 5) {
+            if (intValue1 < this.aW + 1 << 5) {
+               this.aX = this.a_intArr[intValue3] << intValue1 - (this.aW << 5);
             }
-         } else if (var1 + var3 >= this.aW << 5) {
-            this.aX = this.a_intArr[var3] >> (this.aW << 5) - var1;
+         } else if (intValue1 + intValue3 >= this.aW << 5) {
+            this.aX = this.a_intArr[intValue3] >> (this.aW << 5) - intValue1;
          }
 
          if (this.aX != 0) {
-            this.a_obj_f.a_intArr3[this.S_byte][this.aW][var2] = this.a_obj_f.a_intArr3[this.S_byte][this.aW][var2] | this.aX;
+            this.resources.a_intArr3[this.S_byte][this.aW][intValue2] = this.resources.a_intArr3[this.S_byte][this.aW][intValue2] | this.aX;
          }
       }
    }
 
    // $VF: renamed from: c (int, int, int, int) void
-   private void c_void7(int var1, int var2, int var3, int var4) {
-      byte var5 = this.b_byteArr2[var2][var1];
-      if (var4 == 0) {
-         var5 = this.a_byteArr[4747 + this.v_int];
+   private void c_void7(int intValue1, int intValue2, int intValue3, int intValue4) {
+      byte byteValue1 = this.b_byteArr2[intValue2][intValue1];
+      if (intValue4 == 0) {
+         byteValue1 = this.a_byteArr[4747 + this.v_int];
       }
 
-      if (var3 == 0 && (this.a_obj_f.a_intArr3[0][var1 >> 5][var2] >> (var1 & 31) & 1) == 0) {
-         this.e_void5(0, 0, var3);
+      if (intValue3 == 0 && (this.resources.a_intArr3[0][intValue1 >> 5][intValue2] >> (intValue1 & 31) & 1) == 0) {
+         this.e_void5(0, 0, intValue3);
       } else {
-         for (byte var6 = 0; var6 < 7; var6++) {
-            if (var5 >= this.b_byteArr[this.a_shortArr[89] + 0 + var6] && var5 <= this.b_byteArr[this.a_shortArr[89] + 7 + var6]) {
-               if (var3 == 0 && var6 == 1 && (this.a_obj_f.a_intArr3[1][var1 >> 5][var2] >> (var1 & 31) & 1) == 0) {
-                  this.e_void5(0, 0, var3);
+         for (byte byteIndex1 = 0; byteIndex1 < 7; byteIndex1++) {
+            if (byteValue1 >= this.b_byteArr[this.a_shortArr[89] + 0 + byteIndex1] && byteValue1 <= this.b_byteArr[this.a_shortArr[89] + 7 + byteIndex1]) {
+               if (intValue3 == 0 && byteIndex1 == 1 && (this.resources.a_intArr3[1][intValue1 >> 5][intValue2] >> (intValue1 & 31) & 1) == 0) {
+                  this.e_void5(0, 0, intValue3);
                } else {
-                  this.e_void5(var5, var6, var3);
+                  this.e_void5(byteValue1, byteIndex1, intValue3);
                }
                break;
             }
@@ -7645,20 +7608,20 @@ public final class GameEngine {
 
       if ((this.k_byteArr[0] == 1 || this.k_byteArr[0] == 2)
          && this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[78] + 0 + this.k_byteArr[0]]] + this.k_byteArr[2]] <= 0) {
-         this.e_void5(-126, 6, var3);
+         this.e_void5(-126, 6, intValue3);
       }
    }
 
    // $VF: renamed from: e (int, int, int) void
-   private void e_void5(int var1, int var2, int var3) {
-      this.k_byteArr[0] = (byte)var2;
-      this.k_byteArr[2] = (byte)(var1 * this.b_byteArr[this.a_shortArr[90] + 0 + var2] + this.b_byteArr[this.a_shortArr[90] + 7 + var2]);
-      this.k_byteArr[1] = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[91] + var2]] + this.k_byteArr[2]];
-      if (this.b_byteArr[this.a_shortArr[92] + var2] >= 127) {
+   private void e_void5(int intValue1, int intValue2, int intValue3) {
+      this.k_byteArr[0] = (byte)intValue2;
+      this.k_byteArr[2] = (byte)(intValue1 * this.b_byteArr[this.a_shortArr[90] + 0 + intValue2] + this.b_byteArr[this.a_shortArr[90] + 7 + intValue2]);
+      this.k_byteArr[1] = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[91] + intValue2]] + this.k_byteArr[2]];
+      if (this.b_byteArr[this.a_shortArr[92] + intValue2] >= 127) {
          this.k_byteArr[3] = 0;
       } else {
          this.k_byteArr[3] = (byte)(
-            (this.k_byteArr[2] - (this.k_byteArr[0] != 1 && this.k_byteArr[0] != 2 ? 0 : 1)) / this.b_byteArr[this.a_shortArr[92] + var2] + var3 & 1
+            (this.k_byteArr[2] - (this.k_byteArr[0] != 1 && this.k_byteArr[0] != 2 ? 0 : 1)) / this.b_byteArr[this.a_shortArr[92] + intValue2] + intValue3 & 1
          );
       }
    }
@@ -7710,20 +7673,20 @@ public final class GameEngine {
    }
 
    // $VF: renamed from: a (byte, int, int) void
-   final void a_void19(byte var1, int var2, int var3) {
-      if (var2 <= 50) {
-         if (this.a_obj_f.q_byte >= this.b_byteArr[this.a_shortArr[293] + var1]) {
-            if (this.d_shortArr[this.b_byteArr[this.a_shortArr[292] + var1]] < 0) {
-               this.d_shortArr[this.b_byteArr[this.a_shortArr[292] + var1]] = 0;
-               if (var1 != 4 && var1 != 5 && this.K_byte >= 50
-                  || (var1 == 4 || var1 == 5)
+   final void a_void19(byte byteValue1, int intValue1, int intValue2) {
+      if (intValue1 <= 50) {
+         if (this.resources.q_byte >= this.b_byteArr[this.a_shortArr[293] + byteValue1]) {
+            if (this.d_shortArr[this.b_byteArr[this.a_shortArr[292] + byteValue1]] < 0) {
+               this.d_shortArr[this.b_byteArr[this.a_shortArr[292] + byteValue1]] = 0;
+               if (byteValue1 != 4 && byteValue1 != 5 && this.K_byte >= 50
+                  || (byteValue1 == 4 || byteValue1 == 5)
                      && (
-                        this.z_byte < this.a_obj_f.I_byte
-                           || this.z_byte >= this.a_obj_f.I_byte + this.a_obj_f.O_byte
-                           || this.A_byte < this.a_obj_f.K_byte
-                           || this.A_byte >= this.a_obj_f.K_byte + this.a_obj_f.P_byte
+                        this.z_byte < this.resources.I_byte
+                           || this.z_byte >= this.resources.I_byte + this.resources.O_byte
+                           || this.A_byte < this.resources.K_byte
+                           || this.A_byte >= this.resources.K_byte + this.resources.P_byte
                      )) {
-                  this.a_obj_f.a_void11(var1, (byte)var2, (byte)var3);
+                  this.resources.a_void11(byteValue1, (byte)intValue1, (byte)intValue2);
                }
             }
          }
@@ -7733,7 +7696,7 @@ public final class GameEngine {
    // $VF: renamed from: ax () void
    private void ax() {
       for (this.a_int = 0; this.a_int < 6; this.a_int++) {
-         if (this.a_obj_f.l_int != 1) {
+         if (this.resources.l_int != 1) {
             this.d_shortArr[this.a_int] = this.b_shortArr[this.c_shortArr[2] + this.a_int];
          } else {
             if (this.d_shortArr[this.a_int] >= 0) {
@@ -7749,32 +7712,32 @@ public final class GameEngine {
 
    // $VF: renamed from: n () void
    final void n_void2() {
-      for (int var1 = 0; var1 < 5; var1++) {
-         for (int var2 = 0; var2 < 6; var2++) {
-            for (int var3 = 0; var3 < 6; var3++) {
-               this.c_byteArr3[var1][var2][var3] = -1;
+      for (int loopIndex1 = 0; loopIndex1 < 5; loopIndex1++) {
+         for (int loopIndex2 = 0; loopIndex2 < 6; loopIndex2++) {
+            for (int loopIndex3 = 0; loopIndex3 < 6; loopIndex3++) {
+               this.c_byteArr3[loopIndex1][loopIndex2][loopIndex3] = -1;
             }
          }
       }
 
-      for (int var6 = 0; var6 < 5; var6++) {
-         for (int var7 = this.b_byteArr[this.a_shortArr[115] + var6]; var7 <= this.b_byteArr[this.a_shortArr[116] + var6]; var7++) {
-            if (this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[117] + var6]] + var7] > 0
+      for (int loopIndex4 = 0; loopIndex4 < 5; loopIndex4++) {
+         for (int loopIndex5 = this.b_byteArr[this.a_shortArr[115] + loopIndex4]; loopIndex5 <= this.b_byteArr[this.a_shortArr[116] + loopIndex4]; loopIndex5++) {
+            if (this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[117] + loopIndex4]] + loopIndex5] > 0
                && (
-                  var6 > 1
-                     || this.b_byteArr2[this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[118] + var6] + 1] + var7]][this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[118]
-                              + var6]]
-                           + var7]]
-                        == var7
-                     || this.a_byteArr[2828 + var7] == 93
-                     || this.a_byteArr[2828 + var7] == 92
-                     || this.a_byteArr[2828 + var7] == 106
+                  loopIndex4 > 1
+                     || this.b_byteArr2[this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[118] + loopIndex4] + 1] + loopIndex5]][this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[118]
+                              + loopIndex4]]
+                           + loopIndex5]]
+                        == loopIndex5
+                     || this.a_byteArr[2828 + loopIndex5] == 93
+                     || this.a_byteArr[2828 + loopIndex5] == 92
+                     || this.a_byteArr[2828 + loopIndex5] == 106
                )) {
-               int var4 = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[118] + var6]] + var7] >> 4;
-               int var5 = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[118] + var6] + 1] + var7] >> 4;
-               int var8 = var7 - this.b_byteArr[this.a_shortArr[115] + var6];
-               this.a_byteArr2[var6][var8] = this.c_byteArr3[var6][var5][var4];
-               this.c_byteArr3[var6][var5][var4] = (byte)var8;
+               int intValue1 = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[118] + loopIndex4]] + loopIndex5] >> 4;
+               int intValue2 = this.a_byteArr[this.b_shortArr[this.b_byteArr[this.a_shortArr[118] + loopIndex4] + 1] + loopIndex5] >> 4;
+               int intValue3 = loopIndex5 - this.b_byteArr[this.a_shortArr[115] + loopIndex4];
+               this.a_byteArr2[loopIndex4][intValue3] = this.c_byteArr3[loopIndex4][intValue2][intValue1];
+               this.c_byteArr3[loopIndex4][intValue2][intValue1] = (byte)intValue3;
             }
          }
       }

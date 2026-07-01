@@ -6,78 +6,79 @@ import javax.microedition.lcdui.Image;
 
 // $VF: renamed from: d
 public final class GameCanvas extends Canvas {
-   byte a_byte = 0;
-   boolean a_bool;
+   byte splashFrameIndex = 0;
+   boolean initialized;
 
    private Image offscreenImage = null;
    private Graphics offscreenGraphics = null;
 
-   public GameCanvas(MainMIDlet var1) {
+   public GameCanvas(MainMIDlet midlet) {
       this.setFullScreenMode(true);
-      if (GameResources.a_obj_ImageArr[0] == null) {
-         GameResources.a_obj_ImageArr[0] = Image.createImage(350, 272);
-         GameResources.a_obj_GraphicsArr[0] = GameResources.a_obj_ImageArr[0].getGraphics();
+      if (GameResources.frameBuffers[0] == null) {
+         GameResources.frameBuffers[0] = Image.createImage(350, 272);
+         GameResources.frameGraphics[0] = GameResources.frameBuffers[0].getGraphics();
       }
    }
 
-   public final void paint(Graphics var1) {
+   public final void paint(Graphics graphics) {
       int screenW = this.getWidth();
       int screenH = this.getHeight();
       if (screenW <= 0 || screenH <= 0) {
          screenW = 320;
          screenH = 240;
       }
-      
-      if (GameResources.a_obj_ImageArr[0] != null) {
-         drawScaledImage(var1, GameResources.a_obj_ImageArr[0], 0, 0, screenW, screenH);
+
+      if (GameResources.frameBuffers[0] != null) {
+         drawScaledImage(graphics, GameResources.frameBuffers[0], 0, 0, screenW, screenH);
       }
    }
 
    // $VF: renamed from: a () void
    final void a() {
-      if (!this.a_bool) {
-         this.a_bool = true;
-         if (GameResources.a_obj_ImageArr[0] == null) {
-            GameResources.a_obj_ImageArr[0] = Image.createImage(350, 272);
-            GameResources.a_obj_GraphicsArr[0] = GameResources.a_obj_ImageArr[0].getGraphics();
+      if (!this.initialized) {
+         this.initialized = true;
+         if (GameResources.frameBuffers[0] == null) {
+            GameResources.frameBuffers[0] = Image.createImage(350, 272);
+            GameResources.frameGraphics[0] = GameResources.frameBuffers[0].getGraphics();
          }
       }
-      
+
       try {
-         if (this.a_byte < 4) {
-            GameResources.a_obj_GraphicsArr[0].setColor(16777215);
-            GameResources.a_obj_GraphicsArr[0].fillRect(0, 0, 320, 241);
-            GameResources.a_obj_GraphicsArr[0].drawImage(Image.createImage("/l" + this.a_byte), 160, 120, 3);
+         if (this.splashFrameIndex < 4) {
+            GameResources.frameGraphics[0].setColor(16777215);
+            GameResources.frameGraphics[0].fillRect(0, 0, 320, 241);
+            GameResources.frameGraphics[0].drawImage(Image.createImage("/l" + this.splashFrameIndex), 160, 120, 3);
          }
       } catch (Exception e) {
       }
-      
+
       this.repaint();
    }
 
-   protected final void keyPressed(int var1) {
+   protected final void keyPressed(int keyCode) {
    }
 
-   // High quality Nearest-Neighbor Scaling Helper
-   public static void drawScaledImage(Graphics g, Image img, int dx, int dy, int dw, int dh) {
-      int sw = img.getWidth();
-      int sh = img.getHeight();
-      if (sw == dw && sh == dh) {
-         g.drawImage(img, dx, dy, 0);
+   public static void drawScaledImage(Graphics graphics, Image image, int destX, int destY, int destWidth, int destHeight) {
+      int sourceWidth = image.getWidth();
+      int sourceHeight = image.getHeight();
+      if (sourceWidth == destWidth && sourceHeight == destHeight) {
+         graphics.drawImage(image, destX, destY, 0);
          return;
       }
-      int[] raw = new int[sw * sh];
-      img.getRGB(raw, 0, sw, 0, 0, sw, sh);
-      int[] scaled = new int[dw * dh];
-      for (int y = 0; y < dh; y++) {
-         int srcY = (y * sh) / dh;
-         int srcRowOffset = srcY * sw;
-         int destRowOffset = y * dw;
-         for (int x = 0; x < dw; x++) {
-            int srcX = (x * sw) / dw;
-            scaled[destRowOffset + x] = raw[srcRowOffset + srcX];
+
+      int[] sourcePixels = new int[sourceWidth * sourceHeight];
+      image.getRGB(sourcePixels, 0, sourceWidth, 0, 0, sourceWidth, sourceHeight);
+      int[] scaledPixels = new int[destWidth * destHeight];
+      for (int y = 0; y < destHeight; y++) {
+         int sourceY = (y * sourceHeight) / destHeight;
+         int sourceRowOffset = sourceY * sourceWidth;
+         int destRowOffset = y * destWidth;
+         for (int x = 0; x < destWidth; x++) {
+            int sourceX = (x * sourceWidth) / destWidth;
+            scaledPixels[destRowOffset + x] = sourcePixels[sourceRowOffset + sourceX];
          }
       }
-      g.drawRGB(scaled, 0, dw, dx, dy, dw, dh, true);
+
+      graphics.drawRGB(scaledPixels, 0, destWidth, destX, destY, destWidth, destHeight, true);
    }
 }

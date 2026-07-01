@@ -1,251 +1,118 @@
-# Bo Lac Thoi Tien Su
-
-Du an ma nguon Java cua game di dong **Bo Lac Thoi Tien Su** phien ban `0.1.30`, duoc to chuc lai tu ma J2ME/MIDP. Repo nay phu hop de nghien cuu co che game Java ME cu, build lai file MIDlet, chay bang emulator va thu nghiem chinh sua tai nguyen/gameplay.
-
-> Luu y: phan lon ma nguon co dau vet decompiled/obfuscated, vi vay nhieu ten bien va ten ham van dang ngan gon nhu `a_void`, `b_int`, `a_byteArr2`. Mot so lop helper da duoc them vao de thao tac voi du lieu game de hon.
-
-## Tong Quan
-
-| Muc | Gia tri |
-| --- | --- |
-| Ten game | Bo Lac Thoi Tien Su |
-| MIDlet version | `0.1.30` |
-| MIDlet vendor | `GiaiTri321.Pro` |
-| Entry point | `Project.src.MainMIDlet` |
-| Nen tang goc | Java ME, MIDP 2.0, CLDC 1.0 |
-| Kieu du an | NetBeans Java SE project dung Ant |
-| JDK cau hinh | Source/target `1.8` |
-| File build ra | `dist/BoLacThoiTienSu.jar` |
-
-## Cau Truc Thu Muc
-
-```text
-.
-|-- build.xml                         # Ant build script chinh, import nbproject/build-impl.xml
-|-- manifest.mf                       # MIDlet metadata
-|-- AngelChipEmulator_AutoSleep.jar   # Emulator J2ME di kem de chay thu
-|-- lib/                              # Thu vien MIDP/CLDC/JSR va ASM
-|-- nbproject/                        # Cau hinh NetBeans/Ant
-|-- src/                              # Ma nguon va tai nguyen game
-|   |-- MainMIDlet.java               # MIDlet entry point
-|   |-- GameCanvas.java               # Man hinh, splash, ve buffer va scale hinh
-|   |-- GameResources.java            # Trang thai tong, game loop va vong doi game
-|   |-- GameEngine.java               # Logic gameplay chinh
-|   |-- GameRenderer.java             # Render sprite/map/UI
-|   |-- GameData.java                 # Nap du lieu nhi phan va sprite/resource
-|   |-- SoundPlayer.java              # Phat am thanh MIDI
-|   |-- GameHelper.java               # API helper de truy cap mob/map/resource
-|   |-- GameMap.java                  # Wrapper thao tac tile map
-|   |-- Mob.java                      # Wrapper thao tac thuc the di dong
-|   |-- ResourceObject.java           # Wrapper thao tac tai nguyen tren map
-|   |-- a, ma, pd0                    # File du lieu nhi phan game
-|   |-- *_decoded.json                # Ban JSON da giai ma de tham khao/chinh sua
-|   |-- pi0/, pi8/, pi9/              # Sprite/image resources
-|   |-- sounds/                       # File MIDI
-|   `-- 0/ .. 4/                      # Du lieu tung man/map dang text
-`-- ToolEditData/
-    |-- pom.xml                       # Du an Maven phu, compiler Java 22
-    `-- Data/                         # Ban sao/du lieu tho phuc vu nghien cuu tai nguyen
-```
-
-## Thanh Phan Chinh
-
-### Vong doi ung dung
-
-- `MainMIDlet.java` la diem khoi dong cua MIDlet. Lop nay tao `GameCanvas`, hien thi cac man splash `l0`, `l1`, `l2`, sau do khoi tao `GameResources`.
-- `GameResources.java` giu phan lon trang thai game, quan ly game loop, xu ly pause/resume/destroy va dieu phoi cac thanh phan logic, render, am thanh.
-- `GameCanvas.java` ke thua `javax.microedition.lcdui.Canvas`, tao offscreen buffer va scale hinh anh bang nearest-neighbor de game hien thi ro hon tren man hinh lon.
-
-### Du lieu va tai nguyen
-
-- `GameData.java` nap cac resource bang `getResourceAsStream()` va `Image.createImage()`. Cac duong dan quan trong gom `/pd0`, `/a`, `/ma`, `/pi0/...`, `/pi8/...`, `/pi9/...`.
-- `a` chua du lieu font/sprite metadata dang nhi phan; `a_decoded.json` la ban giai ma de doc.
-- `ma` chua du lieu map/man cho cac stage; `ma_decoded.json` la ban giai ma.
-- `pd0` chua nhieu bang du lieu tinh nhu chi so, cau hinh don vi/cong trinh/can bang gameplay; `pd0_decoded.json` la ban giai ma.
-- `sounds/sound_0.mid` den `sounds/sound_4.mid` la nhac/am thanh nen dang MIDI.
-
-### Helper phuc vu mod
-
-Repo co mot lop API nho de tranh thao tac truc tiep voi cac mang byte kho doc:
-
-- `GameHelper` gom `getMob(id)`, `getResourceObject(slotId)`, `getMap()`.
-- `Mob` doc/sua vi tri, HP va toa do muc tieu cua mob theo slot.
-- `ResourceObject` doc/sua loai tai nguyen, tru luong va vi tri.
-- `GameMap` doc/sua tile tren map qua `getTileAt(x, y)` va `setTileAt(x, y, value)`.
-
-## Yeu Cau Moi Truong
-
-Can cai:
-
-- JDK 8. Repo dang cau hinh `javac.source=1.8` va `javac.target=1.8`.
-- Apache Ant neu muon build bang terminal.
-- NetBeans neu muon mo project truc tiep bang IDE.
-- Emulator J2ME de chay file `.jar`. Repo co san `AngelChipEmulator_AutoSleep.jar`.
-
-Kiem tra nhanh:
-
-```powershell
-java -version
-ant -version
-```
-
-Trong moi truong hien tai cua repo nay, Java 8 da co san, nhung `ant` chua co trong PATH. Neu `ant -version` bao khong nhan lenh, hay cai Apache Ant hoac build bang NetBeans.
-
-## Build Bang Ant
-
-Tai thu muc goc du an:
-
-```powershell
-ant clean
-ant jar
-```
-
-Sau khi build thanh cong, file JAR nam tai:
-
-```text
-dist/BoLacThoiTienSu.jar
-```
-
-Neu dung NetBeans:
-
-1. Mo thu muc du an bang NetBeans.
-2. Chon project `BoLacThoiTienSu`.
-3. Chay `Clean and Build`.
-4. Lay file output trong `dist/`.
-
-## Chay Game Bang Emulator
-
-1. Build game de tao `dist/BoLacThoiTienSu.jar`.
-2. Mo `AngelChipEmulator_AutoSleep.jar`.
-3. Keo tha `dist/BoLacThoiTienSu.jar` vao emulator, hoac mo file JAR tu menu cua emulator neu co.
-4. Dung phim dieu huong/phim so cua emulator de choi va debug.
-
-Manifest cua game:
-
-```text
-MIDlet-Name: Bo Lac Thoi Tien Su
-MIDlet-Version: 0.1.30
-MIDlet-Vendor: GiaiTri321.Pro
-MIDlet-1: Bo Lac Thoi Tien Su, icon.png, Project.src.MainMIDlet
-MicroEdition-Profile: MIDP-2.0
-MicroEdition-Configuration: CLDC-1.0
-```
-
-## Chinh Sua Va Mod
-
-### 1. Chinh sua bang Java code
-
-Co the them logic vao game loop trong `GameResources.java` hoac cac diem xu ly cua `GameEngine.java`. Khi can thao tac voi mob, map hoac resource, uu tien dung helper:
-
-```java
-Mob mob = gameResources.helper.getMob(1);
-if (mob != null && mob.isAlive()) {
-    mob.setHP(100);
-}
-```
-
-```java
-ResourceObject resource = gameResources.helper.getResourceObject(0);
-if (resource != null) {
-    resource.setStock(255);
-}
-```
-
-```java
-GameMap map = gameResources.helper.getMap();
-if (map.isValidCoordinate(10, 12)) {
-    map.setTileAt(10, 12, 6);
-}
-```
-
-Luu y: cac wrapper nay doc/ghi truc tiep vao mang byte noi bo cua game. Hay kiem tra gioi han index va gia tri truoc khi thay doi hang loat.
-
-### 2. Chinh sua du lieu tinh
-
-Co the doc cac file JSON da giai ma:
-
-- `src/a_decoded.json`
-- `src/ma_decoded.json`
-- `src/pd0_decoded.json`
-
-Quy trinh thuong dung:
-
-1. Chinh sua JSON hoac file text map trong `src/0` den `src/4`.
-2. Ma hoa/chuyen doi lai ve dinh dang nhi phan tuong ung (`a`, `ma`, `pd0`).
-3. Ghi de file nhi phan trong `src/`.
-4. Build lai JAR.
-
-`ToolEditData/` la khu vuc phu de phat trien cong cu doc/ghi du lieu. `pom.xml` cua tool nay dang cau hinh Java 22:
-
-```xml
-<maven.compiler.source>22</maven.compiler.source>
-<maven.compiler.target>22</maven.compiler.target>
-```
-
-Neu may chi co JDK 8, phan game chinh van phu hop, nhung tool Maven nay can JDK 22 hoac can ha cau hinh compiler neu ban muon build tool.
-
-## Cac File Tai Nguyen Quan Trong
-
-| File/thu muc | Vai tro |
-| --- | --- |
-| `src/icon.png` | Icon MIDlet |
-| `src/l0`, `src/l1`, `src/l2` | Splash resources duoc load bang `/l0`, `/l1`, `/l2` |
-| `src/l0.png`, `src/l1.png`, `src/l2.png` | Ban anh PNG tham khao/cung cap kem |
-| `src/pi0/` | Nhom sprite chinh, `GameData` dang ky 31 slot |
-| `src/pi9/` | Nhom sprite phu, `GameData` dang ky 6 slot |
-| `src/pi8/` | Nhom sprite phu, `GameData` dang ky 12 slot |
-| `src/sounds/` | Am thanh MIDI |
-| `src/a` | Du lieu nhi phan cho font/sprite metadata |
-| `src/ma` | Du lieu nhi phan map/stage |
-| `src/pd0` | Du lieu nhi phan gameplay/static tables |
-
-## Loi Thuong Gap
-
-### `ant` is not recognized
-
-Ant chua duoc cai hoac chua them vao PATH. Cai Apache Ant, them `ANT_HOME` va `%ANT_HOME%\bin` vao PATH, sau do mo terminal moi va kiem tra lai:
-
-```powershell
-ant -version
-```
-
-### Khong load duoc hinh hoac am thanh
-
-Kiem tra file resource co nam dung trong `src/` va co duong dan dung khong. Code load resource theo dang tuyet doi trong classpath, vi du:
-
-```java
-Image.createImage("/pi0/image_0.png");
-getClass().getResourceAsStream("/sounds/sound_0.mid");
-```
-
-Neu doi ten file hoac doi thu muc, can sua duong dan trong code.
-
-### Build duoc nhung emulator khong chay
-
-Kiem tra `manifest.mf`, dac biet dong:
-
-```text
-MIDlet-1: Bo Lac Thoi Tien Su, icon.png, Project.src.MainMIDlet
-```
-
-Class `MainMIDlet` phai nam dung package `Project.src`, va file JAR phai gom du resource trong `src/`.
-
-### ToolEditData khong build duoc bang JDK 8
-
-Tool phu dang dat Java 22 trong `ToolEditData/pom.xml`. Dung JDK 22 cho tool, hoac sua `maven.compiler.source/target` neu code tool khong dung tinh nang Java moi.
-
-## Ghi Chu Phat Trien
-
-- Dung UTF-8 khi sua tai lieu va ma nguon moi.
-- Han che doi ten hang loat trong cac file decompiled neu chua co test/emulator de kiem tra.
-- Khi sua cac mang byte trong gameplay, nen ghi lai offset va y nghia cua offset vao comment ngan gon.
-- Nen build va chay emulator sau moi thay doi lien quan den `GameData`, `GameResources`, `GameEngine` hoac resource trong `src/`.
-- Repo hien chua co test tu dong trong `test/`, vi vay emulator la kenh kiem thu quan trong nhat.
-
-## Trang Thai Kiem Tra
-
-- Da doc cau hinh NetBeans/Ant trong `build.xml`, `nbproject/project.properties`, `nbproject/project.xml`.
-- Da doc manifest MIDlet trong `manifest.mf`.
-- Da doc cac lop chinh trong `src/`, gom entrypoint, canvas, resource loader, sound va helper.
-- Da kiem tra Java tren may hien tai: co Java 8.
-- Chua chay duoc `ant jar` trong moi truong hien tai vi lenh `ant` chua co trong PATH.
+# Bộ Lạc Thời Tiền Sử (GAME_AOE_JAVA)
+
+Dự án này là mã nguồn dịch ngược (decompiled) và được tổ chức lại của tựa game di động J2ME nổi tiếng **Bộ Lạc Thời Tiền Sử** (được phân phối bởi các wapsite game di động đời đầu tại Việt Nam như *Hayso1.vn* / *GiaiTri321.Pro*). 
+
+Mục tiêu của dự án này là cung cấp môi trường lập trình giả lập Java SE hiện đại để các nhà phát triển hoặc những người đam mê có thể dễ dàng nghiên cứu kiến trúc game di động cổ điển, phân tích tài nguyên nhị phân, viết các bản mod (cheat, tối ưu hóa AI) và chỉnh sửa dữ liệu bản đồ hay chỉ số trong game.
+
+---
+
+## 📌 Tổng quan về Game
+
+*   **Tên game:** Bộ Lạc Thời Tiền Sử (phiên bản 0.1.30)
+*   **Thể loại:** Chiến thuật thời gian thực (RTS - Age of Empires / AOE) trên điện thoại di động sử dụng phím số.
+*   **Nền tảng đích:** J2ME (MIDP-2.0 / CLDC-1.0)
+*   **Nhà phát triển / Phân phối gốc:** GiaiTri321.Pro / Hayso1.vn
+*   **Đặc điểm nổi bật của dự án này:** 
+    *   Mã nguồn đã dịch ngược hoàn chỉnh sang Java Standard Edition (định hướng chạy & build trên Java 8 trở lên).
+    *   Bổ sung các lớp wrapper hướng đối tượng (OOP helper) thân thiện để tránh việc thao tác trực tiếp với mảng byte phẳng gốc của J2ME.
+    *   Tài nguyên game nhị phân đã được giải mã sẵn sang định dạng JSON để dễ dàng can thiệp chỉnh sửa dữ liệu tĩnh.
+
+---
+
+## 📁 Cấu trúc Thư mục & Vai trò của các File
+
+### 1. Mã nguồn Java (`src/`)
+Thư mục [src/](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src) chứa toàn bộ logic xử lý của game:
+
+*   **Lớp Khởi chạy & Vòng đời:**
+    *   [MainMIDlet.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/MainMIDlet.java): Điểm bắt đầu của ứng dụng J2ME (MIDlet). Quản lý việc chuyển đổi giữa màn hình Splash (logo giới thiệu) và khởi tạo luồng tài nguyên game chính.
+*   **Đồ họa & Render:**
+    *   [GameCanvas.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/GameCanvas.java): Kế thừa từ `javax.microedition.lcdui.Canvas`. Lớp này thực hiện nhận tín hiệu từ màn hình đệm và vẽ lên màn hình thiết bị. Đặc biệt, file này tích hợp thuật toán vẽ nội suy lân cận gần nhất (**Nearest-Neighbor Scaling**) giúp co giãn đồ họa game sắc nét trên các màn hình máy tính có độ phân giải cao hơn độ phân giải gốc (320x240).
+    *   [GameRenderer.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/GameRenderer.java): Đảm nhận nhiệm vụ vẽ chi tiết từng sprite hoạt ảnh của nhân vật, công trình, nền đất từ dữ liệu đồ họa nạp vào.
+*   **Xử lý Logic & Quản lý Tài nguyên:**
+    *   [GameEngine.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/GameEngine.java): Trọng tâm xử lý logic của game. Quản lý AI của bộ lạc, đường đi của quân lính, cơ chế khai thác tài nguyên (thức ăn, gỗ, đá, vàng) và các điều kiện thắng/thua của màn chơi.
+    *   [GameResources.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/GameResources.java): Đóng vai trò là game loop (vòng lặp game chính chạy trên một luồng riêng biệt) và lưu trữ trạng thái tài nguyên đồ họa/mảng dữ liệu thô của toàn bộ game.
+    *   [GameData.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/GameData.java): Thực hiện việc đọc và giải mã các file dữ liệu nhị phân static (`/pd0`, `/a`, `/ma`) khi khởi tạo game để điền vào các mảng dữ liệu trong `GameResources`.
+    *   [SoundPlayer.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/SoundPlayer.java): Quản lý luồng âm thanh và phát các bản nhạc nền định dạng MIDI (`/sounds/sound_*.mid`).
+
+### 2. Bộ Wrapper Hướng đối tượng hỗ trợ Mod (`src/` Helper classes)
+Để giảm bớt độ phức tạp khi tương tác với các cấu trúc mảng phẳng tối ưu bộ nhớ của J2ME gốc, dự án đã cung cấp một tầng API hướng đối tượng thân thiện:
+*   [GameHelper.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/GameHelper.java): Cung cấp một điểm truy cập tập trung để lấy các đối tượng trên bản đồ.
+*   [GameMap.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/GameMap.java): Cung cấp các phương thức get/set tile trực quan trên ma trận bản đồ 96x96 thay vì truy cập mảng byte hai chiều thô.
+*   [Mob.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/Mob.java): Lớp bọc thông tin thực thể di động (quân lính, thú hoang, nông dân). Giúp lấy/sửa tọa độ `getX()`, `getY()`, lượng máu `getHP()`, kiểm tra trạng thái sống chết `isAlive()` và mục tiêu di chuyển `getTargetX()`, `getTargetY()`.
+*   [ResourceObject.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/ResourceObject.java): Lớp bọc thông tin tài nguyên xuất hiện trên bản đồ (rừng cây, mỏ đá). Cung cấp API để kiểm tra loại tài nguyên `getType()` (Gỗ = 6, Đá = 7) và trữ lượng còn lại `getStock()`.
+
+### 3. File Dữ liệu và Bản Giải mã JSON (`src/` Data files)
+Dữ liệu của game được lưu dưới dạng nhị phân tối ưu trong thư mục gốc của tài nguyên nhưng cũng đi kèm phiên bản JSON tương ứng đã giải mã phục vụ việc nghiên cứu chỉnh sửa:
+*   `a` (Gốc nhị phân) & [a_decoded.json](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/a_decoded.json): Chứa thông số chiều rộng ký tự font chữ và siêu dữ liệu cho các sprite hoạt ảnh.
+*   `ma` (Gốc nhị phân) & [ma_decoded.json](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/ma_decoded.json): Chứa dữ liệu các bản đồ của từng màn chơi (`stage_0` đến `stage_4`).
+*   `pd0` (Gốc nhị phân) & [pd0_decoded.json](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/pd0_decoded.json): Chứa các mảng dữ liệu tĩnh quy định chỉ số nhân vật, thời gian, nâng cấp công trình và các cấu hình cân bằng trong game.
+
+### 4. Thư mục Công cụ Dữ liệu (`ToolEditData/`)
+Thư mục [ToolEditData/](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/ToolEditData) là một dự án Maven riêng biệt ([ToolEditData/pom.xml](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/ToolEditData/pom.xml)) được thiết lập để phát triển công cụ giải mã và mã hóa các tệp tin dữ liệu của game (`a`, `ma`, `pd0`). Hiện tại dự án này chứa tài nguyên thô của game ở thư mục [ToolEditData/Data](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/ToolEditData/Data) phục vụ cho việc nghiên cứu.
+
+### 5. Thư viện Giả lập (`lib/`)
+Các file `.jar` trong thư mục [lib/](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/lib) đóng vai trò mock các API của J2ME trên môi trường SE:
+*   `midp_2.0.jar` & `cldc_1.0.jar`: Giả lập các gói UI, Threading và IO chuẩn.
+*   `jsr135_1.2.jar` & `jsr120_1.1.jar`: Cung cấp API giả lập âm thanh đa phương tiện và tin nhắn SMS.
+*   `asm-9.5.jar`: Thư viện thao tác trên bytecode Java.
+
+---
+
+## 🛠️ Hướng dẫn Thiết lập Môi trường & Build Dự án
+
+### Yêu cầu
+*   **Java Development Kit (JDK):** Khuyến nghị sử dụng **JDK 8 (1.8)** hoặc mới hơn. Trong cấu hình dự án (`project.properties`), cờ đích biên dịch được đặt là `1.8`.
+*   **Apache Ant:** Dùng để chạy build script.
+*   **IDE khuyên dùng:** NetBeans IDE (dự án đã được cấu hình sẵn định dạng NetBeans Project).
+
+### Các bước biên dịch dự án bằng Ant
+Mở terminal tại thư mục gốc của dự án và chạy:
+
+1.  **Dọn dẹp các tệp tin build cũ:**
+    ```bash
+    ant clean
+    ```
+2.  **Biên dịch và đóng gói game:**
+    ```bash
+    ant jar
+    ```
+    Sau khi chạy xong, file game được đóng gói `.jar` sẽ xuất hiện tại thư mục `dist/BoLacThoiTienSu.jar`.
+
+---
+
+## 🎮 Hướng dẫn Chạy thử Nghiệm game
+Bạn có thể chạy thử trực tiếp tệp tin game sau khi đóng gói bằng cách sử dụng công cụ giả lập được đính kèm ở thư mục gốc:
+1.  Chạy tệp tin **[AngelChipEmulator_AutoSleep.jar](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/AngelChipEmulator_AutoSleep.jar)** (đây là một phần mềm giả lập J2ME trên nền Windows).
+2.  Kéo thả file `dist/BoLacThoiTienSu.jar` đã build vào cửa sổ emulator để khởi động game.
+3.  Sử dụng bàn phím ảo hoặc các phím điều hướng số trên máy tính để trải nghiệm và debug các tính năng của game.
+
+---
+
+## 💡 Hướng dẫn Mod và Lập trình Bổ sung
+
+### Cách 1: Thay đổi chỉ số game tĩnh qua JSON
+1.  Chỉnh sửa các giá trị mong muốn trong các tệp tin [ma_decoded.json](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/ma_decoded.json) (để đổi map) hoặc [pd0_decoded.json](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/pd0_decoded.json) (để thay đổi chỉ số lính, máu, lực công kích, hoặc lượng tài nguyên khai thác).
+2.  Sử dụng công cụ mã hóa trong `ToolEditData` (hoặc viết script Python/Java tùy chọn) để chuyển đổi lại từ cấu trúc JSON sang định dạng nhị phân thô tương ứng (`ma`, `pd0`).
+3.  Ghi đè file nhị phân mới vào thư mục `src/` và chạy build lại dự án.
+
+### Cách 2: Lập trình chức năng mod động (Java code)
+Sử dụng lớp bọc [GameHelper.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/GameHelper.java) để can thiệp trực tiếp vào mã nguồn:
+*   **Hack máu lính/nông dân:**
+    ```java
+    // Lấy mob số 1 và hồi đầy máu cho thực thể đó
+    Mob myMob = gameResources.helper.getMob(1);
+    if (myMob != null && myMob.isAlive()) {
+        myMob.setHP(100); 
+    }
+    ```
+*   **Thay đổi tài nguyên trên map:**
+    ```java
+    // Thay đổi trữ lượng của tài nguyên ở slot 0
+    ResourceObject res = gameResources.helper.getResourceObject(0);
+    if (res != null) {
+        res.setStock(255); // Tăng số gỗ/đá lên tối đa
+    }
+    ```
+*   Tích hợp các đoạn mã xử lý này vào vòng lặp game chính trong [GameResources.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/GameResources.java) hoặc logic cập nhật của [GameEngine.java](file:///c:/Users/NamTien/Downloads/ProjectBoLacThoiTienSu/src/GameEngine.java) để tạo ra các tính năng tự động (auto-play), hỗ trợ cheats hoặc nâng cấp AI cho các đối thủ máy.
+s
